@@ -23,7 +23,7 @@ namespace Game
         public SubsystemPickables m_subsystemPickables;
 
         public SubsystemParticles m_subsystemParticles;
-        public static string fName = "SubsystemFurnitureBlockBehavior";
+        public const string fName = "SubsystemFurnitureBlockBehavior";
 
         public List<FurnitureSet> m_furnitureSets = new List<FurnitureSet>();
 

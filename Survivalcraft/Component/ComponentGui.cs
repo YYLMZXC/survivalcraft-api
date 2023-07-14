@@ -27,7 +27,7 @@ namespace Game
             public float Duration;
         }
 
-        public static string fName = "ComponentGui";
+        public const string fName = "ComponentGui";
 
         public SubsystemGameInfo m_subsystemGameInfo;
 

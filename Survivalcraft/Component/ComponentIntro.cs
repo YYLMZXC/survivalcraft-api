@@ -17,7 +17,7 @@ namespace Game
 
         public bool m_playIntro;
 
-        public static string fName = "ComponentIntro";
+        public const string fName = "ComponentIntro";
 
         public StateMachine m_stateMachine = new StateMachine();
 

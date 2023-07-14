@@ -17,7 +17,7 @@ namespace Game
         public SubsystemAudio m_subsystemAudio;
 
         public SubsystemNoise m_subsystemNoise;
-        public static string fName = "SubsystemMusketBlockBehavior";
+        public const string fName = "SubsystemMusketBlockBehavior";
         public Random m_random = new Random();
 
         public Dictionary<ComponentMiner, double> m_aimStartTimes = new Dictionary<ComponentMiner, double>();

@@ -55,7 +55,7 @@ namespace Game
 
         public bool m_clothedTexturesValid;
 
-        public static string fName = "ComponentClothing";
+        public const string fName = "ComponentClothing";
 
         public List<int> m_clothesList = new List<int>();
 

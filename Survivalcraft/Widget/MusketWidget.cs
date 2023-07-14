@@ -14,7 +14,7 @@ namespace Game
         public InventorySlotWidget m_inventorySlotWidget;
 
         public LabelWidget m_instructionsLabel;
-        public static string fName = "MusketWidget";
+        public const string fName = "MusketWidget";
 
         public MusketWidget(IInventory inventory, int slotIndex)
         {

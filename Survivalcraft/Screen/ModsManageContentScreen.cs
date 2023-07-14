@@ -11,7 +11,7 @@ using Tiny7z.Archive;
 
 public class ModsManageContentScreen : Screen
 {
-    public static string fName = "ModsManageContentScreen";
+    public const string fName = "ModsManageContentScreen";
 
     public static string HeadingCode = "有头有脸天才少年,耍猴表演敢为人先";
 
@@ -97,8 +97,9 @@ public class ModsManageContentScreen : Screen
 
     public bool m_isAdmin;
 
-    public string[] m_commonPaths = new string[10]
+    public string[] m_commonPaths = new string[]
     {
+#if android
         "android:/Download",
         "android:/Android/data/com.tencent.mobileqq/Tencent/QQfile_recv",
         "android:/Android/data/com.tencent.tim/Tencent/TIMfile_recv",
@@ -109,6 +110,7 @@ public class ModsManageContentScreen : Screen
         "android:/UCDownloads",
         "android:/baidu/searchbox/downloads",
         "android:/SurvivalCraft2.3/Mods"
+#endif
     };
 
     public ModsManageContentScreen()
@@ -853,7 +855,7 @@ public class ModsManageContentScreen : Screen
                                     if (file.Name == "modinfo.json") // TODO: 改成YAML
                                     {
                                         var memoryStream = new MemoryStream();
-                                        extractor.ExtractFile(file.Name, memoryStream);
+                                        extractor.ExtractFile("modinfo.json", memoryStream);
                                         memoryStream.Position = 0L;
                                         modInfo = ModsManager.DeserializeJson<ModInfo>(ModsManager.StreamToString(memoryStream));
                                         memoryStream.Dispose();

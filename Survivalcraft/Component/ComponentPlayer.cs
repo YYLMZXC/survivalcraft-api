@@ -20,7 +20,7 @@ namespace Game
 
         public bool m_aimHintIssued;
 
-        public static string fName = "ComponentPlayer";
+        public const string fName = "ComponentPlayer";
 
         public double m_lastActionTime;
 

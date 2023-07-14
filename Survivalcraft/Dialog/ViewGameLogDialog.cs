@@ -15,7 +15,7 @@ namespace Game
 
         public LogType m_filter;
 
-        public static string fName = "ViewGameLogDialog";
+        public const string fName = "ViewGameLogDialog";
 
         public ViewGameLogDialog()
         {

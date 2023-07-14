@@ -16,7 +16,7 @@ namespace Game
 
         public Random m_random = new Random();
 
-        public static string fName = "SubsystemBoatBlockBehavior";
+        public const string fName = "SubsystemBoatBlockBehavior";
 
         public override int[] HandledBlocks => new int[1]
         {

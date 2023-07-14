@@ -13,7 +13,7 @@ namespace Game
         public FurnitureDesign m_sourceDesign;
 
         public int m_axis;
-        public static string fName = "BuildFurnitureDialog";
+        public const string fName = "BuildFurnitureDialog";
 
         public Action<bool> m_handler;
 

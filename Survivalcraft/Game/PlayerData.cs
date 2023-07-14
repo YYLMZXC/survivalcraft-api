@@ -15,7 +15,7 @@ namespace Game
             InitialNoIntro,
             Respawn
         }
-        public static string fName = "PlayerData";
+        public const string fName = "PlayerData";
 
         public Project m_project;
 

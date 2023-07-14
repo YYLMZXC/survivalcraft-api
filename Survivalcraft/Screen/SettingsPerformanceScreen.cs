@@ -67,7 +67,7 @@ namespace Game
         public ButtonWidget m_displayFpsRibbonButton;
 
         public int m_enterVisibilityRange;
-        public static string fName = "SettingsPerformanceScreen";
+        public const string fName = "SettingsPerformanceScreen";
         public SettingsPerformanceScreen()
         {
             XElement node = ContentManager.Get<XElement>("Screens/SettingsPerformanceScreen");

@@ -7,7 +7,7 @@ namespace Game
 {
     public class WorldOptionsScreen : Screen
     {
-        public static string fName = "WorldOptionsScreen";
+        public const string fName = "WorldOptionsScreen";
         public Widget m_newWorldOnlyPanel;
 
         public ButtonWidget m_terrainGenerationButton;

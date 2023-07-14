@@ -12,7 +12,7 @@ namespace Game
     {
         public static List<CraftingRecipe> m_recipes = new List<CraftingRecipe>();
         public static ReadOnlyList<CraftingRecipe> Recipes => new ReadOnlyList<CraftingRecipe>(m_recipes);
-        public static string fName = "CraftingRecipesManager";
+        public const string fName = "CraftingRecipesManager";
         public static void Initialize()
         {
             m_recipes.Clear();
