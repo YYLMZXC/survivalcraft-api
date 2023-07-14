@@ -6,12 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Security.Cryptography;
 using System.Text;
 using System.Xml.Linq;
 using XmlUtilities;
 using Tiny7z.Archive;
 
+//开源真好，东拼拼西凑凑，总结一下就出成品开源多好，东拼拼西凑凑，总结一下就出成品😁
 public static class ModsManager
 {
 	public const string APIVersion = "1.50";

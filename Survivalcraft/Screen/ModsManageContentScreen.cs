@@ -11,7 +11,7 @@ using Tiny7z.Archive;
 
 public class ModsManageContentScreen : Screen
 {
-    public const string fName = "ModsManageContentScreen";
+	public const string fName = "ModsManageContentScreen";
 
 	public static string HeadingCode = "有头有脸天才少年,耍猴表演敢为人先";
 
@@ -97,21 +97,21 @@ public class ModsManageContentScreen : Screen
 
 	public bool m_isAdmin;
 
-    public string[] m_commonPaths = new string[]
-    {
+	public string[] m_commonPaths = new string[]
+	{
 #if android
-        "android:/Download",
-        "android:/Android/data/com.tencent.mobileqq/Tencent/QQfile_recv",
-        "android:/Android/data/com.tencent.tim/Tencent/TIMfile_recv",
-        "android:tencent/TIMfile_recv",
-        "android:tencent/QQfile_recv",
-        "android:/Quark/Download",
-        "android:/BaiduNetdisk",
-        "android:/UCDownloads",
-        "android:/baidu/searchbox/downloads",
-        "android:/SurvivalCraft2.3/Mods"
+		"android:/Download",
+		"android:/Android/data/com.tencent.mobileqq/Tencent/QQfile_recv",
+		"android:/Android/data/com.tencent.tim/Tencent/TIMfile_recv",
+		"android:tencent/TIMfile_recv",
+		"android:tencent/QQfile_recv",
+		"android:/Quark/Download",
+		"android:/BaiduNetdisk",
+		"android:/UCDownloads",
+		"android:/baidu/searchbox/downloads",
+		"android:/SurvivalCraft2.3/Mods"
 #endif
-    };
+	};
 
 	public ModsManageContentScreen()
 	{
@@ -812,100 +812,100 @@ public class ModsManageContentScreen : Screen
 		};
 	}
 
-    public int ScanModFile(string path, CancellableBusyDialog busyDialog = null)
-    {
-        string validPath = path;
-        if (m_cancelScan) return m_count;
-        try
-        {
-            string systemPath = Storage.GetSystemPath(path);
-            if (systemPath != Storage.GetSystemPath(m_uninstallPath))
-            {
-                foreach (string fileName in Storage.ListFileNames(validPath))
-                {
-                    if (m_cancelScan) return m_count;
-                    if (validPath.EndsWith("/"))
-                    {
-                        validPath = path.Substring(0, validPath.Length - 1);
-                    }
-                    if (busyDialog != null)
-                    {
-                        string showName = validPath;
-                        if (validPath.Length > 40)
-                        {
-                            showName = validPath.Substring(0, 40) + "...";
-                        }
-                        busyDialog.SmallMessage = string.Format(LanguageControl.Get(fName, 59) + showName, m_count);
-                    }
-                    string extension = Storage.GetExtension(fileName);
-                    if (!string.IsNullOrEmpty(extension) && extension.ToLower() == ".scevo")
-                    {
-                        string pathName = Storage.CombinePaths(validPath, fileName);
-                        Stream stream = null;
-                        ModInfo modInfo = null;
-                        try
-                        {
-                            stream = Storage.OpenFile(pathName, OpenFileMode.Read);
-                            stream = GetDecipherStream(stream);
-                            var archive = new SevenZipArchive(stream, FileAccess.Read);
-                            using (var extractor = archive.Extractor())
-                            {
-                                foreach (var file in extractor.Files)
-                                {
-                                    if (file.Name == "modinfo.json") // TODO: 改成YAML
-                                    {
-                                        var memoryStream = new MemoryStream();
-                                        extractor.ExtractFile("modinfo.json", memoryStream);
-                                        memoryStream.Position = 0L;
-                                        modInfo = ModsManager.DeserializeJson<ModInfo>(ModsManager.StreamToString(memoryStream));
-                                        memoryStream.Dispose();
-                                        break;
-                                    }
-                                }
-                            }
-                            stream.Dispose();
-                        }
-                        catch
-                        {
-                        }
-                        if (stream == null) continue;
-                        if (modInfo != null && string.IsNullOrEmpty(modInfo.PackageName)) continue;
-                        string uninstallPathName = Storage.CombinePaths(m_uninstallPath, fileName);
-                        if (!Storage.FileExists(uninstallPathName))
-                        {
-                            Storage.CopyFile(pathName, uninstallPathName);
-                            if (systemPath != Storage.GetSystemPath(m_installPath))
-                            {
-                                Storage.DeleteFile(pathName);
-                            }
-                            AddCommonPath(validPath);
-                            if (modInfo != null && !modInfo.ApiVersion.StartsWith("1.3"))
-                            {
-                                m_latestScanModList.Add(fileName);
-                                m_count++;
-                            }
-                        }
-                        if (stream != null) stream.Close();
-                    }
-                }
-            }
-            foreach (string directory in Storage.ListDirectoryNames(path))
-            {
-                if (m_cancelScan) return m_count;
-                if (validPath.EndsWith("/"))
-                {
-                    validPath = path.Substring(0, validPath.Length - 1);
-                }
-                string subPath = Storage.CombinePaths(validPath, directory);
-                ScanModFile(subPath, busyDialog);
-            }
-        }
-        catch
-        {
-            m_scanFailPaths.Add(validPath);
-        }
-        return m_count;
-    }
+	public int ScanModFile(string path, CancellableBusyDialog busyDialog = null)
+	{
+		string validPath = path;
+		if (m_cancelScan) return m_count;
+		try
+		{
+			string systemPath = Storage.GetSystemPath(path);
+			if (systemPath != Storage.GetSystemPath(m_uninstallPath))
+			{
+				foreach (string fileName in Storage.ListFileNames(validPath))
+				{
+					if (m_cancelScan) return m_count;
+					if (validPath.EndsWith("/"))
+					{
+						validPath = path.Substring(0, validPath.Length - 1);
+					}
+					if (busyDialog != null)
+					{
+						string showName = validPath;
+						if (validPath.Length > 40)
+						{
+							showName = validPath.Substring(0, 40) + "...";
+						}
+						busyDialog.SmallMessage = string.Format(LanguageControl.Get(fName, 59) + showName, m_count);
+					}
+					string extension = Storage.GetExtension(fileName);
+					if (!string.IsNullOrEmpty(extension) && extension.ToLower() == ".scevo")
+					{
+						string pathName = Storage.CombinePaths(validPath, fileName);
+						Stream stream = null;
+						ModInfo modInfo = null;
+						try
+						{
+							stream = Storage.OpenFile(pathName, OpenFileMode.Read);
+							stream = GetDecipherStream(stream);
+							var archive = new SevenZipArchive(stream, FileAccess.Read);
+							using (var extractor = archive.Extractor())
+							{
+								foreach (var file in extractor.Files)
+								{
+									if (file.Name == "modinfo.json") // TODO: 改成YAML
+									{
+										var memoryStream = new MemoryStream();
+										extractor.ExtractFile("modinfo.json", memoryStream);
+										memoryStream.Position = 0L;
+										modInfo = ModsManager.DeserializeJson<ModInfo>(ModsManager.StreamToString(memoryStream));
+										memoryStream.Dispose();
+										break;
+									}
+								}
+							}
+							stream.Dispose();
+						}
+						catch
+						{
+						}
+						if (stream == null) continue;
+						if (modInfo != null && string.IsNullOrEmpty(modInfo.PackageName)) continue;
+						string uninstallPathName = Storage.CombinePaths(m_uninstallPath, fileName);
+						if (!Storage.FileExists(uninstallPathName))
+						{
+							Storage.CopyFile(pathName, uninstallPathName);
+							if (systemPath != Storage.GetSystemPath(m_installPath))
+							{
+								Storage.DeleteFile(pathName);
+							}
+							AddCommonPath(validPath);
+							if (modInfo != null && !modInfo.ApiVersion.StartsWith("1.3"))
+							{
+								m_latestScanModList.Add(fileName);
+								m_count++;
+							}
+						}
+						if (stream != null) stream.Close();
+					}
+				}
+			}
+			foreach (string directory in Storage.ListDirectoryNames(path))
+			{
+				if (m_cancelScan) return m_count;
+				if (validPath.EndsWith("/"))
+				{
+					validPath = path.Substring(0, validPath.Length - 1);
+				}
+				string subPath = Storage.CombinePaths(validPath, directory);
+				ScanModFile(subPath, busyDialog);
+			}
+		}
+		catch
+		{
+			m_scanFailPaths.Add(validPath);
+		}
+		return m_count;
+	}
 
 	public int FastScanModFile(bool showTips = true)
 	{

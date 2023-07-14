@@ -16,8 +16,8 @@ namespace Game
         public override int GetHashCode() => (PackageName + ApiVersion + Version).GetHashCode();
         public override bool Equals(object obj) =>
             obj is ModInfo info &&
-                obj.PackageName == PackageName &&
-                obj.ApiVersion == ApiVersion &&
-                obj.Version == Version;
+                info.PackageName == PackageName &&
+                info.ApiVersion == ApiVersion &&
+                info.Version == Version;
     }
 }

@@ -493,6 +493,7 @@
     <Compile Include="ModsManager\SurvivalCraftModEntity.cs" />
     <Compile Include="ModsManager\SurvivalCraftModLoader.cs" />
     <Compile Include="Opencl2\AdrasteaHost.cs" />
+    <Compile Include="Opencl2\VenusHost.cs" />
     <Compile Include="Opencl2\opencl_init.cs" />
     <Compile Include="Screen\BestiaryDescriptionScreen.cs" />
     <Compile Include="Screen\BestiaryScreen.cs" />
