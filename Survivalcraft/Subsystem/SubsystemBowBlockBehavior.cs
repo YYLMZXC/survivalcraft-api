@@ -12,7 +12,7 @@ namespace Game
         public SubsystemProjectiles m_subsystemProjectiles;
 
         public SubsystemAudio m_subsystemAudio;
-        public static string fName = "SubsystemBowBlockBehavior";
+        public const string fName = "SubsystemBowBlockBehavior";
         public Random m_random = new Random();
 
         public Dictionary<ComponentMiner, double> m_aimStartTimes = new Dictionary<ComponentMiner, double>();

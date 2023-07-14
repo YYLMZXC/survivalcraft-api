@@ -26,7 +26,7 @@ namespace Game
 		public ButtonWidget m_copyLinkButton;
 
 		public string m_path;
-		public static string fName = "ExternalContentScreen";
+		public const string fName = "ExternalContentScreen";
 		public bool m_listDirty;
 
 		public Dictionary<string, bool> m_downloadedFiles = new Dictionary<string, bool>();

@@ -6,7 +6,7 @@ namespace Game
 {
     public class ContentScreen : Screen
     {
-        public static string fName = "ContentScreen";
+        public const string fName = "ContentScreen";
 
         public ButtonWidget m_externalContentButton;
 

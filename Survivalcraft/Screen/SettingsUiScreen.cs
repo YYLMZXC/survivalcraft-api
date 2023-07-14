@@ -27,7 +27,7 @@ namespace Game
 
         public ButtonWidget m_communityContentModeButton;
 
-        public static string fName = "SettingsUiScreen";
+        public const string fName = "SettingsUiScreen";
 
         public SettingsUiScreen()
         {

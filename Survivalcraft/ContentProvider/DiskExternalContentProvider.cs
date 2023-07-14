@@ -17,7 +17,7 @@ namespace Game
 
         public bool IsLoggedIn => true;
 
-        public static string fName = "DiskExternalContentProvider";
+        public const string fName = "DiskExternalContentProvider";
 
         public static string LocalPath = AppDomain.CurrentDomain.BaseDirectory;
 

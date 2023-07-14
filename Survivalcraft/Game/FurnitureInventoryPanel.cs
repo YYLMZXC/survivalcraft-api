@@ -27,7 +27,7 @@ namespace Game
         public bool m_ignoreSelectionChanged;
 
         public bool m_populateNeeded;
-        public static string fName = "FurnitureInventoryPanel";
+        public const string fName = "FurnitureInventoryPanel";
         public SubsystemTerrain SubsystemTerrain
         {
             get;

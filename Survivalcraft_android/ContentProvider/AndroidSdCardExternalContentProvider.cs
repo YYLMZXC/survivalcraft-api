@@ -7,7 +7,7 @@ using System.Threading;
 public class AndroidSdCardExternalContentProvider : IExternalContentProvider, IDisposable
 {
 	private string m_rootDirectory;
-	public static string fName = "AndroidSdCardExternalContentProvider";
+	public const string fName = "AndroidSdCardExternalContentProvider";
 	public string DisplayName => LanguageControl.Get(fName,1);
 
 	public string Description

@@ -31,7 +31,7 @@ namespace Game
         public ButtonWidget m_categoryLeftButton;
 
         public ButtonWidget m_categoryRightButton;
-        public static string fName = "CreativeInventoryWidget";
+        public const string fName = "CreativeInventoryWidget";
 
         public ButtonWidget m_categoryButton;
 

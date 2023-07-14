@@ -21,7 +21,7 @@ namespace Game
 
         public double m_modTipsTime;
 
-        public static string fName = "PlayScreen";
+        public const string fName = "PlayScreen";
 
         public PlayScreen()
         {

@@ -8,7 +8,7 @@ namespace Game
         {
             186
         };
-        public static string fName = "MemoryBankBlockBehavior";
+        public const string fName = "MemoryBankBlockBehavior";
 
         public SubsystemMemoryBankBlockBehavior()
             : base(186)

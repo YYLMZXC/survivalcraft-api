@@ -65,7 +65,7 @@ namespace Game
 
         public float m_temperatureBlackoutDuration;
 
-        public static string fName = "ComponentVitalStats";
+        public const string fName = "ComponentVitalStats";
 
         public float Food
         {

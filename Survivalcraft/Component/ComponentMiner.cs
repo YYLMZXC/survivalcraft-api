@@ -33,7 +33,7 @@ namespace Game
 
         public double m_lastHitTime;
 
-        public static string fName = "ComponentMiner";
+        public const string fName = "ComponentMiner";
 
         public int m_lastDigFrameIndex;
 

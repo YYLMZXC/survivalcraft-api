@@ -60,7 +60,7 @@ public class ManageUserScreen : Screen
         ByLockReason = 6
     }
 
-    public static string fName = "ManageUserScreen";
+    public const string fName = "ManageUserScreen";
 
     public ListPanelWidget m_contentList;
 

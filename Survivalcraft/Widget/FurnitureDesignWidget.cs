@@ -12,7 +12,7 @@ namespace Game
             Front,
             Perspective
         }
-        public static string fName = "FurnitureDesignWidget";
+        public const string fName = "FurnitureDesignWidget";
 
         public PrimitivesRenderer2D m_primitivesRenderer2d = new PrimitivesRenderer2D();
 

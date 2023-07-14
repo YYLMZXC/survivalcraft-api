@@ -26,7 +26,7 @@ public class ManageContentScreen : Screen
 
         public ModEntity ModEntity;
     }
-    public static string fName = "ManageContentScreen";
+    public const string fName = "ManageContentScreen";
 
     public ListPanelWidget m_contentList;
 

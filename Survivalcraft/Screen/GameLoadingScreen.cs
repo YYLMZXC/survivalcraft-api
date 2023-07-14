@@ -10,7 +10,7 @@ namespace Game
         public string m_worldSnapshotName;
 
         public StateMachine m_stateMachine = new StateMachine();
-        public static string fName = "GameLoadingScreen";
+        public const string fName = "GameLoadingScreen";
         public GameLoadingScreen()
         {
             XElement node = ContentManager.Get<XElement>("Screens/GameLoadingScreen");

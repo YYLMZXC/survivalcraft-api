@@ -25,7 +25,7 @@ namespace Game
         public float m_sleepFactor;
 
         public bool m_allowManualWakeUp;
-        public static string fName = "ComponentSleep";
+        public const string fName = "ComponentSleep";
         public float m_minWetness;
 
         public float m_messageFactor;

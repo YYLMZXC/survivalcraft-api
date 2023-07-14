@@ -181,7 +181,7 @@ namespace Game
 
         public float DefaultSicknessProbability;
 
-        public static string fName = "Block";
+        public const string fName = "Block";
 
         public Random Random = new Random();
 

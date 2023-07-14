@@ -21,7 +21,7 @@ namespace Game
         public Random m_random = new Random();
 
         public float m_fluOnset;
-        public static string fName = "ComponentFlu";
+        public const string fName = "ComponentFlu";
 
         public float m_fluDuration;
 

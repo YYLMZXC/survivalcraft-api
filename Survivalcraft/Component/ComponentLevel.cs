@@ -17,7 +17,7 @@ namespace Game
 
         public Random m_random = new Random();
 
-        public static string fName = "ComponentLevel";
+        public const string fName = "ComponentLevel";
 
         public List<Factor> m_factors = new List<Factor>();
 

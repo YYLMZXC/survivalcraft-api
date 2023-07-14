@@ -21,7 +21,7 @@ namespace Game
 
         public ComponentPlayer m_componentPlayer;
 
-        public static string fName = "GameMenuDialog";
+        public const string fName = "GameMenuDialog";
 
         public GameMenuDialog(ComponentPlayer componentPlayer)
         {

@@ -13,7 +13,7 @@ namespace Game
         {
             public int Value;
         }
-        public static string fName = "FurnitureDesign";
+        public const string fName = "FurnitureDesign";
 
         public struct Subdivision
         {
