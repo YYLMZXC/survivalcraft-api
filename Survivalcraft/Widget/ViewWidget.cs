@@ -11,7 +11,7 @@ namespace Game
         public RenderTarget2D m_scalingRenderTarget;
 
         public static RenderTarget2D ScreenTexture = new RenderTarget2D(Window.Size.X, Window.Size.Y, 1, ColorFormat.Rgba8888, DepthFormat.Depth24Stencil8);
-        
+
         public GameWidget GameWidget
         {
             get;
@@ -50,7 +50,7 @@ namespace Game
 
         public override void Draw(DrawContext dc)
         {
-            if (GameWidget.PlayerData.ComponentPlayer != null && GameWidget.PlayerData.IsReadyForPlaying )
+            if (GameWidget.PlayerData.ComponentPlayer != null && GameWidget.PlayerData.IsReadyForPlaying)
             {
                 DrawToScreen(dc);
             }
@@ -138,7 +138,7 @@ namespace Game
                 Display.RenderTarget = renderTarget;
             }
             ApplyScalingRenderTarget(dc);
-            ModsManager.HookAction("DrawToScreen", loader => {loader.DrawToScreen(this, dc); return false;});
+            ModsManager.HookAction("DrawToScreen", loader => { loader.DrawToScreen(this, dc); return false; });
         }
     }
 }

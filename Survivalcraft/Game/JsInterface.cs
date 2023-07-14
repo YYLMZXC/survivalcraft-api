@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using Engine;
+﻿using Engine;
 using Engine.Input;
 using Esprima.Ast;
-using Game;
 using GameEntitySystem;
 using Jint;
 using Jint.Native;
 using Jint.Native.Function;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 using JsEngine = Jint.Engine;
 
 namespace Game
@@ -17,7 +16,7 @@ namespace Game
     {
         public static JsEngine engine;
         public static SurvivalCraftModLoader loader;
-        public static Dictionary<string,List<FunctionInstance>> handlersDictionary;
+        public static Dictionary<string, List<FunctionInstance>> handlersDictionary;
         private static Project Project
         {
             get
@@ -27,11 +26,11 @@ namespace Game
         }
         public static Project getProject()
         {
-            return JsInterface.Project;
+            return Project;
         }
         public static Subsystem findSubsystem(string name)
         {
-            if (JsInterface.Project == null)
+            if (Project == null)
             {
                 return null;
             }
@@ -126,6 +125,7 @@ namespace Game
             }
             catch (Exception ex)
             {
+                Log.Error("jsInterface错误：");//把红色赋予黑海1003705691
                 Log.Error(ex);
             }
         }
@@ -142,11 +142,11 @@ namespace Game
                 return errors;
             }
         }
-        public static JsValue Invoke(string str,params object[] arguments)
+        public static JsValue Invoke(string str, params object[] arguments)
         {
             try
             {
-                return engine.Invoke(str,arguments);
+                return engine.Invoke(str, arguments);
             }
             catch (Exception ex)
             {
@@ -199,7 +199,9 @@ namespace Game
                     handlersDictionary.Add(handlesName, handlers);
                     ModsManager.RegisterHook(handlesName, loader);
                 }
-            }catch(Exception ex) { 
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex);
             }
         }

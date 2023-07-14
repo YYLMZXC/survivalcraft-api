@@ -142,7 +142,7 @@ namespace Game
             }
         }
 
-        public  void Draw(Camera camera, int drawOrder)
+        public void Draw(Camera camera, int drawOrder)
         {
             m_drawBlockEnvironmentData.SubsystemTerrain = m_subsystemTerrain;
             m_drawBlockEnvironmentData.InWorldMatrix = Matrix.Identity;

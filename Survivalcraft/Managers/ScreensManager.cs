@@ -1,6 +1,5 @@
 using Engine;
 using Engine.Graphics;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -99,7 +98,7 @@ namespace Game
             if (CurrentScreen != null)
             {
                 Log.Verbose($"Entered screen \"{GetScreenName(CurrentScreen)}\"");
-                
+
             }
         }
 
@@ -111,7 +110,8 @@ namespace Game
             SwitchScreen("Loading");
         }
 
-        public static void InitScreens() {
+        public static void InitScreens()
+        {
             var loadingScreen = new LoadingScreen();
             AddScreen("Loading", loadingScreen);
 
@@ -201,7 +201,7 @@ namespace Game
             if (Time.FrameIndex >= 5)
             {
                 float num = 6f;
-                Matrix hmdMatrix =Matrix.Identity;
+                Matrix hmdMatrix = Matrix.Identity;
                 Vector3 vector = hmdMatrix.Translation + num * (Vector3.Normalize(hmdMatrix.Forward * new Vector3(1f, 0f, 1f)) + new Vector3(0f, 0.1f, 0f));
                 if (m_vrQuadPosition == Vector3.Zero)
                 {

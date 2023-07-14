@@ -511,7 +511,7 @@ namespace Game
                         string fileName = Storage.GetFileName(text);
                         if (fileName.StartsWith("Region"))
                         {
-                            if(!Storage.DirectoryExists(Storage.CombinePaths(directoryName, "Regions")))
+                            if (!Storage.DirectoryExists(Storage.CombinePaths(directoryName, "Regions")))
                             {
                                 Storage.CreateDirectory(Storage.CombinePaths(directoryName, "Regions"));
                             }

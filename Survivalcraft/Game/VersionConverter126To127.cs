@@ -53,7 +53,7 @@ namespace Game
                             int num = MigrateFolder("app:/.config/.isolated-storage", "data:");
                             empty = "Migration Successful";
                             empty2 = $"{num} file(s) were migrated from 1.26 to 1.27.";
-                            
+
                         }
                         catch (Exception ex2)
                         {

@@ -2,7 +2,6 @@ using Engine;
 using GameEntitySystem;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using TemplatesDatabase;
 
 namespace Game
@@ -88,7 +87,8 @@ namespace Game
             string[] array = lootString.Split(new string[] { ";" }, StringSplitOptions.None);
             if (array.Length >= 3)
             {
-                try {
+                try
+                {
 
                     int v = CraftingRecipesManager.DecodeResult(array[0]);
                     Loot result = default;
@@ -98,7 +98,8 @@ namespace Game
                     result.Probability = ((array.Length >= 4) ? float.Parse(array[3]) : 1f);
                     return result;
                 }
-                catch {
+                catch
+                {
 
                     return default;
                 }

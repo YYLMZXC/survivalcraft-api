@@ -29,13 +29,13 @@ namespace Game
         {
             if (Children.Find<ButtonWidget>("Buy").IsClicked)
             {
-                
+
                 MarketplaceManager.ShowMarketplace();
                 ScreensManager.SwitchScreen("MainMenu");
             }
             if (Children.Find<ButtonWidget>("Quit").IsClicked || Input.Back)
             {
-                
+
                 Window.Close();
             }
         }

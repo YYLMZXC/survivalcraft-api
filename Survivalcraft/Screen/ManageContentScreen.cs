@@ -59,8 +59,10 @@ public class ManageContentScreen : Screen
         {
             var listItem = (ListItem)obj;
             ContainerWidget containerWidget;
-            switch (listItem.Type) {
-                case ExternalContentType.BlocksTexture: {
+            switch (listItem.Type)
+            {
+                case ExternalContentType.BlocksTexture:
+                    {
                         XElement node2 = ContentManager.Get<XElement>("Widgets/BlocksTextureItem");
                         containerWidget = (ContainerWidget)LoadWidget(this, node2, null);
                         RectangleWidget rectangleWidget = containerWidget.Children.Find<RectangleWidget>("BlocksTextureItem.Icon");
@@ -82,7 +84,8 @@ public class ManageContentScreen : Screen
 
                         break;
                     }
-                case ExternalContentType.FurniturePack: {
+                case ExternalContentType.FurniturePack:
+                    {
                         XElement node3 = ContentManager.Get<XElement>("Widgets/FurniturePackItem");
                         containerWidget = (ContainerWidget)LoadWidget(this, node3, null);
                         LabelWidget labelWidget3 = containerWidget.Children.Find<LabelWidget>("FurniturePackItem.Text");
@@ -105,7 +108,8 @@ public class ManageContentScreen : Screen
                             return containerWidget;
                         }
                     }
-                case ExternalContentType.CharacterSkin: {
+                case ExternalContentType.CharacterSkin:
+                    {
                         XElement node4 = ContentManager.Get<XElement>("Widgets/CharacterSkinItem");
                         containerWidget = (ContainerWidget)LoadWidget(this, node4, null);
                         PlayerModelWidget playerModelWidget = containerWidget.Children.Find<PlayerModelWidget>("CharacterSkinItem.Model");
@@ -126,13 +130,14 @@ public class ManageContentScreen : Screen
                         }
                         break;
                     }
-                case ExternalContentType.Mod: {
+                case ExternalContentType.Mod:
+                    {
                         XElement node2 = ContentManager.Get<XElement>("Widgets/BlocksTextureItem");
                         containerWidget = (ContainerWidget)LoadWidget(this, node2, null);
                         RectangleWidget rectangleWidget = containerWidget.Children.Find<RectangleWidget>("BlocksTextureItem.Icon");
                         LabelWidget labelWidget = containerWidget.Children.Find<LabelWidget>("BlocksTextureItem.Text");
                         LabelWidget labelWidget2 = containerWidget.Children.Find<LabelWidget>("BlocksTextureItem.Details");
-                        rectangleWidget.Subtexture = listItem.Texture==null ? ContentManager.Get<Subtexture>("Textures/Atlas/WorldIcon"):new Subtexture(listItem.Texture,Vector2.Zero,Vector2.One);
+                        rectangleWidget.Subtexture = listItem.Texture == null ? ContentManager.Get<Subtexture>("Textures/Atlas/WorldIcon") : new Subtexture(listItem.Texture, Vector2.Zero, Vector2.One);
                         rectangleWidget.TextureLinearFilter = true;
                         labelWidget.Text = listItem.DisplayName;
                         labelWidget2.Text = listItem.Name;
@@ -156,12 +161,13 @@ public class ManageContentScreen : Screen
             var listItem = (ListItem)obj;
             if (listItem.Type == ExternalContentType.Mod && listItem.IsClick)
             {
-                var messageDialog = new MessageDialog(listItem.ModEntity.modInfo.Name, listItem.ModEntity.modInfo.Description, LanguageControl.Ok, LanguageControl.Cancel, (btn) =>{
+                var messageDialog = new MessageDialog(listItem.ModEntity.modInfo.Name, listItem.ModEntity.modInfo.Description, LanguageControl.Ok, LanguageControl.Cancel, (btn) =>
+                {
                     DialogsManager.HideAllDialogs();
                     listItem.IsClick = false;
 
                 });
-                DialogsManager.ShowDialog(this,messageDialog);
+                DialogsManager.ShowDialog(this, messageDialog);
             }
             else
                 listItem.IsClick = true;
@@ -183,7 +189,7 @@ public class ManageContentScreen : Screen
     {
         var selectedItem = (ListItem)m_contentList.SelectedItem;
         m_deleteButton.Text = LanguageControl.Get("ModsManageContentScreen", 9);
-        if(selectedItem != null)
+        if (selectedItem != null)
         {
             m_deleteButton.IsEnabled = !selectedItem.IsBuiltIn;
             m_uploadButton.IsEnabled = !selectedItem.IsBuiltIn;
@@ -198,7 +204,7 @@ public class ManageContentScreen : Screen
         if (m_deleteButton.IsClicked)
         {
             string smallMessage = (selectedItem.UseCount <= 0) ? string.Format(LanguageControl.Get(fName, 5), selectedItem.DisplayName) : string.Format(LanguageControl.Get(fName, 6), selectedItem.DisplayName, selectedItem.UseCount);
-            if (selectedItem.Type == ExternalContentType.Mod) 
+            if (selectedItem.Type == ExternalContentType.Mod)
             {
                 ScreensManager.SwitchScreen("ModsManageContent", true);
                 //smallMessage = (ModsManager.DisabledMods.Contains(selectedItem.ModEntity.modInfo) ? LanguageControl.Enable : LanguageControl.Disable) + $"[{selectedItem.ModEntity.modInfo.Name}]?";
@@ -255,18 +261,22 @@ public class ManageContentScreen : Screen
         }
         if (Input.Back || Input.Cancel || Children.Find<ButtonWidget>("TopBar.Back").IsClicked)
         {
-            if (changeed) {
-                DialogsManager.ShowDialog(this,new MessageDialog(LanguageControl.Warning, LanguageControl.Get(GetType().Name,11), LanguageControl.Yes, LanguageControl.No, (btn)=>{
+            if (changeed)
+            {
+                DialogsManager.ShowDialog(this, new MessageDialog(LanguageControl.Warning, LanguageControl.Get(GetType().Name, 11), LanguageControl.Yes, LanguageControl.No, (btn) =>
+                {
                     DialogsManager.HideAllDialogs();
                     if (btn == MessageDialogButton.Button1)
                     {
                         ModsManager.Reboot();
                     }
-                    else {
+                    else
+                    {
                         ScreensManager.SwitchScreen(ScreensManager.PreviousScreen);
                     }
                 }));
-            }else ScreensManager.SwitchScreen(ScreensManager.PreviousScreen);
+            }
+            else ScreensManager.SwitchScreen(ScreensManager.PreviousScreen);
         }
     }
 

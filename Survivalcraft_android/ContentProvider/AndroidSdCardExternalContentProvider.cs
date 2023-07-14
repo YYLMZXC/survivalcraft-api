@@ -1,7 +1,5 @@
-using Android.Content;
 using Engine;
 using Game;
-using Java.IO;
 using System;
 using System.IO;
 using System.Threading;

@@ -157,17 +157,18 @@ namespace Engine.Input
 				m_mouseButtonsDownOnceArray[i] = false;
 			}
 		}
-
 		internal static void AfterFrame()
 		{
 			for (int i = 0; i < m_mouseButtonsDownOnceArray.Length; i++)
 			{
 				m_mouseButtonsDownOnceArray[i] = false;
 			}
-			if (!IsMouseVisible)
+			if (!IsMouseVisible)//处于三维模式
 			{
 				MousePosition = null;
-			}
+				if(Engine.Window.IsActive)
+					Mouse.SetMousePosition(Window.Size.X / 2, Window.Size.Y / 2);
+            }
 		}
 
 		private static void ProcessMouseDown(MouseButton mouseButton, Point2 position)

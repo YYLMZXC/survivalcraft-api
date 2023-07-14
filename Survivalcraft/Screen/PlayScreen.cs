@@ -93,7 +93,7 @@ namespace Game
         public override void Update()
         {
             Vector2 size = new Vector2(310, 60);
-            if(SettingsManager.UIScale > 1f) size = new Vector2(250, 60);
+            if (SettingsManager.UIScale > 1f) size = new Vector2(250, 60);
             m_playButton.Size = size;
             m_newWorldButton.Size = size;
             if (m_worldsListWidget.SelectedItem != null && WorldsManager.WorldInfos.IndexOf((WorldInfo)m_worldsListWidget.SelectedItem) < 0)
@@ -145,7 +145,8 @@ namespace Game
 
         public void GameLoad(object item)
         {
-            ModsManager.HookAction("BeforeGameLoading", loader => {
+            ModsManager.HookAction("BeforeGameLoading", loader =>
+            {
                 item = loader.BeforeGameLoading(this, item);
                 return true;
             });
@@ -161,7 +162,7 @@ namespace Game
             {
                 foreach (ModEntity modEntity in ModsManager.ModListAll)
                 {
-                    foreach(var value in MotdManager.FilterModAll)
+                    foreach (var value in MotdManager.FilterModAll)
                     {
                         if (value.FilterAPIVersion == ModsManager.APIVersion && value.PackageName == modEntity.modInfo.PackageName && CompareVersion(value.Version, modEntity.modInfo.Version))
                         {
@@ -177,9 +178,9 @@ namespace Game
             }
             if (!string.IsNullOrEmpty(tips))
             {
-                DialogsManager.ShowDialog(null, new MessageDialog("Mod不兼容警告！", tips, "继续", "返回", delegate(MessageDialogButton button)
+                DialogsManager.ShowDialog(null, new MessageDialog("Mod不兼容警告！", tips, "继续", "返回", delegate (MessageDialogButton button)
                 {
-                    if(button == MessageDialogButton.Button1)
+                    if (button == MessageDialogButton.Button1)
                     {
                         GameLoad(item);
                     }
@@ -213,9 +214,9 @@ namespace Game
             else if (v1.Contains(";"))
             {
                 string[] versions = v1.Split(new char[1] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach(string v in versions)
+                foreach (string v in versions)
                 {
-                    if(v == v2)
+                    if (v == v2)
                     {
                         return true;
                     }

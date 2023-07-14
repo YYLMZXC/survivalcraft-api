@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using Engine;
 using GameEntitySystem;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -44,7 +44,8 @@ namespace Game
                 valuesDictionary.SetValue("Views", valuesDictionary3);
                 valuesDictionary3.SetValue("GamesWidget", gamesWidget);
                 XElement projectNode = XmlUtils.LoadXmlFromStream(stream, null, throwOnError: true);
-                ModsManager.HookAction("ProjectXmlLoad", loader => {
+                ModsManager.HookAction("ProjectXmlLoad", loader =>
+                {
                     loader.ProjectXmlLoad(projectNode);
                     return false;
                 });
@@ -52,14 +53,18 @@ namespace Game
                 {
                     ModsManager.HookAction("OnProjectLoaded", loader => { loader.OnProjectLoaded(project); return false; });
                 };
-                Project.EntityAdded += new EventHandler<EntityAddRemoveEventArgs>((s, arg) => {
-                    ModsManager.HookAction("OnEntityAdd", loader => {
+                Project.EntityAdded += new EventHandler<EntityAddRemoveEventArgs>((s, arg) =>
+                {
+                    ModsManager.HookAction("OnEntityAdd", loader =>
+                    {
                         loader.OnEntityAdd(arg.Entity);
                         return false;
                     });
                 });
-                Project.EntityRemoved += new EventHandler<EntityAddRemoveEventArgs>((s, arg) => {
-                    ModsManager.HookAction("OnEntityRemove", loader => {
+                Project.EntityRemoved += new EventHandler<EntityAddRemoveEventArgs>((s, arg) =>
+                {
+                    ModsManager.HookAction("OnEntityRemove", loader =>
+                    {
                         loader.OnEntityRemove(arg.Entity);
                         return false;
                     });
@@ -90,7 +95,8 @@ namespace Game
                     {
                         WorldsManager.MakeQuickWorldBackup(subsystemGameInfo.DirectoryName);
                         var xElement = new XElement("Project");
-                        ModsManager.HookAction("ProjectXmlSave", loader => {
+                        ModsManager.HookAction("ProjectXmlSave", loader =>
+                        {
                             loader.ProjectXmlSave(xElement);
                             return false;
                         });
@@ -129,8 +135,9 @@ namespace Game
 
         public static void UpdateProject()
         {
-            if (SyncDispatcher.Count > 0 && SyncDispatcher[0].Invoke()) { 
-                SyncDispatcher.RemoveAt(0); 
+            if (SyncDispatcher.Count > 0 && SyncDispatcher[0].Invoke())
+            {
+                SyncDispatcher.RemoveAt(0);
             }
             if (m_project != null)
             {

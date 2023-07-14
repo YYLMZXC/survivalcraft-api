@@ -338,8 +338,9 @@ namespace Game
 
         public override void Update()
         {
-            if (Input.Back || Input.Cancel) {
-                DialogsManager.HideDialog(this);            
+            if (Input.Back || Input.Cancel)
+            {
+                DialogsManager.HideDialog(this);
             }
             if (isSetPos)
             {
@@ -347,7 +348,8 @@ namespace Game
                 return;
             }
             if (!isclick) return;
-            for (int i=0;i<list.Count;i++) {
+            for (int i = 0; i < list.Count; i++)
+            {
                 if (i == clickpos)
                 {
                     list[i].BorderColor = Color.Yellow;//设定选择颜色

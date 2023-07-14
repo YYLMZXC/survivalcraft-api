@@ -164,7 +164,7 @@ namespace Game
         public bool IsCameraAllowed(Camera camera)
         {
             if ((camera is LoadingCamera))
-            {                
+            {
                 return false;
             }
             return true;

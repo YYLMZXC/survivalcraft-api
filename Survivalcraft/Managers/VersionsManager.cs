@@ -64,7 +64,7 @@ namespace Game
             SettingsManager.LastLaunchedVersion = Version;
             if (Version != LastLaunchedVersion)
             {
-                
+
             }
         }
 
@@ -106,7 +106,7 @@ namespace Game
                 {
                     throw new InvalidOperationException($"Upgrade produced invalid project version. Expected \"{SerializationVersion}\", found \"{worldInfo2.SerializationVersion}\".");
                 }
-                
+
             }
         }
 

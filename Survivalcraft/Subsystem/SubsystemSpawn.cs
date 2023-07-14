@@ -3,8 +3,6 @@ using Engine.Serialization;
 using GameEntitySystem;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 using TemplatesDatabase;
 
 namespace Game
@@ -99,11 +97,12 @@ namespace Game
                 {
                     string[] oldData = ((string)obj).Split(new char[] { ';' });
                     int i = 0;
-                    foreach (var oldItem in oldData) {
+                    foreach (var oldItem in oldData)
+                    {
                         if (!string.IsNullOrEmpty(oldItem))
                         {
                             ValuesDictionary va = new ValuesDictionary();
-                            string[] parmas = oldItem.Split(new char[] { ','});
+                            string[] parmas = oldItem.Split(new char[] { ',' });
                             data.SetValue(i++.ToString(), va);
                             va.SetValue("n", parmas[0]);
                             va.SetValue("p", new Vector3(float.Parse(parmas[1]), float.Parse(parmas[2]), float.Parse(parmas[3])));

@@ -1,8 +1,6 @@
-﻿using System.IO;
-
-namespace Game.IContentReader
+﻿namespace Game.IContentReader
 {
-    public class JsonModelReader:IContentReader
+    public class JsonModelReader : IContentReader
     {
         public override string Type => "Game.JsonModel";
         public override string[] DefaultSuffix => new string[] { "json" };

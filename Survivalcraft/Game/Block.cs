@@ -27,7 +27,8 @@ namespace Game
 
         public Vector3 FirstPersonOffset = Vector3.Zero;
 
-        public virtual Vector3 GetFirstPersonOffset(int value) {
+        public virtual Vector3 GetFirstPersonOffset(int value)
+        {
             return FirstPersonOffset;
         }
 
@@ -192,7 +193,8 @@ namespace Game
         {
             return Density;
         }
-        public virtual float GetFirstPersonScale(int value) {
+        public virtual float GetFirstPersonScale(int value)
+        {
             return FirstPersonScale;
         }
         public virtual void Initialize()
@@ -210,7 +212,7 @@ namespace Game
             vertex.Color = new Color(b, b, b, (byte)128);
             return vertex;
         }
-        public virtual Texture2D GetDiggingCrackingTexture(ComponentMiner miner, float digProgress,int value, Texture2D[] defaultCrackTextures)
+        public virtual Texture2D GetDiggingCrackingTexture(ComponentMiner miner, float digProgress, int value, Texture2D[] defaultCrackTextures)
         {
             int num2 = MathUtils.Clamp((int)(digProgress * 8f), 0, 7);
             return defaultCrackTextures[num2];
@@ -238,7 +240,8 @@ namespace Game
         {
             return DefaultExplosionPressure;
         }
-        public virtual int GetMaxStacking(int value) {
+        public virtual int GetMaxStacking(int value)
+        {
             return MaxStacking;
         }
         public virtual float GetFuelFireDuration(int value)
@@ -254,14 +257,17 @@ namespace Game
         {
             return ProjectileStickProbability;
         }
-        public virtual bool MatchCrafingId(string CraftId) {
+        public virtual bool MatchCrafingId(string CraftId)
+        {
             return CraftId == CraftingId;
         }
 
-        public virtual int GetPlayerLevelRequired(int value) {
+        public virtual int GetPlayerLevelRequired(int value)
+        {
             return PlayerLevelRequired;
         }
-        public virtual bool HasCollisionBehavior_(int value) {
+        public virtual bool HasCollisionBehavior_(int value)
+        {
             return HasCollisionBehavior;
         }
         public virtual string GetDisplayName(SubsystemTerrain subsystemTerrain, int value)
@@ -278,7 +284,8 @@ namespace Game
         {
             return 16;
         }
-        public virtual bool IsEditable_(int value) {
+        public virtual bool IsEditable_(int value)
+        {
             return IsEditable;
         }
         public virtual bool IsAimable_(int value)
@@ -289,21 +296,24 @@ namespace Game
         {
             return false;
         }
-        public virtual bool CanWear(int value) {
+        public virtual bool CanWear(int value)
+        {
             return false;
         }
         public virtual ClothingData GetClothingData(int value)
         {
             return null;
         }
-        public virtual int GetToolLevel(int value) {
+        public virtual int GetToolLevel(int value)
+        {
             return ToolLevel;
         }
         public virtual bool IsCollidable_(int value)
         {
             return IsCollidable;
         }
-        public virtual bool IsTransparent_(int value) {
+        public virtual bool IsTransparent_(int value)
+        {
             return IsTransparent;
         }
         public virtual bool IsFluidBlocker_(int value)
@@ -330,10 +340,12 @@ namespace Game
         {
             return IsStickable;
         }
-        public virtual float GetProjectileSpeed(int value) {
+        public virtual float GetProjectileSpeed(int value)
+        {
             return ProjectileSpeed;
         }
-        public virtual float GetProjectileDamping(int value) {
+        public virtual float GetProjectileDamping(int value)
+        {
             return ProjectileDamping;
         }
         public virtual string GetDescription(int value)
@@ -348,14 +360,16 @@ namespace Game
         {
             return DefaultCategory;
         }
-        public virtual float GetDigResilience(int value) {
+        public virtual float GetDigResilience(int value)
+        {
             return DigResilience;
         }
         public virtual BlockDigMethod GetBlockDigMethod(int value)
         {
             return DigMethod;
         }
-        public virtual float GetShovelPower(int value) {
+        public virtual float GetShovelPower(int value)
+        {
             return ShovelPower;
         }
         public virtual float GetQuarryPower(int value)
@@ -431,11 +445,13 @@ namespace Game
             result.CellFace = raycastResult.CellFace;
             return result;
         }
-        public virtual string GetCraftingId(int value) {
+        public virtual string GetCraftingId(int value)
+        {
 
             return CraftingId;
         }
-        public virtual int GetDisplayOrder(int value) {
+        public virtual int GetDisplayOrder(int value)
+        {
             return DisplayOrder;
         }
         public virtual BlockPlacementData GetDigValue(SubsystemTerrain subsystemTerrain, ComponentMiner componentMiner, int value, int toolValue, TerrainRaycastResult raycastResult)
@@ -445,7 +461,8 @@ namespace Game
             result.CellFace = raycastResult.CellFace;
             return result;
         }
-        public virtual float GetRequiredToolLevel(int value) {
+        public virtual float GetRequiredToolLevel(int value)
+        {
 
             return RequiredToolLevel;
         }
@@ -537,15 +554,18 @@ namespace Game
         {
             return DefaultHeat;
         }
-        public virtual float GetBlockHealth(int value) {
+        public virtual float GetBlockHealth(int value)
+        {
             int dur = GetDurability(value);
             int dag = GetDamage(value);
-            if (Durability > 0) {
+            if (Durability > 0)
+            {
                 return (dur - dag) / (float)dur;
             }
             return -1f;
         }
-        public virtual int GetDurability(int value) {
+        public virtual int GetDurability(int value)
+        {
             return Durability;
         }
 

@@ -65,7 +65,8 @@ namespace Game
                 m_OutputBox.Text = result;
                 m_timeCostedLabel.Text = $"{MathUtils.Floor(timeCosted.TotalSeconds)}s {timeCosted.Milliseconds}ms";
             }
-            else{
+            else
+            {
                 DialogsManager.HideDialog(this);
             }
         }

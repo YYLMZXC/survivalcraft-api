@@ -25,7 +25,7 @@ namespace Game
 
         public static void ShowMarketplace()
         {
-            
+
             WebBrowserManager.LaunchBrowser("http://play.google.com/store/apps/details?id=com.candyrufusgames.survivalcraft2");
         }
     }

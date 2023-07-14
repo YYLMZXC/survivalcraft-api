@@ -1,8 +1,7 @@
-﻿using Engine;
-using SimpleJson;
+﻿using SimpleJson;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System;
 namespace Game
 {
     public static class LanguageControl
@@ -85,7 +84,8 @@ namespace Game
             if (Delete == default) Success = Get("Usual", "delete");
         }
 
-        public static void loadJsonLogic(JsonObject node, object obj) {
+        public static void loadJsonLogic(JsonObject node, object obj)
+        {
             if (obj is JsonObject)
             {
                 JsonObject jsonobj = obj as JsonObject;
@@ -103,7 +103,7 @@ namespace Game
                     {
                         if (node.ContainsKey(item.Key))
                         {
-                            loadJsonLogic(node[item.Key] as JsonObject,item.Value);
+                            loadJsonLogic(node[item.Key] as JsonObject, item.Value);
                         }
                         else node.Add(item.Key, item.Value);
                     }
@@ -122,12 +122,14 @@ namespace Game
                         }
                         else node.Add(i.ToString(), jsonArray[i]);
                     }
-                    else {
+                    else
+                    {
                         JsonObject keys = new JsonObject();
                         if (node.ContainsKey(i.ToString()))
                         {
                             node[i.ToString()] = keys;
-                        }else node.Add(i.ToString(), jsonArray[i]);
+                        }
+                        else node.Add(i.ToString(), jsonArray[i]);
                         loadJsonLogic(keys, jsonArray[i]);
                     }
                 }

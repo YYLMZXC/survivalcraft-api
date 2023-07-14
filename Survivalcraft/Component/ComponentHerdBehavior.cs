@@ -57,7 +57,8 @@ namespace Game
                 }
             }
 
-            ModsManager.HookAction("CallNearbyCreaturesHelp", (modLoader) => {
+            ModsManager.HookAction("CallNearbyCreaturesHelp", (modLoader) =>
+            {
                 modLoader.CallNearbyCreaturesHelp(this, target, maxRange, maxChaseTime, isPersistent);
                 return false;
             });
@@ -115,7 +116,8 @@ namespace Game
             HerdName = valuesDictionary.GetValue<string>("HerdName");
             m_herdingRange = valuesDictionary.GetValue<float>("HerdingRange");
             m_autoNearbyCreaturesHelp = valuesDictionary.GetValue<bool>("AutoNearbyCreaturesHelp");
-            m_componentCreature.ComponentHealth.Attacked += delegate (ComponentCreature attacker) {
+            m_componentCreature.ComponentHealth.Attacked += delegate (ComponentCreature attacker)
+            {
                 CallNearbyCreaturesHelp(attacker, 20f, 30f, isPersistent: false);
             };
             m_stateMachine.AddState("Inactive", null, delegate

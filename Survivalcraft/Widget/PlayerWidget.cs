@@ -40,7 +40,7 @@ namespace Game
             detailsLabel.Text = string.Format(LanguageControl.Get(GetType().Name, 0), detailsLabel.Text, PlayerScreen.GetDeviceDisplayName(m_playerData.InputDevice));
             m_detailsLabel.Text += "\n";
             float time = 1200f;
-            if(m_subsystemTimeOfDay == null && m_playerData.m_subsystemGameInfo != null)
+            if (m_subsystemTimeOfDay == null && m_playerData.m_subsystemGameInfo != null)
             {
                 m_subsystemTimeOfDay = m_playerData.m_subsystemGameInfo.Project.FindSubsystem<SubsystemTimeOfDay>();
             }

@@ -15,7 +15,8 @@ namespace Game
             m_subtextures.Clear();
         }
 
-        public static void Initialize() {
+        public static void Initialize()
+        {
             Texture2D texture = ContentManager.Get<Texture2D>("Atlases/AtlasTexture");
             string s = ContentManager.Get<string>("Atlases/Atlas");
             LoadAtlases(texture, s);

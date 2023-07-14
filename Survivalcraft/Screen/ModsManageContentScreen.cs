@@ -1,4 +1,4 @@
-﻿using Engine;
+using Engine;
 using Engine.Graphics;
 using Game;
 using System;
@@ -7,6 +7,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Tiny7z.Archive;
 
 public class ModsManageContentScreen : Screen
 {
@@ -25,12 +26,12 @@ public class ModsManageContentScreen : Screen
         public ExternalContentEntry ExternalContentEntry;
         public Subtexture Subtexture;
         public ModItem() { }
-        public ModItem(string Name, ModInfo ModInfo, ExternalContentEntry ExternalContentEntry, Subtexture Subtexture)
+        public ModItem(string name, ModInfo modInfo, ExternalContentEntry externalContentEntry, Subtexture subtexture)
         {
-            this.Name = Name;
-            this.ModInfo = ModInfo;
-            this.ExternalContentEntry = ExternalContentEntry;
-            this.Subtexture = Subtexture;
+            Name = name;
+            ModInfo = modInfo;
+            ExternalContentEntry = externalContentEntry;
+            Subtexture = subtexture;
         }
     }
 
@@ -157,7 +158,7 @@ public class ModsManageContentScreen : Screen
             }
             if (modItem.ExternalContentEntry.Type == ExternalContentType.Mod)
             {
-                if(modItem.ModInfo == null)
+                if (modItem.ModInfo == null)
                 {
                     details = LanguageControl.Get(fName, 68);
                     color = Color.Red;
@@ -185,7 +186,7 @@ public class ModsManageContentScreen : Screen
                 {
                     try
                     {
-                        if(modItem.ExternalContentEntry.Path != m_androidDataPath)
+                        if (modItem.ExternalContentEntry.Path != m_androidDataPath)
                         {
                             SetPath(modItem.ExternalContentEntry.Path);
                             UpdateListWithBusyDialog();
@@ -248,7 +249,8 @@ public class ModsManageContentScreen : Screen
         CommunityContentManager.IsAdmin(new CancellableProgress(), delegate (bool isAdmin)
         {
             m_isAdmin = isAdmin;
-        }, delegate (Exception e) {
+        }, delegate (Exception e)
+        {
         });
         if (!Storage.DirectoryExists(m_uninstallPath)) Storage.CreateDirectory(m_uninstallPath);
         BusyDialog busyDialog = new BusyDialog(LanguageControl.Get(fName, 26), LanguageControl.Get(fName, 32));
@@ -266,7 +268,7 @@ public class ModsManageContentScreen : Screen
             Stream stream = Storage.OpenFile(commonPathsFile, OpenFileMode.Read);
             StreamReader streamReader = new StreamReader(stream);
             string line;
-            while((line = streamReader.ReadLine()) != null)
+            while ((line = streamReader.ReadLine()) != null)
             {
                 AddCommonPath(line.Replace("\n", "").Replace("\r", ""));
             }
@@ -283,7 +285,7 @@ public class ModsManageContentScreen : Screen
             explanation += LanguageControl.Get(fName, 47);
             if (m_commonPathList.Count > 0)
             {
-                explanation += "\n\n" + LanguageControl.Get(fName, 48); 
+                explanation += "\n\n" + LanguageControl.Get(fName, 48);
                 for (int i = 0; i < m_commonPathList.Count; i++)
                 {
                     explanation += "\n" + (i + 1) + ". " + m_commonPathList[i];
@@ -332,7 +334,7 @@ public class ModsManageContentScreen : Screen
         m_latestScanModList.Clear();
         if (!Storage.DirectoryExists(m_uninstallPath)) Storage.CreateDirectory(m_uninstallPath);
         string commonPathsFile = Storage.CombinePaths(m_uninstallPath, "CommonPaths.txt");
-        if(m_commonPathList.Count > 0)
+        if (m_commonPathList.Count > 0)
         {
             Stream stream = Storage.OpenFile(commonPathsFile, OpenFileMode.Create);
             StreamWriter streamWriter = new StreamWriter(stream);
@@ -512,9 +514,9 @@ public class ModsManageContentScreen : Screen
         }
         if (m_actionButton2.IsClicked)
         {
-            if(m_filter == StateFilter.InstallState)
+            if (m_filter == StateFilter.InstallState)
             {
-                if(modItem != null && modItem.ExternalContentEntry.Type == ExternalContentType.Mod)
+                if (modItem != null && modItem.ExternalContentEntry.Type == ExternalContentType.Mod)
                 {
                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Get(fName, 64), LanguageControl.Get(fName, 65), LanguageControl.Get(fName, 63), LanguageControl.Cancel, delegate (MessageDialogButton result)
                     {
@@ -532,7 +534,7 @@ public class ModsManageContentScreen : Screen
                                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Get(fName, 4), LanguageControl.Get(fName, 66), LanguageControl.Ok, null, null));
                                 }
                             }
-                            catch(Exception e)
+                            catch (Exception e)
                             {
                                 DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Get(fName, 4), LanguageControl.Get(fName, 67) + e, LanguageControl.Ok, null, null));
                             }
@@ -643,7 +645,7 @@ public class ModsManageContentScreen : Screen
             Stream stream = Storage.OpenFile(modItem.ExternalContentEntry.Path, OpenFileMode.ReadWrite);
             if (stream == null) return;
             Stream stream2 = GetDecipherStream(stream);
-            FileStream fileStream = new FileStream(Storage.GetSystemPath(ModsManager.ModCachePath) + "/Original.scmod", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+            FileStream fileStream = new FileStream(Storage.GetSystemPath(ModsManager.ModCachePath) + "/Original.scevo", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
             byte[] buff = new byte[stream2.Length];
             stream2.Read(buff, 0, buff.Length);
             fileStream.Write(buff, 0, buff.Length);
@@ -651,7 +653,7 @@ public class ModsManageContentScreen : Screen
             fileStream.Dispose();
             stream.Dispose();
             stream2.Dispose();
-            DialogsManager.ShowDialog(null, new MessageDialog("操作成功", Storage.GetSystemPath(ModsManager.ModCachePath) + "/Original.scmod", LanguageControl.Ok, null, null));
+            DialogsManager.ShowDialog(null, new MessageDialog("操作成功", Storage.GetSystemPath(ModsManager.ModCachePath) + "/Original.scevo", LanguageControl.Ok, null, null));
         }
         if (m_upDirectoryButton.IsClicked)
         {
@@ -753,7 +755,7 @@ public class ModsManageContentScreen : Screen
             foreach (string fileName in fileNameList)
             {
                 string extension = Storage.GetExtension(fileName);
-                if (!string.IsNullOrEmpty(extension) && extension.ToLower() == ".scmod")
+                if (!string.IsNullOrEmpty(extension) && extension.ToLower() == ".scevo")
                 {
                     ModItem modItem = GetModItem(fileName, false);
                     if (modItem == null || (modItem.ModInfo != null && string.IsNullOrEmpty(modItem.ModInfo.PackageName))) continue;
@@ -815,7 +817,7 @@ public class ModsManageContentScreen : Screen
         try
         {
             string systemPath = Storage.GetSystemPath(path);
-            if(systemPath != Storage.GetSystemPath(m_uninstallPath))
+            if (systemPath != Storage.GetSystemPath(m_uninstallPath))
             {
                 foreach (string fileName in Storage.ListFileNames(validPath))
                 {
@@ -834,7 +836,7 @@ public class ModsManageContentScreen : Screen
                         busyDialog.SmallMessage = string.Format(LanguageControl.Get(fName, 59) + showName, m_count);
                     }
                     string extension = Storage.GetExtension(fileName);
-                    if (!string.IsNullOrEmpty(extension) && extension.ToLower() == ".scmod")
+                    if (!string.IsNullOrEmpty(extension) && extension.ToLower() == ".scevo")
                     {
                         string pathName = Storage.CombinePaths(validPath, fileName);
                         Stream stream = null;
@@ -843,17 +845,20 @@ public class ModsManageContentScreen : Screen
                         {
                             stream = Storage.OpenFile(pathName, OpenFileMode.Read);
                             stream = GetDecipherStream(stream);
-                            ZipArchive zipArchive = ZipArchive.Open(stream, false);
-                            foreach (ZipArchiveEntry zipArchiveEntry in zipArchive.ReadCentralDir())
+                            var archive = new SevenZipArchive(stream, FileAccess.Read);
+                            using (var extractor = archive.Extractor())
                             {
-                                if (zipArchiveEntry.FilenameInZip == "modinfo.json")
+                                foreach (var file in extractor.Files)
                                 {
-                                    MemoryStream memoryStream = new MemoryStream();
-                                    zipArchive.ExtractFile(zipArchiveEntry, memoryStream);
-                                    memoryStream.Position = 0L;
-                                    modInfo = ModsManager.DeserializeJson<ModInfo>(ModsManager.StreamToString(memoryStream));
-                                    memoryStream.Dispose();
-                                    break;
+                                    if (file.Name == "modinfo.json") // TODO: 改成YAML
+                                    {
+                                        var memoryStream = new MemoryStream();
+                                        extractor.ExtractFile(file.Name, memoryStream);
+                                        memoryStream.Position = 0L;
+                                        modInfo = ModsManager.DeserializeJson<ModInfo>(ModsManager.StreamToString(memoryStream));
+                                        memoryStream.Dispose();
+                                        break;
+                                    }
                                 }
                             }
                             stream.Dispose();
@@ -862,7 +867,7 @@ public class ModsManageContentScreen : Screen
                         {
                         }
                         if (stream == null) continue;
-                        if(modInfo != null && string.IsNullOrEmpty(modInfo.PackageName)) continue;
+                        if (modInfo != null && string.IsNullOrEmpty(modInfo.PackageName)) continue;
                         string uninstallPathName = Storage.CombinePaths(m_uninstallPath, fileName);
                         if (!Storage.FileExists(uninstallPathName))
                         {
@@ -872,7 +877,7 @@ public class ModsManageContentScreen : Screen
                                 Storage.DeleteFile(pathName);
                             }
                             AddCommonPath(validPath);
-                            if(modInfo != null && !modInfo.ApiVersion.StartsWith("1.3"))
+                            if (modInfo != null && !modInfo.ApiVersion.StartsWith("1.3"))
                             {
                                 m_latestScanModList.Add(fileName);
                                 m_count++;
@@ -946,28 +951,33 @@ public class ModsManageContentScreen : Screen
         try
         {
             stream = GetDecipherStream(stream);
-            ZipArchive zipArchive = ZipArchive.Open(stream, false);
-            foreach (ZipArchiveEntry zipArchiveEntry in zipArchive.ReadCentralDir())
+            var archive = new SevenZipArchive(stream, FileAccess.Read);
+            using (var extractor = archive.Extractor())
             {
-                if (zipArchiveEntry.FilenameInZip == "icon.png")
+                foreach (var file in extractor.Files)
                 {
-                    MemoryStream memoryStream = new MemoryStream();
-                    zipArchive.ExtractFile(zipArchiveEntry, memoryStream);
-                    memoryStream.Position = 0L;
-                    modItem.Subtexture = new Subtexture(Texture2D.Load(memoryStream), Vector2.Zero, Vector2.One);
-                    memoryStream.Dispose();
-                }
-                else if (zipArchiveEntry.FilenameInZip == "modinfo.json")
-                {
-                    MemoryStream memoryStream = new MemoryStream();
-                    zipArchive.ExtractFile(zipArchiveEntry, memoryStream);
-                    memoryStream.Position = 0L;
-                    modItem.ModInfo = ModsManager.DeserializeJson<ModInfo>(ModsManager.StreamToString(memoryStream));
-                    memoryStream.Dispose();
+                    if (file.Name == "icon.png")
+                    {
+                        var memoryStream = new MemoryStream();
+                        extractor.ExtractFile(file.Name, memoryStream);
+                        memoryStream.Position = 0L;
+                        modItem.Subtexture = new Subtexture(Texture2D.Load(memoryStream), Vector2.Zero, Vector2.One);
+                        memoryStream.Dispose();
+                        break;
+                    }
+                    else if (file.Name == "modinfo.json")
+                    {
+                        var memoryStream = new MemoryStream();
+                        extractor.ExtractFile(file.Name, memoryStream);
+                        memoryStream.Position = 0L;
+                        modItem.ModInfo = ModsManager.DeserializeJson<ModInfo>(ModsManager.StreamToString(memoryStream));
+                        memoryStream.Dispose();
+                        break;
+                    }
                 }
             }
         }
-        catch(Exception)
+        catch (Exception)
         {
             modItem = null;
         }
@@ -1012,7 +1022,7 @@ public class ModsManageContentScreen : Screen
         string[] arPath = path.Split(new char[] { '/' });
         if (arPath.Length > 5)
         {
-            newText = ".../" + arPath[arPath.Length - 3] + "/" +  arPath[arPath.Length - 2] + "/" + arPath[arPath.Length - 1];
+            newText = ".../" + arPath[arPath.Length - 3] + "/" + arPath[arPath.Length - 2] + "/" + arPath[arPath.Length - 1];
         }
         return newText;
     }
@@ -1068,7 +1078,7 @@ public class ModsManageContentScreen : Screen
             int l = (buff2.Length + 1) / 2;
             for (int i = 0; i < buff2.Length; i++)
             {
-                if(i % 2 == 0)
+                if (i % 2 == 0)
                 {
                     buff2[i] = buff[hc2.Length + k];
                     k++;
@@ -1127,7 +1137,7 @@ public class ModsManageContentScreen : Screen
         }
         for (int i = 0; i < buff.Length; i++)
         {
-            if(i % 2 == 0)
+            if (i % 2 == 0)
             {
                 buff2[k + l] = buff[i];
                 k++;
@@ -1143,7 +1153,7 @@ public class ModsManageContentScreen : Screen
                 k++;
             }
         }
-        string newPath = string.Format("{0}({1}).scmod", path.Substring(0, path.LastIndexOf('.')), LanguageControl.Get(fName, 63));
+        string newPath = string.Format("{0}({1}).scevo", path.Substring(0, path.LastIndexOf('.')), LanguageControl.Get(fName, 63));
         FileStream fileStream = new FileStream(Storage.GetSystemPath(newPath), FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
         fileStream.Write(buff2, 0, buff2.Length);
         fileStream.Flush();

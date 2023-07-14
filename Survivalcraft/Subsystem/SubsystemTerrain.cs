@@ -3,7 +3,6 @@ using GameEntitySystem;
 using System;
 using System.Collections.Generic;
 using TemplatesDatabase;
-using Engine.Graphics;
 
 namespace Game
 {
@@ -279,11 +278,11 @@ namespace Game
         public void ChangeCell(int x, int y, int z, int value, bool updateModificationCounter = true)
         {
             bool pass = false;
-            ModsManager.HookAction("TerrainChangeCell", loader => 
-            { 
+            ModsManager.HookAction("TerrainChangeCell", loader =>
+            {
                 loader.TerrainChangeCell(this, x, y, z, value, out bool Skip);
                 pass |= Skip;
-                return false; 
+                return false;
             });
             if (pass) return;
             if (!Terrain.IsCellValid(x, y, z))

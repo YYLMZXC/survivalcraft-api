@@ -1,8 +1,5 @@
 using Engine;
 using System;
-using System.Runtime.CompilerServices;
-using Engine.Graphics;
-using System.Collections.Generic;
 namespace Game
 {
     public class BlockGeometryGenerator
@@ -117,23 +114,23 @@ namespace Game
             if ((x & 1) == 0)
             {
                 SetupLitCornerVertex(x, y, z, color2, textureSlot, textureSlotCount, 0, ref vertices.Array[count]);
-                SetupLitCornerVertex(x + 1, y, z + 1, color2, textureSlot, textureSlotCount, 1,  ref vertices.Array[count + 1]);
-                SetupLitCornerVertex(x + 1, y + 1, z + 1, color2, textureSlot, textureSlotCount, 2,ref vertices.Array[count + 2]);
-                SetupLitCornerVertex(x, y + 1, z, color2, textureSlot, textureSlotCount, 3,  ref vertices.Array[count + 3]);
+                SetupLitCornerVertex(x + 1, y, z + 1, color2, textureSlot, textureSlotCount, 1, ref vertices.Array[count + 1]);
+                SetupLitCornerVertex(x + 1, y + 1, z + 1, color2, textureSlot, textureSlotCount, 2, ref vertices.Array[count + 2]);
+                SetupLitCornerVertex(x, y + 1, z, color2, textureSlot, textureSlotCount, 3, ref vertices.Array[count + 3]);
             }
             else
             {
-                SetupLitCornerVertex(x, y, z, color2, textureSlot, textureSlotCount, 1,  ref vertices.Array[count]);
+                SetupLitCornerVertex(x, y, z, color2, textureSlot, textureSlotCount, 1, ref vertices.Array[count]);
                 SetupLitCornerVertex(x + 1, y, z + 1, color2, textureSlot, textureSlotCount, 0, ref vertices.Array[count + 1]);
-                SetupLitCornerVertex(x + 1, y + 1, z + 1, color2, textureSlot, textureSlotCount, 3,  ref vertices.Array[count + 2]);
-                SetupLitCornerVertex(x, y + 1, z, color2, textureSlot, textureSlotCount, 2,  ref vertices.Array[count + 3]);
+                SetupLitCornerVertex(x + 1, y + 1, z + 1, color2, textureSlot, textureSlotCount, 3, ref vertices.Array[count + 2]);
+                SetupLitCornerVertex(x, y + 1, z, color2, textureSlot, textureSlotCount, 2, ref vertices.Array[count + 3]);
             }
             if ((z & 1) == 0)
             {
-                SetupLitCornerVertex(x, y, z + 1, color2, textureSlot, textureSlotCount, 0,  ref vertices.Array[count + 4]);
-                SetupLitCornerVertex(x + 1, y, z, color2, textureSlot, textureSlotCount, 1,  ref vertices.Array[count + 5]);
-                SetupLitCornerVertex(x + 1, y + 1, z, color2, textureSlot, textureSlotCount, 2,  ref vertices.Array[count + 6]);
-                SetupLitCornerVertex(x, y + 1, z + 1, color2, textureSlot, textureSlotCount, 3,  ref vertices.Array[count + 7]);
+                SetupLitCornerVertex(x, y, z + 1, color2, textureSlot, textureSlotCount, 0, ref vertices.Array[count + 4]);
+                SetupLitCornerVertex(x + 1, y, z, color2, textureSlot, textureSlotCount, 1, ref vertices.Array[count + 5]);
+                SetupLitCornerVertex(x + 1, y + 1, z, color2, textureSlot, textureSlotCount, 2, ref vertices.Array[count + 6]);
+                SetupLitCornerVertex(x, y + 1, z + 1, color2, textureSlot, textureSlotCount, 3, ref vertices.Array[count + 7]);
             }
             else
             {
@@ -187,10 +184,10 @@ namespace Game
                 int faceTextureSlot = block.GetFaceTextureSlot(0, value);
                 int count = vertices.Count;
                 vertices.Count += 4;
-                SetupCubeVertexFace0(x, y, z + 1, 1f, 0, faceTextureSlot, textureSlotCount, color,  ref vertices.Array[count]);//A
-                SetupCubeVertexFace0(x + 1, y, z + 1, 1f, 1, faceTextureSlot, textureSlotCount, color,  ref vertices.Array[count + 1]);//B
-                SetupCubeVertexFace0(x + 1, y + 1, z + 1, 1f, 2, faceTextureSlot, textureSlotCount, color,  ref vertices.Array[count + 2]);//C
-                SetupCubeVertexFace0(x, y + 1, z + 1, 1f, 3, faceTextureSlot, textureSlotCount, color,  ref vertices.Array[count + 3]);//D
+                SetupCubeVertexFace0(x, y, z + 1, 1f, 0, faceTextureSlot, textureSlotCount, color, ref vertices.Array[count]);//A
+                SetupCubeVertexFace0(x + 1, y, z + 1, 1f, 1, faceTextureSlot, textureSlotCount, color, ref vertices.Array[count + 1]);//B
+                SetupCubeVertexFace0(x + 1, y + 1, z + 1, 1f, 2, faceTextureSlot, textureSlotCount, color, ref vertices.Array[count + 2]);//C
+                SetupCubeVertexFace0(x, y + 1, z + 1, 1f, 3, faceTextureSlot, textureSlotCount, color, ref vertices.Array[count + 3]);//D
                 int count2 = indices.Count;
                 indices.Count += 6;
                 indices.Array[count2] = count;//A
@@ -210,8 +207,8 @@ namespace Game
                 vertices2.Count += 4;
                 SetupCubeVertexFace1(x + 1, y, z, 1f, 1, faceTextureSlot2, textureSlotCount, color, ref vertices2.Array[count3]);
                 SetupCubeVertexFace1(x + 1, y + 1, z, 1f, 2, faceTextureSlot2, textureSlotCount, color, ref vertices2.Array[count3 + 1]);
-                SetupCubeVertexFace1(x + 1, y + 1, z + 1, 1f, 3, faceTextureSlot2, textureSlotCount, color,  ref vertices2.Array[count3 + 2]);
-                SetupCubeVertexFace1(x + 1, y, z + 1, 1f, 0, faceTextureSlot2, textureSlotCount, color,ref vertices2.Array[count3 + 3]);
+                SetupCubeVertexFace1(x + 1, y + 1, z + 1, 1f, 3, faceTextureSlot2, textureSlotCount, color, ref vertices2.Array[count3 + 2]);
+                SetupCubeVertexFace1(x + 1, y, z + 1, 1f, 0, faceTextureSlot2, textureSlotCount, color, ref vertices2.Array[count3 + 3]);
                 int count4 = indices2.Count;
                 indices2.Count += 6;
                 indices2.Array[count4] = count3;
@@ -229,9 +226,9 @@ namespace Game
                 int faceTextureSlot3 = block.GetFaceTextureSlot(2, value);
                 int count5 = vertices3.Count;
                 vertices3.Count += 4;
-                SetupCubeVertexFace2(x, y, z, 1f, 1, faceTextureSlot3, textureSlotCount, color,  ref vertices3.Array[count5]);
+                SetupCubeVertexFace2(x, y, z, 1f, 1, faceTextureSlot3, textureSlotCount, color, ref vertices3.Array[count5]);
                 SetupCubeVertexFace2(x + 1, y, z, 1f, 0, faceTextureSlot3, textureSlotCount, color, ref vertices3.Array[count5 + 1]);
-                SetupCubeVertexFace2(x + 1, y + 1, z, 1f, 3, faceTextureSlot3, textureSlotCount, color,  ref vertices3.Array[count5 + 2]);
+                SetupCubeVertexFace2(x + 1, y + 1, z, 1f, 3, faceTextureSlot3, textureSlotCount, color, ref vertices3.Array[count5 + 2]);
                 SetupCubeVertexFace2(x, y + 1, z, 1f, 2, faceTextureSlot3, textureSlotCount, color, ref vertices3.Array[count5 + 3]);
                 int count6 = indices3.Count;
                 indices3.Count += 6;
@@ -250,10 +247,10 @@ namespace Game
                 int faceTextureSlot4 = block.GetFaceTextureSlot(3, value);
                 int count7 = vertices4.Count;
                 vertices4.Count += 4;
-                SetupCubeVertexFace3(x, y, z, 1f, 0, faceTextureSlot4, textureSlotCount, color,  ref vertices4.Array[count7]);
+                SetupCubeVertexFace3(x, y, z, 1f, 0, faceTextureSlot4, textureSlotCount, color, ref vertices4.Array[count7]);
                 SetupCubeVertexFace3(x, y + 1, z, 1f, 3, faceTextureSlot4, textureSlotCount, color, ref vertices4.Array[count7 + 1]);
-                SetupCubeVertexFace3(x, y + 1, z + 1, 1f, 2, faceTextureSlot4, textureSlotCount, color,  ref vertices4.Array[count7 + 2]);
-                SetupCubeVertexFace3(x, y, z + 1, 1f, 1, faceTextureSlot4, textureSlotCount, color,  ref vertices4.Array[count7 + 3]);
+                SetupCubeVertexFace3(x, y + 1, z + 1, 1f, 2, faceTextureSlot4, textureSlotCount, color, ref vertices4.Array[count7 + 2]);
+                SetupCubeVertexFace3(x, y, z + 1, 1f, 1, faceTextureSlot4, textureSlotCount, color, ref vertices4.Array[count7 + 3]);
                 int count8 = indices4.Count;
                 indices4.Count += 6;
                 indices4.Array[count8] = count7;
@@ -273,8 +270,8 @@ namespace Game
                 vertices5.Count += 4;
                 SetupCubeVertexFace4(x, y + 1, z, 1f, 3, faceTextureSlot5, textureSlotCount, color, ref vertices5.Array[count9]);
                 SetupCubeVertexFace4(x + 1, y + 1, z, 1f, 2, faceTextureSlot5, textureSlotCount, color, ref vertices5.Array[count9 + 1]);
-                SetupCubeVertexFace4(x + 1, y + 1, z + 1, 1f, 1, faceTextureSlot5, textureSlotCount, color,  ref vertices5.Array[count9 + 2]);
-                SetupCubeVertexFace4(x, y + 1, z + 1, 1f, 0, faceTextureSlot5, textureSlotCount, color,  ref vertices5.Array[count9 + 3]);
+                SetupCubeVertexFace4(x + 1, y + 1, z + 1, 1f, 1, faceTextureSlot5, textureSlotCount, color, ref vertices5.Array[count9 + 2]);
+                SetupCubeVertexFace4(x, y + 1, z + 1, 1f, 0, faceTextureSlot5, textureSlotCount, color, ref vertices5.Array[count9 + 3]);
                 int count10 = indices5.Count;
                 indices5.Count += 6;
                 indices5.Array[count10] = count9;
@@ -292,10 +289,10 @@ namespace Game
                 int faceTextureSlot6 = block.GetFaceTextureSlot(5, value);
                 int count11 = vertices6.Count;
                 vertices6.Count += 4;
-                SetupCubeVertexFace5(x, y, z, 1f, 0, faceTextureSlot6, textureSlotCount, color,  ref vertices6.Array[count11]);
-                SetupCubeVertexFace5(x + 1, y, z, 1f, 1, faceTextureSlot6, textureSlotCount, color,  ref vertices6.Array[count11 + 1]);
-                SetupCubeVertexFace5(x + 1, y, z + 1, 1f, 2, faceTextureSlot6, textureSlotCount, color,  ref vertices6.Array[count11 + 2]);
-                SetupCubeVertexFace5(x, y, z + 1, 1f, 3, faceTextureSlot6, textureSlotCount, color,  ref vertices6.Array[count11 + 3]);
+                SetupCubeVertexFace5(x, y, z, 1f, 0, faceTextureSlot6, textureSlotCount, color, ref vertices6.Array[count11]);
+                SetupCubeVertexFace5(x + 1, y, z, 1f, 1, faceTextureSlot6, textureSlotCount, color, ref vertices6.Array[count11 + 1]);
+                SetupCubeVertexFace5(x + 1, y, z + 1, 1f, 2, faceTextureSlot6, textureSlotCount, color, ref vertices6.Array[count11 + 2]);
+                SetupCubeVertexFace5(x, y, z + 1, 1f, 3, faceTextureSlot6, textureSlotCount, color, ref vertices6.Array[count11 + 3]);
                 int count12 = indices6.Count;
                 indices6.Count += 6;
                 indices6.Array[count12] = count11;
@@ -324,7 +321,7 @@ namespace Game
                 int faceTextureSlot = block.GetFaceTextureSlot(0, value);
                 int count = vertices.Count;
                 vertices.Count += 4;
-                SetupCubeVertexFace0(x, y, z + 1, 1f, 0, faceTextureSlot,textureSlotCount, sideColor, ref vertices.Array[count]);
+                SetupCubeVertexFace0(x, y, z + 1, 1f, 0, faceTextureSlot, textureSlotCount, sideColor, ref vertices.Array[count]);
                 SetupCubeVertexFace0(x + 1, y, z + 1, 1f, 1, faceTextureSlot, textureSlotCount, sideColor, ref vertices.Array[count + 1]);
                 SetupCubeVertexFace0(x + 1, y + 1, z + 1, height22, 2, faceTextureSlot, textureSlotCount, sideColor, ref vertices.Array[count + 2]);
                 SetupCubeVertexFace0(x, y + 1, z + 1, height12, 3, faceTextureSlot, textureSlotCount, sideColor, ref vertices.Array[count + 3]);
@@ -348,7 +345,7 @@ namespace Game
                 SetupCubeVertexFace1(x + 1, y, z, 1f, 1, faceTextureSlot2, textureSlotCount, sideColor, ref vertices2.Array[count3]);
                 SetupCubeVertexFace1(x + 1, y + 1, z, height21, 2, faceTextureSlot2, textureSlotCount, sideColor, ref vertices2.Array[count3 + 1]);
                 SetupCubeVertexFace1(x + 1, y + 1, z + 1, height22, 3, faceTextureSlot2, textureSlotCount, sideColor, ref vertices2.Array[count3 + 2]);
-                SetupCubeVertexFace1(x + 1, y, z + 1, 1f, 0, faceTextureSlot2, textureSlotCount, sideColor,ref vertices2.Array[count3 + 3]);
+                SetupCubeVertexFace1(x + 1, y, z + 1, 1f, 0, faceTextureSlot2, textureSlotCount, sideColor, ref vertices2.Array[count3 + 3]);
                 int count4 = indices2.Count;
                 indices2.Count += 6;
                 indices2.Array[count4] = count3;
@@ -981,7 +978,7 @@ namespace Game
         {
             float y2 = (float)y + height - 1f;
             int light = CalculateVertexLightFace0(x, y, z);
-            SetupCornerVertex(x, y2, z, color, light, 0, textureSlot, textureSlotCount, corner,ref vertex);
+            SetupCornerVertex(x, y2, z, color, light, 0, textureSlot, textureSlotCount, corner, ref vertex);
         }
 
         public void SetupCubeVertexFace1(int x, int y, int z, float height, int corner, int textureSlot, int textureSlotCount, Color color, ref TerrainVertex vertex)

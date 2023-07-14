@@ -1,6 +1,5 @@
 using Engine;
 using Engine.Graphics;
-using Engine.Media;
 using GameEntitySystem;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -32,7 +31,7 @@ namespace Game
         /// <param name="viewFogColor">视图雾颜色</param>
         public virtual void ViewFogColor(float ViewUnderWaterDepth, float ViewUnderMagmaDepth, ref Color viewFogColor)
         {
-           
+
         }
         /// <summary>
         /// 方块亮度
@@ -41,7 +40,7 @@ namespace Game
         /// <param name="brightness">亮度值</param>
         public virtual void CalculateLighting(ref float brightness)
         {
-            
+
         }
         /// <param name="attackPower">伤害值</param>
         /// <param name="playerProbability">玩家命中率</param>
@@ -263,7 +262,7 @@ namespace Game
         /// </summary>
         /// <param name="spawn"></param>
         /// <param name="creatureTypes"></param>
-        public virtual void InitializeCreatureTypes(SubsystemCreatureSpawn spawn, List<SubsystemCreatureSpawn.CreatureType> creatureTypes) 
+        public virtual void InitializeCreatureTypes(SubsystemCreatureSpawn spawn, List<SubsystemCreatureSpawn.CreatureType> creatureTypes)
         {
         }
 
@@ -375,7 +374,7 @@ namespace Game
         /// </summary>
         /// <param name="spawn"></param>
         /// <param name="spawnEntityData"></param>
-        public virtual void OnSaveSpawnData(ComponentSpawn spawn,SpawnEntityData spawnEntityData)
+        public virtual void OnSaveSpawnData(ComponentSpawn spawn, SpawnEntityData spawnEntityData)
         {
 
 
@@ -454,8 +453,9 @@ namespace Game
         /// 加载任务开始时执行
         /// 在BlocksManager初始化之前
         /// </summary>
-        public virtual void OnLoadingStart(List<System.Action> actions) { 
-        
+        public virtual void OnLoadingStart(List<System.Action> actions)
+        {
+
         }
 
         /// <summary>
@@ -463,8 +463,8 @@ namespace Game
         /// 在BlocksMAnager初始化之后
         /// </summary>
         /// <param name="loadingActions"></param>
-        public virtual void OnLoadingFinished(List<System.Action> actions) 
-        { 
+        public virtual void OnLoadingFinished(List<System.Action> actions)
+        {
         }
 
         /// <summary>
@@ -495,16 +495,16 @@ namespace Game
         /// Project.xml加载时执行
         /// </summary>
         /// <param name="xElement"></param>
-        public virtual void ProjectXmlLoad(XElement xElement) 
-        { 
+        public virtual void ProjectXmlLoad(XElement xElement)
+        {
         }
 
         /// <summary>
         /// Project.xml保存时执行
         /// </summary>
         /// <param name="xElement"></param>
-        public virtual void ProjectXmlSave(XElement xElement) 
-        { 
+        public virtual void ProjectXmlSave(XElement xElement)
+        {
         }
 
         /// <summary>
@@ -587,10 +587,10 @@ namespace Game
         /// <param name="maxRange"></param>
         /// <param name="maxChaseTime"></param>
         /// <param name="isPersistent"></param>
-        public virtual void CallNearbyCreaturesHelp(ComponentHerdBehavior herdBehavior, ComponentCreature target, float maxRange, float maxChaseTime, bool isPersistent) 
-        { 
+        public virtual void CallNearbyCreaturesHelp(ComponentHerdBehavior herdBehavior, ComponentCreature target, float maxRange, float maxChaseTime, bool isPersistent)
+        {
         }
-       
+
         /// <summary>
         /// 挖掘触发宝物生成时，注意这里能获取到上个Mod生成宝物的情况
         /// </summary>
@@ -622,7 +622,7 @@ namespace Game
         /// 生成地形顶点时使用
         /// </summary>
         /// <param name="chunk"></param>
-        public virtual void GenerateChunkVertices(TerrainChunk chunk,bool even)
+        public virtual void GenerateChunkVertices(TerrainChunk chunk, bool even)
         {
 
         }
@@ -631,8 +631,9 @@ namespace Game
         /// </summary>
         /// <param name="lightSources">光源</param>
         /// <param name="chunk">区块</param>
-        public virtual void GenerateChunkLightSources(DynamicArray<TerrainUpdater.LightSource> lightSources,TerrainChunk chunk) { 
-        
+        public virtual void GenerateChunkLightSources(DynamicArray<TerrainUpdater.LightSource> lightSources, TerrainChunk chunk)
+        {
+
         }
         /// <summary>
         /// 计算动物模型光照

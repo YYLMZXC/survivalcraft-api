@@ -144,7 +144,7 @@ namespace Game
 
         public void DrawReticleHighlight(Camera camera)
         {
-            
+
         }
 
         public void DrawFillHighlight(Camera camera)

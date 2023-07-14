@@ -1,6 +1,6 @@
-using System.Xml.Linq;
 using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 namespace Game
 {
     public class SettingsUiScreen : Screen
@@ -63,7 +63,7 @@ namespace Game
             }
             if (m_languageButton.IsClicked)
             {
-                if(LanguageControl.LanguageTypes.Count > 2)
+                if (LanguageControl.LanguageTypes.Count > 2)
                 {
                     DialogsManager.ShowDialog(null, new ListSelectionDialog(null, LanguageControl.LanguageTypes, 70f, (object item) => (string)item, delegate (object item)
                     {
@@ -117,7 +117,7 @@ namespace Game
                 SettingsManager.CommunityContentMode = (CommunityContentMode)((int)(SettingsManager.CommunityContentMode + 1) % EnumUtils.GetEnumValues(typeof(CommunityContentMode)).Count);
             }
             m_windowModeButton.Text = LanguageControl.Get("WindowMode", SettingsManager.WindowMode.ToString());
-            m_languageButton.Text = LanguageControl.Get("Language","Name");
+            m_languageButton.Text = LanguageControl.Get("Language", "Name");
             m_displayLogButton.Text = (SettingsManager.DisplayLog ? LanguageControl.Yes : LanguageControl.No);
             m_upsideDownButton.Text = (SettingsManager.UpsideDownLayout ? LanguageControl.Yes : LanguageControl.No);
             m_hideMoveLookPadsButton.Text = (SettingsManager.HideMoveLookPads ? LanguageControl.Yes : LanguageControl.No);

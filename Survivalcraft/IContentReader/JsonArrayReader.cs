@@ -2,7 +2,7 @@
 
 namespace Game.IContentReader
 {
-    public class JsonArrayReader:IContentReader
+    public class JsonArrayReader : IContentReader
     {
         public override string Type => "SimpleJson.JsonArray";
         public override string[] DefaultSuffix => new string[] { "json" };

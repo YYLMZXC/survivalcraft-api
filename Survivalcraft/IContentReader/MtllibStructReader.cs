@@ -1,9 +1,6 @@
-﻿
-using System.IO;
-
-namespace Game.IContentReader
+﻿namespace Game.IContentReader
 {
-    public class MtllibStructReader:IContentReader
+    public class MtllibStructReader : IContentReader
     {
         public override string Type => "Game.MtllibStruct";
         public override string[] DefaultSuffix => new string[] { "mtl" };

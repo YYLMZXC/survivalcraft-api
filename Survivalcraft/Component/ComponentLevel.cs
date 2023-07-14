@@ -451,7 +451,8 @@ namespace Game
             SpeedFactor = CalculateSpeedFactor(null);
             HungerFactor = CalculateHungerFactor(null);
             ResilienceFactor = CalculateResilienceFactor(null);
-            ModsManager.HookAction("OnLevelUpdate", modLoader => {
+            ModsManager.HookAction("OnLevelUpdate", modLoader =>
+            {
                 modLoader.OnLevelUpdate(this);
                 return false;
             });

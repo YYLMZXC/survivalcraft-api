@@ -212,7 +212,7 @@ namespace Game
                 case ExternalContentType.FurniturePack:
                     return FurniturePacksManager.ImportFurniturePack(name, stream);
                 case ExternalContentType.Mod:
-                    return ModsManager.ImportMod(name,stream);
+                    return ModsManager.ImportMod(name, stream);
                 default:
                     throw new InvalidOperationException(LanguageControl.Get(fName, 4));
             }

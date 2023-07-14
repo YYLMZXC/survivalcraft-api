@@ -107,7 +107,7 @@ namespace Game
                     {
                         txtColor = new Color(255, 215, 0);
                     }
-                    if(m_isOwn && communityContentEntry.IsShow == 0)
+                    if (m_isOwn && communityContentEntry.IsShow == 0)
                     {
                         txtColor = Color.Gray;
                     }
@@ -135,9 +135,9 @@ namespace Game
 
         public override void Enter(object[] parameters)
         {
-            foreach(var provider in ExternalContentManager.m_providers)
+            foreach (var provider in ExternalContentManager.m_providers)
             {
-                if(provider is SPMBoxExternalContentProvider)
+                if (provider is SPMBoxExternalContentProvider)
                 {
                     m_provider = (SPMBoxExternalContentProvider)provider;
                     break;
@@ -159,7 +159,8 @@ namespace Game
             CommunityContentManager.IsAdmin(new CancellableProgress(), delegate (bool isAdmin)
             {
                 m_isAdmin = isAdmin;
-            }, delegate (Exception e) {
+            }, delegate (Exception e)
+            {
                 DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, e.Message, LanguageControl.Ok, null, null));
             });
             PopulateList(null);
@@ -254,7 +255,7 @@ namespace Game
             }
             if (m_actionButton.IsClicked && communityContentEntry != null)
             {
-                if(m_order == Order.ByHide || m_isOwn)
+                if (m_order == Order.ByHide || m_isOwn)
                 {
                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Get(GetType().Name, 26), communityContentEntry.Name, LanguageControl.Ok, LanguageControl.Cancel, delegate (MessageDialogButton button)
                     {
@@ -269,7 +270,8 @@ namespace Game
                                 var result = (JsonObject)WebManager.JsonFromBytes(data);
                                 string msg = result[0].ToString() == "200" ? LanguageControl.Get(GetType().Name, 27) + communityContentEntry.Name : result[1].ToString();
                                 DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Get(GetType().Name, 20), msg, LanguageControl.Ok, null, null));
-                            }, delegate (Exception e) {
+                            }, delegate (Exception e)
+                            {
                                 DialogsManager.HideDialog(busyDialog);
                                 DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, e.Message, LanguageControl.Ok, null, null));
                             });
@@ -302,7 +304,8 @@ namespace Game
                                     var result = (JsonObject)WebManager.JsonFromBytes(data);
                                     string msg = result[0].ToString() == "200" ? LanguageControl.Get(GetType().Name, 19) + communityContentEntry.Name : result[1].ToString();
                                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Get(GetType().Name, 20), msg, LanguageControl.Ok, null, null));
-                                }, delegate (Exception e) {
+                                }, delegate (Exception e)
+                                {
                                     DialogsManager.HideDialog(busyDialog);
                                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, e.Message, LanguageControl.Ok, null, null));
                                 });
@@ -324,7 +327,8 @@ namespace Game
                                     var result = (JsonObject)WebManager.JsonFromBytes(data);
                                     string msg = result[0].ToString() == "200" ? LanguageControl.Get(GetType().Name, 22) + communityContentEntry.Name : result[1].ToString();
                                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Get(GetType().Name, 20), msg, LanguageControl.Ok, null, null));
-                                }, delegate (Exception e) {
+                                }, delegate (Exception e)
+                                {
                                     DialogsManager.HideDialog(busyDialog);
                                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, e.Message, LanguageControl.Ok, null, null));
                                 });
@@ -353,7 +357,8 @@ namespace Game
                     var result = (JsonObject)WebManager.JsonFromBytes(data);
                     string msg = result[0].ToString() == "200" ? sucessMsg + communityContentEntry.Name : result[1].ToString();
                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Get(GetType().Name, 20), msg, LanguageControl.Ok, null, null));
-                }, delegate (Exception e) {
+                }, delegate (Exception e)
+                {
                     DialogsManager.HideDialog(busyDialog);
                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, e.Message, LanguageControl.Ok, null, null));
                 });
@@ -463,8 +468,10 @@ namespace Game
                     m_listPanel.AddItem(item2);
                     if (item2.Icon == null && !string.IsNullOrEmpty(item2.IconSrc))
                     {
-                        WebManager.Get(item2.IconSrc, null, null, new CancellableProgress(), delegate (byte[] data) {
-                            Dispatcher.Dispatch(delegate {
+                        WebManager.Get(item2.IconSrc, null, null, new CancellableProgress(), delegate (byte[] data)
+                        {
+                            Dispatcher.Dispatch(delegate
+                            {
                                 if (data.Length > 0)
                                 {
                                     try
@@ -480,7 +487,8 @@ namespace Game
                                 }
                             });
                         }, delegate (Exception e) { });
-                    }else if (item2.IconInstance != null) item2.IconInstance.Subtexture = new Subtexture(item2.Icon, Vector2.Zero, Vector2.One);
+                    }
+                    else if (item2.IconInstance != null) item2.IconInstance.Subtexture = new Subtexture(item2.Icon, Vector2.Zero, Vector2.One);
                 }
                 if (list.Count > 0 && !string.IsNullOrEmpty(nextCursor))
                 {

@@ -1,7 +1,6 @@
 using Engine;
 using Engine.Audio;
 using GameEntitySystem;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using TemplatesDatabase;
@@ -132,7 +131,7 @@ namespace Game
         public virtual bool Eat(int value)
         {
             int num = Terrain.ExtractContents(value);
-            Block obj = BlocksManager.Blocks[num];            
+            Block obj = BlocksManager.Blocks[num];
             float num2 = obj.GetNutritionalValue(value);
             float sicknessProbability = obj.GetSicknessProbability(value);
             if (num2 > 0f)
@@ -236,7 +235,7 @@ namespace Game
             m_lastTemperature = Temperature;
             m_lastWetness = Wetness;
             m_environmentTemperature = Temperature;
-            m_componentPlayer.ComponentHealth.Attacked += delegate(ComponentCreature componentCreature) { m_lastAttackedTime = m_subsystemTime.GameTime; };
+            m_componentPlayer.ComponentHealth.Attacked += delegate (ComponentCreature componentCreature) { m_lastAttackedTime = m_subsystemTime.GameTime; };
             foreach (KeyValuePair<string, object> item in valuesDictionary.GetValue<ValuesDictionary>("Satiation"))
             {
                 m_satiation[int.Parse(item.Key, CultureInfo.InvariantCulture)] = (float)item.Value;

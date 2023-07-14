@@ -1,9 +1,8 @@
-﻿using System.IO;
-using Engine.Media;
+﻿using Engine.Media;
 
 namespace Game.IContentReader
 {
-    public class BitmapFontReader:IContentReader
+    public class BitmapFontReader : IContentReader
     {
         public override string Type => "Engine.Media.BitmapFont";
         public override string[] DefaultSuffix => new string[] { "lst", "png" };

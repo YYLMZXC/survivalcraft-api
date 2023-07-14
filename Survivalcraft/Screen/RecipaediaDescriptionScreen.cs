@@ -179,7 +179,7 @@ namespace Game
                     if (num2 < blockProperties.Count - blockProperties.Count / 2)
                     {
                         LabelWidget propertyNames1Widget = m_propertyNames1Widget;
-                        propertyNames1Widget.Text = propertyNames1Widget.Text +LanguageControl.Get(fName, item.Key) + ":\n";
+                        propertyNames1Widget.Text = propertyNames1Widget.Text + LanguageControl.Get(fName, item.Key) + ":\n";
                         LabelWidget propertyValues1Widget = m_propertyValues1Widget;
                         propertyValues1Widget.Text = propertyValues1Widget.Text + item.Value + "\n";
                     }

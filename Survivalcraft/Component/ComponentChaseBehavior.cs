@@ -1,8 +1,8 @@
 using Engine;
 using GameEntitySystem;
-using TemplatesDatabase;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using TemplatesDatabase;
 namespace Game
 {
     public class ComponentChaseBehavior : ComponentBehavior, IUpdateable
@@ -161,7 +161,8 @@ namespace Game
                 }
             };
 
-            m_componentCreature.ComponentHealth.Attacked += delegate (ComponentCreature attacker) {
+            m_componentCreature.ComponentHealth.Attacked += delegate (ComponentCreature attacker)
+            {
                 if (m_random.Float(0f, 1f) < m_chaseWhenAttackedProbability)
                 {
                     if (m_chaseWhenAttackedProbability >= 1f)

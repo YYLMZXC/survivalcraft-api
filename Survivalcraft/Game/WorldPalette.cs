@@ -1,9 +1,9 @@
 using Engine;
 using Engine.Serialization;
+using SimpleJson;
 using System;
 using System.Linq;
 using TemplatesDatabase;
-using SimpleJson;
 namespace Game
 {
     public class WorldPalette
@@ -54,13 +54,13 @@ namespace Game
             string[] array = valuesDictionary.GetValue("Colors", new string(';', 15)).Split(';');
             if (array.Length != 16)
             {
-                throw new InvalidOperationException(LanguageControl.Get(GetType().Name,0));
+                throw new InvalidOperationException(LanguageControl.Get(GetType().Name, 0));
             }
             Colors = array.Select((string s, int i) => (!string.IsNullOrEmpty(s)) ? HumanReadableConverter.ConvertFromString<Color>(s) : DefaultColors[i]).ToArray();
             string[] array2 = valuesDictionary.GetValue("Names", new string(';', 15)).Split(';');
             if (array2.Length != 16)
             {
-                throw new InvalidOperationException(LanguageControl.Get(GetType().Name,1));
+                throw new InvalidOperationException(LanguageControl.Get(GetType().Name, 1));
             }
             Names = array2.Select((string s, int i) => (!string.IsNullOrEmpty(s)) ? s : LanguageControl.GetWorldPalette(i)).ToArray();
             string[] names = Names;
@@ -78,7 +78,7 @@ namespace Game
                 }
                 return;
             }
-            throw new InvalidOperationException(LanguageControl.Get(GetType().Name,2));
+            throw new InvalidOperationException(LanguageControl.Get(GetType().Name, 2));
         }
 
         public ValuesDictionary Save()

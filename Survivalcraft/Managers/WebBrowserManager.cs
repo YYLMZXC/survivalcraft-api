@@ -7,7 +7,7 @@ namespace Game
     {
         public static void LaunchBrowser(string url)
         {
-            
+
             if (!url.Contains("://"))
             {
                 url = "http://" + url;

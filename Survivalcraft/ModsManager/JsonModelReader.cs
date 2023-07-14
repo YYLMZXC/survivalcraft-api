@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Engine;
 using Engine.Graphics;
-using System.IO;
-using Engine;
 using SimpleJson;
-using System.Xml.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
 namespace Game
 {
     /** 
@@ -73,10 +72,13 @@ namespace Game
                     JsonObject jsonObj = obj as JsonObject;
                     Vector2 textureSize = Vector2.Zero;
                     Dictionary<string, string> texturemap = new Dictionary<string, string>();
-                    if (jsonObj.TryGetValue("display", out object obj13)) {
-                        if ((obj13 as JsonObject).TryGetValue("thirdperson_righthand", out object obj1)) {
+                    if (jsonObj.TryGetValue("display", out object obj13))
+                    {
+                        if ((obj13 as JsonObject).TryGetValue("thirdperson_righthand", out object obj1))
+                        {
                             JsonObject jobj1 = obj1 as JsonObject;
-                            if (jobj1.TryGetValue("rotation", out object obj4)) {
+                            if (jobj1.TryGetValue("rotation", out object obj4))
+                            {
                                 JsonArray jsonArray = obj4 as JsonArray;
                                 InHandRotation = new Vector3(ObjConvertFloat(jsonArray[0]), ObjConvertFloat(jsonArray[1]), ObjConvertFloat(jsonArray[2]));
                             }
@@ -131,7 +133,7 @@ namespace Game
                     if (jsonObj.TryGetValue("elements", out object jarr))
                     {
                         JsonArray array = jarr as JsonArray;
-                        for (int l=0;l<array.Count;l++)
+                        for (int l = 0; l < array.Count; l++)
                         {
                             JsonObject jobj = array[l] as JsonObject;
                             JsonArray from = jobj["from"] as JsonArray;

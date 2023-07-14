@@ -97,7 +97,8 @@ namespace Game
         {
             bool flag = false;
             bool skip = false;
-            ModsManager.HookAction("OnModelAnimate", loader => {
+            ModsManager.HookAction("OnModelAnimate", loader =>
+            {
                 loader.OnModelAnimate(this, out skip);
                 flag = (flag | skip);
                 return false;

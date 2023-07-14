@@ -258,7 +258,7 @@ namespace Game
                         SettingsManager.ScpboxUserInfo += "昵称：" + data["nickName"].ToString();
                         SettingsManager.ScpboxUserInfo += "\n账号：" + data["user"].ToString();
                         SettingsManager.ScpboxUserInfo += "\n登录时间：" + data["loginTime"].ToString();
-                        DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Ok, "登录成功:" + data["nickName"].ToString(), LanguageControl.Ok, null, delegate 
+                        DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Ok, "登录成功:" + data["nickName"].ToString(), LanguageControl.Ok, null, delegate
                         {
                             m_loginProcessData = null;
                             DialogsManager.HideAllDialogs();
@@ -274,8 +274,8 @@ namespace Game
                         }));
                     }
                 };
-                login.fail = delegate (Exception e) 
-                { 
+                login.fail = delegate (Exception e)
+                {
                     login.tip.Text = e.ToString();
                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, "登录失败:" + e.Message, LanguageControl.Ok, null, delegate
                     {

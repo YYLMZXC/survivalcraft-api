@@ -45,7 +45,7 @@ namespace Game
                 if (craftingRecipe.RequiredHeatLevel == 0f)
                 {
                     m_craftingRecipeWidget.Recipe = craftingRecipe;
-                    m_craftingRecipeWidget.NameSuffix =string.Format(LanguageControl.GetContentWidgets(GetType().Name,1), m_recipeIndex + 1);
+                    m_craftingRecipeWidget.NameSuffix = string.Format(LanguageControl.GetContentWidgets(GetType().Name, 1), m_recipeIndex + 1);
                     m_craftingRecipeWidget.IsVisible = true;
                     m_smeltingRecipeWidget.IsVisible = false;
                 }

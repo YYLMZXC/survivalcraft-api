@@ -963,7 +963,8 @@ namespace Game
                     return SpawnCreatures(creatureType, "Sparrow", point, count3).Count;
                 }
             });
-            ModsManager.HookAction("InitializeCreatureTypes", (modLoader) => {
+            ModsManager.HookAction("InitializeCreatureTypes", (modLoader) =>
+            {
                 modLoader.InitializeCreatureTypes(this, m_creatureTypes);
                 return false;
             });

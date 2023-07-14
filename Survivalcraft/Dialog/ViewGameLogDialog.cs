@@ -1,10 +1,10 @@
 using Engine;
 using Engine.Media;
-using System.Collections.Generic;
-using System.Xml.Linq;
 using SimpleJson;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Xml.Linq;
 namespace Game
 {
     public class ViewGameLogDialog : Dialog
@@ -18,7 +18,7 @@ namespace Game
         public static string fName = "ViewGameLogDialog";
 
         public ViewGameLogDialog()
-        {            
+        {
             XElement node = ContentManager.Get<XElement>("Dialogs/ViewGameLogDialog");
             LoadContents(this, node);
             m_listPanel = Children.Find<ListPanelWidget>("ViewGameLogDialog.ListPanel");
@@ -76,15 +76,18 @@ namespace Game
             {
                 m_filterButton.Text = LanguageControl.Get("Usual", "Errors");
             }
-            if (m_uploadButton.IsClicked) {
+            if (m_uploadButton.IsClicked)
+            {
                 if (string.IsNullOrEmpty(SettingsManager.ScpboxAccessToken))
                 {
-                    var messageDialog = new MessageDialog(LanguageControl.Get(fName, 1), LanguageControl.Get(fName, 2), LanguageControl.Get(fName, 3), LanguageControl.Get(fName, 4),(btn)=> {
+                    var messageDialog = new MessageDialog(LanguageControl.Get(fName, 1), LanguageControl.Get(fName, 2), LanguageControl.Get(fName, 3), LanguageControl.Get(fName, 4), (btn) =>
+                    {
                         DialogsManager.HideAllDialogs();
                     });
                     DialogsManager.ShowDialog(this, messageDialog);
                 }
-                else {
+                else
+                {
                     var cancellableProgress = new CancellableProgress();
                     var dialog = new CancellableBusyDialog(LanguageControl.Get(fName, 5), true);
                     DialogsManager.ShowDialog(this, dialog);
@@ -95,9 +98,9 @@ namespace Game
                     dictionary.Add("Content-Type", "application/octet-stream");
                     dictionary.Add("Dropbox-API-Arg", jsonObject.ToString());
                     var memoryStream = new MemoryStream();
-                    GameLogSink.m_stream.Seek(0,SeekOrigin.Begin);
+                    GameLogSink.m_stream.Seek(0, SeekOrigin.Begin);
                     GameLogSink.m_stream.CopyTo(memoryStream);
-                    memoryStream.Seek(0,SeekOrigin.Begin);
+                    memoryStream.Seek(0, SeekOrigin.Begin);
                     WebManager.Post(SPMBoxExternalContentProvider.m_redirectUri + "/com/files/upload", null, dictionary, memoryStream, cancellableProgress, delegate
                     {
                         dialog.LargeMessage = LanguageControl.Get(fName, 6);

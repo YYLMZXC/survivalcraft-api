@@ -84,7 +84,7 @@ namespace Game
                     num = MathUtils.Min(num, x);
                 }
             }
-            if(m_fuseSound != null)
+            if (m_fuseSound != null)
             {
                 m_fuseSound.Volume = SettingsManager.SoundsVolume * m_subsystemAudio.CalculateVolume(num, 2f);
                 if (m_fuseSound.Volume > AudioManager.MinAudibleVolume)

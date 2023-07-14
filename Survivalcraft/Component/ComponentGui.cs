@@ -1,6 +1,6 @@
-using System;
 using Engine;
 using GameEntitySystem;
+using System;
 using TemplatesDatabase;
 
 namespace Game
@@ -251,7 +251,8 @@ namespace Game
         {
             HandleInput();
             UpdateWidgets();
-            ModsManager.HookAction("GuiUpdate", modLoader => {
+            ModsManager.HookAction("GuiUpdate", modLoader =>
+            {
                 modLoader.GuiUpdate(this);
                 return false;
             });
@@ -592,7 +593,8 @@ namespace Game
                 else
                 {
                     var clothingWidget = new ClothingWidget(m_componentPlayer);
-                    ModsManager.HookAction("ClothingWidgetOpen", modLoader => {
+                    ModsManager.HookAction("ClothingWidgetOpen", modLoader =>
+                    {
                         modLoader.ClothingWidgetOpen(this, clothingWidget);
                         return false;
                     });
@@ -688,7 +690,8 @@ namespace Game
             }
             if (m_cameraButtonWidget.IsClicked || playerInput.SwitchCameraMode /*|| input.IsKeyDownOnce(Engine.Input.Key.V) 这段会导致打字时点v触发相机*/|| input.IsPadButtonDownOnce(Engine.Input.GamePadButton.RightThumb) || input.IsPadButtonDownOnce(Engine.Input.GamePadButton.DPadDown))
             {
-                ModsManager.HookAction("OnCameraChange", modLoader => {
+                ModsManager.HookAction("OnCameraChange", modLoader =>
+                {
                     modLoader.OnCameraChange(m_componentPlayer, this);
                     return false;
                 });

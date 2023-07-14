@@ -141,7 +141,7 @@ namespace Game
                     }
                     else
                     {
-                        m_primitivesRenderer.Flush(camera.ProjectionMatrix); 
+                        m_primitivesRenderer.Flush(camera.ProjectionMatrix);
                     }
                 }
             }
@@ -157,7 +157,8 @@ namespace Game
             m_subsystemTerrain = Project.FindSubsystem<SubsystemTerrain>(throwOnError: true);
             m_subsystemSky = Project.FindSubsystem<SubsystemSky>(throwOnError: true);
             m_subsystemShadows = Project.FindSubsystem<SubsystemShadows>(throwOnError: true);
-            ModsManager.HookAction("GetMaxInstancesCount", modLoader => {
+            ModsManager.HookAction("GetMaxInstancesCount", modLoader =>
+            {
                 MaxInstancesCount = Math.Max(modLoader.GetMaxInstancesCount(), MaxInstancesCount);
                 return false;
             });
@@ -255,7 +256,8 @@ namespace Game
                 Display.DrawIndexed(PrimitiveType.TriangleList, modelShader, instancedModelData.VertexBuffer, instancedModelData.IndexBuffer, 0, instancedModelData.IndexBuffer.IndicesCount);
                 ModelsDrawn++;
                 //»­Ãû³Æ
-                ModsManager.HookAction("OnModelRendererDrawExtra", modLoader => {
+                ModsManager.HookAction("OnModelRendererDrawExtra", modLoader =>
+                {
                     modLoader.OnModelRendererDrawExtra(this, modelsDatum, camera, alphaThreshold);
                     return false;
                 });

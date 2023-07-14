@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using Engine;
 using Engine.Graphics;
 using Engine.Media;
 using Engine.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace Game
 {
@@ -37,7 +37,7 @@ namespace Game
             }
         }
 
-        public static Block[] m_blocks = new Block[1024];
+        public static Block[] m_blocks = new Block[4096];
 
         public static FluidBlock[] m_fluidBlocks = new FluidBlock[1024];
 
@@ -123,7 +123,8 @@ namespace Game
             {
                 m_imageExtrusionsCache.Clear();
             };
-            ModsManager.HookAction("BlocksInitalized", modLoader => {
+            ModsManager.HookAction("BlocksInitalized", modLoader =>
+            {
                 modLoader.BlocksInitalized();
                 return false;
             });

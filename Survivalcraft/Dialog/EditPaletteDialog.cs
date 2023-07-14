@@ -1,5 +1,4 @@
 using Engine;
-using Engine.Media;
 using System.Xml.Linq;
 
 namespace Game
@@ -81,7 +80,7 @@ namespace Game
                 {
                     Size = new Vector2(160f, 60f),
                     VerticalAlignment = WidgetAlignment.Center,
-                    Text = LanguageControl.Get(GetType().Name,1)
+                    Text = LanguageControl.Get(GetType().Name, 1)
                 });
                 obj.Children.Add(new CanvasWidget
                 {
@@ -136,7 +135,7 @@ namespace Game
                 if (m_resetButtons[k].IsClicked)
                 {
                     m_tmpPalette.Colors[k] = WorldPalette.DefaultColors[k];
-                    m_tmpPalette.Names[k] = LanguageControl.GetWorldPalette( k);
+                    m_tmpPalette.Names[k] = LanguageControl.GetWorldPalette(k);
                 }
             }
             if (m_okButton.IsClicked)

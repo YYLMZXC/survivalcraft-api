@@ -259,11 +259,11 @@ namespace Engine.Graphics
 			for (int i = 0; i < params4; i++)
 			{
 				var stringBuilder = new StringBuilder(256);
-				GL.GetActiveAttrib(m_program, i, stringBuilder.Capacity, out int _, out int _, out ActiveAttribType _, stringBuilder);
+				GL.GetActiveAttrib(m_program, i, stringBuilder.Capacity, out int _, out int _, out ActiveAttribType _,stringBuilder);
 				int attribLocation = GL.GetAttribLocation(m_program, stringBuilder.ToString());
 				if (!dictionary.TryGetValue(stringBuilder.ToString(), out string value))
 				{
-					throw new InvalidOperationException($"Attribute \"{stringBuilder.ToString()}\" has no semantic defined in shader metadata.");
+					throw new InvalidOperationException($"Attribute \"{stringBuilder}\" has no semantic defined in shader metadata.");
 				}
 				m_shaderAttributeData.Add(new ShaderAttributeData
 				{

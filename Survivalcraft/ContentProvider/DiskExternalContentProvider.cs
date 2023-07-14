@@ -23,10 +23,12 @@ namespace Game
 
         public string Description => LanguageControl.Get(fName, "Description");
 
-        public DiskExternalContentProvider() {
-            if (!Directory.Exists(LocalPath)) {
+        public DiskExternalContentProvider()
+        {
+            if (!Directory.Exists(LocalPath))
+            {
                 Directory.CreateDirectory(LocalPath);
-            }        
+            }
         }
         public void Dispose()
         {
@@ -95,7 +97,7 @@ namespace Game
             try
             {
                 FileStream fileStream = null;
-                string nPath = Path.Combine(LocalPath,path);
+                string nPath = Path.Combine(LocalPath, path);
                 fileStream = !File.Exists(nPath) ? File.Create(nPath) : File.OpenWrite(nPath);
                 stream.CopyTo(fileStream);
                 fileStream.Close();

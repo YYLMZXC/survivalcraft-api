@@ -213,7 +213,8 @@ namespace Game
         public float ApplyArmorProtection(float attackPower)
         {
             bool Applied = false;
-            ModsManager.HookAction("ApplyArmorProtection", modLoader => {
+            ModsManager.HookAction("ApplyArmorProtection", modLoader =>
+            {
                 attackPower = modLoader.ApplyArmorProtection(this, attackPower, out bool flag2);
                 Applied |= flag2;
                 return false;
@@ -333,7 +334,7 @@ namespace Game
                 {
                     Block block = BlocksManager.Blocks[Terrain.ExtractContents(clothe)];
                     ClothingData clothingData = block.GetClothingData(clothe);
-                    clothingData.Update?.Invoke(clothe,this);
+                    clothingData.Update?.Invoke(clothe, this);
                 }
             }
             foreach (ClothingSlot slot in m_outerSlotsOrder)
@@ -484,7 +485,7 @@ namespace Game
                     processedValue = value;
                     processedCount = processCount;
                 }
-                else if (block.Eat(m_componentVitalStats,value) || !m_componentVitalStats.Eat(value))
+                else if (block.Eat(m_componentVitalStats, value) || !m_componentVitalStats.Eat(value))
                 {
                     processedValue = value;
                     processedCount = processCount;
@@ -494,7 +495,7 @@ namespace Game
             if (block.CanWear(value))
             {
                 ClothingData clothingData = block.GetClothingData(value);
-                clothingData.Mount?.Invoke(value,this);
+                clothingData.Mount?.Invoke(value, this);
                 var list = new List<int>(GetClothes(clothingData.Slot))
                 {
                     value
@@ -598,7 +599,7 @@ namespace Game
                         foreach (int clothe in GetClothes(slot))
                         {
                             int data = Terrain.ExtractData(clothe);
-                            Block block =BlocksManager.Blocks[Terrain.ExtractContents(clothe)];
+                            Block block = BlocksManager.Blocks[Terrain.ExtractContents(clothe)];
                             ClothingData clothingData = block.GetClothingData(clothe);
                             Color fabricColor = SubsystemPalette.GetFabricColor(m_subsystemTerrain, ClothingBlock.GetClothingColor(data));
                             texturedBatch2D = m_primitivesRenderer.TexturedBatch(clothingData.Texture, useAlphaTest: false, num++, DepthStencilState.None, null, BlendState.NonPremultiplied, SamplerState.PointClamp);

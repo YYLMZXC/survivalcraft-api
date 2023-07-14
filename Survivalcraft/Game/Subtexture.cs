@@ -1,5 +1,5 @@
-﻿using Engine.Graphics;
-using Engine;
+﻿using Engine;
+using Engine.Graphics;
 namespace Game
 {
     public class Subtexture

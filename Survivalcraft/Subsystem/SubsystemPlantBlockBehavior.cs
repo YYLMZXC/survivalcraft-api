@@ -57,7 +57,7 @@ namespace Game
                         Block block = BlocksManager.Blocks[num2];
                         if (block.IsFaceTransparent(SubsystemTerrain, 4, cellValue) && !(block is FenceBlock))
                         {
-                        SubsystemTerrain.DestroyCell(0, x, y, z, 0, noDrop: false, noParticleSystem: false);
+                            SubsystemTerrain.DestroyCell(0, x, y, z, 0, noDrop: false, noParticleSystem: false);
                         }
                         break;
                     }

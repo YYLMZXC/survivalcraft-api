@@ -323,7 +323,8 @@ namespace Game
             }, null);
             m_stateMachine.AddState("PlayerDead", delegate
             {
-                ModsManager.HookAction("OnPlayerDead", modLoader => {
+                ModsManager.HookAction("OnPlayerDead", modLoader =>
+                {
                     modLoader.OnPlayerDead(this);
                     return false;
                 });
@@ -736,7 +737,8 @@ namespace Game
             }
             LastSpawnTime = m_subsystemGameInfo.TotalElapsedGameTime;
             int num = ++SpawnsCount;
-            ModsManager.HookAction("OnPlayerSpawned", modLoader => {
+            ModsManager.HookAction("OnPlayerSpawned", modLoader =>
+            {
                 return modLoader.OnPlayerSpawned(spawnMode, entity2.FindComponent<ComponentPlayer>(), position);
             });
         }

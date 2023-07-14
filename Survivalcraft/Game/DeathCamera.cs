@@ -27,7 +27,7 @@ namespace Game
             m_bestPosition = FindBestCameraPosition(vector, 6f);
             SetupPerspectiveCamera(m_position, vector - m_position, Vector3.UnitY);
             var componentPlayer = GameWidget.Target as ComponentPlayer;
-            if (componentPlayer != null &&  m_bestPosition.HasValue)
+            if (componentPlayer != null && m_bestPosition.HasValue)
             {
                 Vector3 vector2 = Matrix.CreateWorld(Vector3.Zero, vector - m_bestPosition.Value, Vector3.UnitY).ToYawPitchRoll();
                 m_vrDeltaYaw = vector2.X;

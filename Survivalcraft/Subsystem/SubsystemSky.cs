@@ -302,7 +302,7 @@ namespace Game
                     {
                         ViewUnderMagmaDepth = surfaceHeight.Value + 1f - viewPosition.Y;
                     }
-                }               
+                }
                 if (ViewUnderWaterDepth > 0f)
                 {
                     int seasonalHumidity = m_subsystemTerrain.Terrain.GetSeasonalHumidity(x, z);

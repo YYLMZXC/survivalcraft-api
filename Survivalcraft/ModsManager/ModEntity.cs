@@ -1,39 +1,39 @@
-using System.IO;
-using System.Collections.Generic;
-using Engine.Graphics;
 using Engine;
-using System.Reflection;
+using Engine.Graphics;
 using System;
-using System.Xml.Linq;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Reflection;
+using System.Xml.Linq;
+using Tiny7z.Archive;
 
 namespace Game
 {
-    public class ModEntity
+	public class ModEntity
     {
         public ModInfo modInfo;
         public Texture2D Icon;
-        public ZipArchive ModArchive;
-        public Dictionary<string, ZipArchiveEntry> ModFiles = new Dictionary<string, ZipArchiveEntry>();
+        public SevenZipArchive ModArchive;
+        public Dictionary<string, ArchiveFile> ModFiles = new Dictionary<string, ArchiveFile>();
         public List<Block> Blocks = new List<Block>();
         public string ModFilePath;
         public bool IsDependencyChecked;
         public ModLoader Loader { get { return ModLoader_; } set { ModLoader_ = value; } }
         private ModLoader ModLoader_;
 
-        public ModEntity() {}
+        public ModEntity() { }
 
-        public ModEntity(ZipArchive zipArchive)
+        public ModEntity(SevenZipArchive archive)
         {
             ModFilePath = ModsManager.ModsPath;
-            ModArchive = zipArchive;
+            ModArchive = archive;
             InitResources();
         }
-        public ModEntity(string FileName, ZipArchive zipArchive)
+        public ModEntity(string fileName, SevenZipArchive archive)
         {
-            ModFilePath = FileName;
-            ModArchive = zipArchive;
+            ModFilePath = fileName;
+            ModArchive = archive;
             InitResources();
         }
 
@@ -42,6 +42,7 @@ namespace Game
             Icon = Texture2D.Load(stream);
             stream.Close();
         }
+
         /// <summary>
         /// 获取指定后缀文件列表，带.
         /// </summary>
@@ -49,26 +50,28 @@ namespace Game
         /// <param name="action">参数1文件名参数，2打开的文件流</param>
         public virtual void GetFiles(string extension, Action<string, Stream> action)
         {
-            var files = new List<Stream>();
-            //将每个zip里面的文件读进内存中
-            foreach (ZipArchiveEntry zipArchiveEntry in ModArchive.ReadCentralDir())
+            using (var extractor = ModArchive.Extractor())
             {
-                if (Storage.GetExtension(zipArchiveEntry.FilenameInZip) == extension)
+                foreach (var file in extractor.Files)
                 {
-                    var stream = new MemoryStream();
-                    ModArchive.ExtractFile(zipArchiveEntry, stream);
-                    stream.Position = 0L;
-                    try
+                    var name = file.Name;
+                    if (Storage.GetExtension(name) == extension)
                     {
-                        action.Invoke(zipArchiveEntry.FilenameInZip, stream);
-                    }
-                    catch (Exception e)
-                    {
-                        Log.Error(string.Format("获取文件[{0}]失败：{1}", zipArchiveEntry.FilenameInZip, e.Message));
-                    }
-                    finally
-                    {
-                        stream.Dispose();
+                        var stream = new MemoryStream();
+                        extractor.ExtractFile(name, stream);
+                        stream.Position = 0L;
+                        try
+                        {
+                            action.Invoke(name, stream);
+                        }
+                        catch (Exception e)
+                        {
+                            Log.Error(string.Format("获取文件[{0}]失败：{1}", name, e.Message));
+                        }
+                        finally
+                        {
+                            stream.Dispose();
+                        }
                     }
                 }
             }
@@ -77,19 +80,22 @@ namespace Game
         /// 获取指定文件
         /// </summary>
         /// <param name="filename"></param>
-        /// <param name="stream">参数1打开的文件流</param>
+        /// <param name="action">参数1打开的文件流</param>
         /// <returns></returns>
-        public virtual bool GetFile(string filename, Action<Stream> stream)
+        public virtual bool GetFile(string filename, Action<Stream> action)
         {
-            if (ModFiles.TryGetValue(filename, out ZipArchiveEntry entry))
+            if (ModFiles.TryGetValue(filename, out ArchiveFile file))
             {
-                using (MemoryStream ms = new MemoryStream())
+                using (var ms = new MemoryStream())
                 {
-                    ModArchive.ExtractFile(entry, ms);
+                    using (var extractor = ModArchive.Extractor())
+                    {
+                        extractor.ExtractFile(file.Name, ms);
+                    }
                     ms.Position = 0L;
                     try
                     {
-                        stream?.Invoke(ms);
+                        action?.Invoke(ms);
                     }
                     catch (Exception e)
                     {
@@ -99,9 +105,9 @@ namespace Game
             }
             return false;
         }
-        public virtual bool GetAssetsFile(string filename, Action<Stream> stream)
+        public virtual bool GetAssetsFile(string filename, Action<Stream> action)
         {
-            return GetFile("Assets/" + filename, stream);
+            return GetFile("Assets/" + filename, action);
         }
         /// <summary>
         /// 初始化语言包
@@ -126,37 +132,44 @@ namespace Game
         {
             ModFiles.Clear();
             if (ModArchive == null) return;
-            List<ZipArchiveEntry> entries = ModArchive.ReadCentralDir();
-            foreach (ZipArchiveEntry zipArchiveEntry in entries)
+            using (var extractor = ModArchive.Extractor())
             {
-                if (zipArchiveEntry.FileSize > 0)
+                foreach (var file in extractor.Files)
                 {
-                    ModFiles.Add(zipArchiveEntry.FilenameInZip, zipArchiveEntry);
+                    if (file.Size > 0)
+                    {
+                        ModFiles.Add(file.Name, file);
+                    }
                 }
             }
-            GetFile("modinfo.json", (stream) => {
+            GetFile("modinfo.json", (stream) =>
+            {
                 modInfo = ModsManager.DeserializeJson<ModInfo>(ModsManager.StreamToString(stream));
             });
             if (modInfo == null) return;
-            GetFile("icon.png", (stream) => {
+            GetFile("icon.png", (stream) =>
+            {
                 LoadIcon(stream);
             });
             foreach (var c in ModFiles)
             {
-                ZipArchiveEntry zipArchiveEntry = c.Value;
-                string filename = zipArchiveEntry.FilenameInZip;
-                if (!zipArchiveEntry.IsFilenameUtf8)
+                ArchiveFile file = c.Value;
+                string name = file.Name;
+                /*if (!file.IsFilenameUtf8)
                 {
                     var gbk = Encoding.GetEncoding("GBK");
                     var utf = Encoding.UTF8;
-                    var p = utf.GetString(Encoding.Convert(gbk, utf, gbk.GetBytes(zipArchiveEntry.FilenameInZip)));
-                    ModsManager.AddException(new Exception($"[{modInfo.Name}]文件名[{zipArchiveEntry.FilenameInZip}]编码不是UTF-8，请进行修正，GBK编码为[{p}]"));
-                }
-                if (filename.StartsWith("Assets/"))
+                    var p = utf.GetString(Encoding.Convert(gbk, utf, gbk.GetBytes(file.FilenameInZip)));
+                    ModsManager.AddException(new Exception($"[{modInfo.Name}]文件名[{file.FilenameInZip}]编码不是UTF-8，请进行修正，GBK编码为[{p}]"));
+                }*/
+                if (name.StartsWith("Assets/"))
                 {
-                    MemoryStream memoryStream = new MemoryStream();
-                    ContentInfo contentInfo = new ContentInfo(filename.Substring(7));
-                    ModArchive.ExtractFile(zipArchiveEntry, memoryStream);
+                    var memoryStream = new MemoryStream();
+                    var contentInfo = new ContentInfo(name.Substring(7));
+                    using (var extractor = ModArchive.Extractor())
+                    {
+                        extractor.ExtractFile(name, memoryStream);
+                    }
                     contentInfo.SetContentStream(memoryStream);
                     ContentManager.Add(contentInfo);
                 }
@@ -169,7 +182,8 @@ namespace Game
         public virtual void LoadBlocksData()
         {
             LoadingScreen.Info($"[{modInfo.Name}]加载.csv方块数据文件");
-            GetFiles(".csv", (filename, stream) => {
+            GetFiles(".csv", (filename, stream) =>
+            {
                 BlocksManager.LoadBlocksData(ModsManager.StreamToString(stream));
             });
         }
@@ -181,7 +195,8 @@ namespace Game
         {
             XElement element = xElement;
             LoadingScreen.Info($"[{modInfo.Name}]加载.xdb数据库文件");
-            GetFiles(".xdb", (filename, stream) => {
+            GetFiles(".xdb", (filename, stream) =>
+            {
                 ModsManager.CombineDataBase(element, stream);
             });
             Loader?.OnXdbLoad(xElement);
@@ -195,7 +210,8 @@ namespace Game
         {
             XElement element = xElement;
             LoadingScreen.Info($"[{modInfo.Name}]加载.clo衣物数据文件");
-            GetFiles(".clo", (filename, stream) => {
+            GetFiles(".clo", (filename, stream) =>
+            {
                 ModsManager.CombineClo(element, stream);
             });
         }
@@ -215,7 +231,8 @@ namespace Game
         public virtual void LoadDll()
         {
             LoadingScreen.Info($"[{modInfo.Name}]加载.dll程序集文件");
-            GetFiles(".dll", (filename, stream) => {
+            GetFiles(".dll", (filename, stream) =>
+            {
                 LoadDllLogic(stream);
             });
         }
@@ -256,9 +273,8 @@ namespace Game
                 }
                 else
                 {
-                    int staticIndex = (int)fieldInfo.GetValue(null);
                     var block = (Block)Activator.CreateInstance(type.GetTypeInfo().AsType());
-                    block.BlockIndex = staticIndex;
+                    block.BlockIndex = (int)fieldInfo.GetValue(null);
                     Blocks.Add(block);
                 }
             }
@@ -266,7 +282,8 @@ namespace Game
         public virtual void LoadJs()
         {
             LoadingScreen.Info($"[{modInfo.Name}]加载.js脚本文件");
-            GetFiles(".js", (filename, stream) => {
+            GetFiles(".js", (filename, stream) =>
+            {
                 JsInterface.Execute(new StreamReader(stream).ReadToEnd());
             });
         }
@@ -338,7 +355,7 @@ namespace Game
         public virtual void Dispose()
         {
             try { Loader?.ModDispose(); } catch { }
-            ModArchive?.ZipFileStream.Close();
+            ModArchive?.Close();
         }
         public override bool Equals(object obj)
         {

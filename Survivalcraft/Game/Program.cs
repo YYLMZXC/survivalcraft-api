@@ -3,8 +3,8 @@ using Engine.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.InteropServices;
 using System.Net;
+using System.Runtime.InteropServices;
 namespace Game
 {
     public static class Program
@@ -30,17 +30,18 @@ namespace Game
         }
 
         public static event Action<Uri> HandleUri;
-        
+
         [STAThread]
         public static void Main()
         {
             try
             {
                 SystemLanguage = CultureInfo.CurrentUICulture.Name;
-            } catch {}
+            }
+            catch { }
             if (string.IsNullOrEmpty(SystemLanguage))
                 SystemLanguage = "zh-CN";
-            
+
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
@@ -56,7 +57,7 @@ namespace Game
                 e.IsHandled = true;
             };
             JsInterface.Initiate();
-            Window.Run(480, 320, WindowMode.Resizable, "生存战争2.3插件版V" + ModsManager.APIVersion);
+            Window.Run((int)(Window.ScreenSize.X / 1.25f), (int)(Window.ScreenSize.Y * 0.8f), WindowMode.Resizable, "生存战争2.3插件版V" + ModsManager.APIVersion+"EVO-"+ModsManager.EVOVersion);
         }
 
         public static void HandleUriHandler(Uri uri)
@@ -111,7 +112,7 @@ namespace Game
             if (Engine.Input.Keyboard.IsKeyDown(Engine.Input.Key.F11))
             {
                 SettingsManager.WindowMode = SettingsManager.WindowMode == WindowMode.Fullscreen ? WindowMode.Resizable : WindowMode.Fullscreen;
-            }            
+            }
             try
             {
                 if (ExceptionManager.Error == null)

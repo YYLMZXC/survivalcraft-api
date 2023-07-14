@@ -49,7 +49,7 @@ public class ManageUserScreen : Screen
         Die = 4
     }
 
-    public enum SearchType 
+    public enum SearchType
     {
         ByUserId = 0,
         ByUserNo = 1,
@@ -129,11 +129,11 @@ public class ManageUserScreen : Screen
                 {
                     labelWidget.Color = Color.LightBlue;
                 }
-                else if(listItem.IsAdmin == 1)
+                else if (listItem.IsAdmin == 1)
                 {
                     labelWidget.Color = Color.Green;
                 }
-                else if(listItem.Die == 1)
+                else if (listItem.Die == 1)
                 {
                     labelWidget.Color = Color.Red;
                 }
@@ -181,7 +181,7 @@ public class ManageUserScreen : Screen
 
     public override void Update()
     {
-        if(m_contentList.SelectedItem != null && m_contentList.SelectedItem is ComUserInfo)
+        if (m_contentList.SelectedItem != null && m_contentList.SelectedItem is ComUserInfo)
         {
             ComUserInfo item = (ComUserInfo)m_contentList.SelectedItem;
             if (item.IsAdmin == 1)
@@ -235,7 +235,7 @@ public class ManageUserScreen : Screen
         if (m_lockButton.IsClicked && m_contentList.SelectedItem != null && m_contentList.SelectedItem is ComUserInfo)
         {
             ComUserInfo item = (ComUserInfo)m_contentList.SelectedItem;
-            if(item.IsLock == 0)
+            if (item.IsLock == 0)
             {
                 DialogsManager.ShowDialog(null, new TextBoxDialog("请输入锁定原因", item.LockReason, 1024, delegate (string reason)
                 {
@@ -253,7 +253,8 @@ public class ManageUserScreen : Screen
                                 var result = (JsonObject)WebManager.JsonFromBytes(data);
                                 string msg = result[0].ToString() == "200" ? "成功锁定：" + item.Name : result[1].ToString();
                                 DialogsManager.ShowDialog(null, new MessageDialog("操作成功", msg, LanguageControl.Ok, null, null));
-                            }, delegate (Exception e) {
+                            }, delegate (Exception e)
+                            {
                                 DialogsManager.HideDialog(busyDialog);
                                 DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, e.Message, LanguageControl.Ok, null, null));
                             });
@@ -276,7 +277,8 @@ public class ManageUserScreen : Screen
                             var result = (JsonObject)WebManager.JsonFromBytes(data);
                             string msg = result[0].ToString() == "200" ? "成功解锁：" + item.Name : result[1].ToString();
                             DialogsManager.ShowDialog(null, new MessageDialog("操作成功", msg, LanguageControl.Ok, null, null));
-                        }, delegate (Exception e) {
+                        }, delegate (Exception e)
+                        {
                             DialogsManager.HideDialog(busyDialog);
                             DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, e.Message, LanguageControl.Ok, null, null));
                         });
@@ -299,7 +301,8 @@ public class ManageUserScreen : Screen
                         var result = (JsonObject)WebManager.JsonFromBytes(data);
                         string msg = result[0].ToString() == "200" ? "成功重置密码，密码为123456" : result[1].ToString();
                         DialogsManager.ShowDialog(null, new MessageDialog("操作成功", msg, LanguageControl.Ok, null, null));
-                    }, delegate (Exception e) {
+                    }, delegate (Exception e)
+                    {
                         DialogsManager.HideDialog(busyDialog);
                         DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, e.Message, LanguageControl.Ok, null, null));
                     });
@@ -370,10 +373,10 @@ public class ManageUserScreen : Screen
         switch (filter)
         {
             case Filter.All: return "全部名单";
-            case Filter.Admin: return "管理员名单"; 
-            case Filter.Blacklisted: return "封禁名单"; 
-            case Filter.Inactive: return "未激活名单"; 
-            case Filter.Die: return "死鱼名单"; 
+            case Filter.Admin: return "管理员名单";
+            case Filter.Blacklisted: return "封禁名单";
+            case Filter.Inactive: return "未激活名单";
+            case Filter.Die: return "死鱼名单";
         }
         return "";
     }

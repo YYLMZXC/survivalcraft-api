@@ -1,6 +1,5 @@
 using Engine;
 using Engine.Input;
-using Engine.Media;
 using System;
 using System.Collections.Generic;
 
@@ -37,7 +36,8 @@ namespace Game
 
         public override void Update()
         {
-            if (!Noticed && MotdManager.UpdateResult != null) {
+            if (!Noticed && MotdManager.UpdateResult != null)
+            {
                 SimpleJson.JsonObject jsonObj = MotdManager.UpdateResult;
                 string update = jsonObj["update"].ToString();
                 if (update == "1")
@@ -56,7 +56,8 @@ namespace Game
                     {
                         Log.Error("Failed processing Update check. Reason: " + e.Message);
                     }
-                    finally {
+                    finally
+                    {
                         Noticed = true;
                     }
                 }

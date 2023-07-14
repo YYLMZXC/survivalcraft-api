@@ -1,10 +1,9 @@
-﻿using Engine.Graphics;
-using Engine;
-using System.IO;
+﻿using Engine;
+using Engine.Graphics;
 
 namespace Game.IContentReader
 {
-    public class SubtextureReader:IContentReader
+    public class SubtextureReader : IContentReader
     {
         public override string[] DefaultSuffix => new string[] { "png", "txt" };
         public override string Type => "Game.Subtexture";

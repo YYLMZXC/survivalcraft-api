@@ -58,7 +58,7 @@ namespace Game
             return m_feedbackCache.ContainsKey(key);
         }
 
-        public static void List(string cursor, string userFilter, string typeFilter, string moderationFilter, string sortOrder,string keySearch, string searchType, CancellableProgress progress, Action<List<CommunityContentEntry>, string> success, Action<Exception> failure)
+        public static void List(string cursor, string userFilter, string typeFilter, string moderationFilter, string sortOrder, string keySearch, string searchType, CancellableProgress progress, Action<List<CommunityContentEntry>, string> success, Action<Exception> failure)
         {
             progress = (progress ?? new CancellableProgress());
             if (!WebManager.IsInternetConnectionAvailable())
@@ -247,11 +247,11 @@ namespace Game
             WebManager.Post(m_scResDirAddress, null, null, WebManager.UrlParametersToStream(dictionary), progress, delegate
             {
                 success();
-                
+
             }, delegate (Exception error)
             {
                 failure(error);
-                
+
             });
         }
 

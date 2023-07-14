@@ -56,7 +56,7 @@ namespace Game
         {
             m_subsystemFurnitureBlockBehavior.GarbageCollectDesigns();
             m_slots.Clear();
-            for (int i = 0; i <FurnitureDesign.maxDesign; i++)
+            for (int i = 0; i < FurnitureDesign.maxDesign; i++)
             {
                 FurnitureDesign design = m_subsystemFurnitureBlockBehavior.GetDesign(i);
                 if (design != null)

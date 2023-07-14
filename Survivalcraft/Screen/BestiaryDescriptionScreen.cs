@@ -1,5 +1,4 @@
 using Engine;
-using Engine.Media;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
@@ -110,7 +109,7 @@ namespace Game
                 m_propertyNames2Widget.Text += LanguageControl.Get(GetType().Name, "weight");
                 LabelWidget propertyValues2Widget3 = m_propertyValues2Widget;
                 propertyValues2Widget3.Text = propertyValues2Widget3.Text + bestiaryCreatureInfo.Mass.ToString() + LanguageControl.Get(GetType().Name, "weight unit");
-                m_propertyNames2Widget.Text += LanguageControl.Get("BlocksManager", "Spawner Eggs")+":";
+                m_propertyNames2Widget.Text += LanguageControl.Get("BlocksManager", "Spawner Eggs") + ":";
                 LabelWidget propertyValues2Widget4 = m_propertyValues2Widget;
                 propertyValues2Widget4.Text = propertyValues2Widget4.Text + (bestiaryCreatureInfo.HasSpawnerEgg ? LanguageControl.Exists : LanguageControl.None) + "\n";
                 m_propertyNames2Widget.Text = m_propertyNames2Widget.Text.TrimEnd();

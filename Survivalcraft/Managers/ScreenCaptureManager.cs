@@ -36,9 +36,9 @@ namespace Game
                                 height = (int)MathUtils.Round(num / num2);
                                 break;
                             }
-                        case ScreenshotSize.FullHD:
-                            num = 1920;
-                            height = 1080;
+                        case ScreenshotSize.FullHD://4KÖ§³Ö
+                            num = 3840;
+                            height = 2160;
                             break;
                         default:
                             num = 1920;

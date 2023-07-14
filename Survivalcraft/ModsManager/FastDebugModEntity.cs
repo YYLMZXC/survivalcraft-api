@@ -12,7 +12,7 @@ namespace Game
 
         public FastDebugModEntity()
         {
-            modInfo = new ModInfo() { Name="[Debug]",PackageName="debug"};
+            modInfo = new ModInfo() { Name = "[Debug]", PackageName = "debug" };
             InitResources();
         }
 
@@ -77,11 +77,11 @@ namespace Game
         public override void LoadCr(ref XElement xElement)
         {
             foreach (string c in Storage.ListFileNames(ModsManager.ModsPath))
-			{
-				if (c.EndsWith(".cr"))
-					ModsManager.CombineCr(xElement, Storage.OpenFile(Storage.CombinePaths(ModsManager.ModsPath, c), OpenFileMode.Read));
-			}
-		}
+            {
+                if (c.EndsWith(".cr"))
+                    ModsManager.CombineCr(xElement, Storage.OpenFile(Storage.CombinePaths(ModsManager.ModsPath, c), OpenFileMode.Read));
+            }
+        }
 
         public override void LoadLauguage()
         {
@@ -103,11 +103,11 @@ namespace Game
         public override void LoadBlocksData()
         {
             foreach (string c in Storage.ListFileNames(ModsManager.ModsPath))
-			{
-				if (c.EndsWith(".csv"))
-					BlocksManager.LoadBlocksData(ModsManager.StreamToString(Storage.OpenFile(Storage.CombinePaths(ModsManager.ModsPath, c), OpenFileMode.Read)));
-			}
-		}
+            {
+                if (c.EndsWith(".csv"))
+                    BlocksManager.LoadBlocksData(ModsManager.StreamToString(Storage.OpenFile(Storage.CombinePaths(ModsManager.ModsPath, c), OpenFileMode.Read)));
+            }
+        }
 
         public override void LoadXdb(ref XElement xElement)
         {

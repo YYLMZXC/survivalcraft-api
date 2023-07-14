@@ -33,7 +33,8 @@ namespace Game
             CommunityContentManager.IsAdmin(new CancellableProgress(), delegate (bool isAdmin)
             {
                 m_isAdmin = isAdmin;
-            }, delegate (Exception e) {
+            }, delegate (Exception e)
+            {
             });
         }
 

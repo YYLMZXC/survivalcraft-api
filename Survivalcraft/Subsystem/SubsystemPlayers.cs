@@ -76,7 +76,7 @@ namespace Game
                 throw new InvalidOperationException("Player already added.");
             }
             m_playersData.Add(playerData);
-            for(int i = 0; i < m_playerExist.Length; i++)
+            for (int i = 0; i < m_playerExist.Length; i++)
             {
                 if (!m_playerExist[i])
                 {

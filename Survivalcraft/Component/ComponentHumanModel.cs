@@ -1,6 +1,5 @@
 using Engine;
 using Engine.Graphics;
-using Engine.Media;
 using GameEntitySystem;
 using System;
 using TemplatesDatabase;
@@ -216,7 +215,8 @@ namespace Game
         {
             bool flag = false;
             bool skip = false;
-            ModsManager.HookAction("OnModelAnimate", loader => {
+            ModsManager.HookAction("OnModelAnimate", loader =>
+            {
                 loader.OnModelAnimate(this, out skip);
                 flag = (flag | skip);
                 return false;
@@ -337,7 +337,7 @@ namespace Game
                 m_handAngles2 += s * (new Vector2(num6, num7) - m_handAngles2);
                 m_legAngles1 += s * (new Vector2(num3, y2) - m_legAngles1);
                 m_legAngles2 += s * (new Vector2(x2, y3) - m_legAngles2);
-                if(m_componentCreature.ComponentBody.CrouchFactor == 1)
+                if (m_componentCreature.ComponentBody.CrouchFactor == 1)
                 {
                     m_legAngles1 *= 0.5f;
                     m_legAngles2 *= 0.5f;

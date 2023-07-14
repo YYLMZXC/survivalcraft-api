@@ -59,7 +59,7 @@ namespace Game
                     }
                     if (nestedValue >= m_eggTypes.Count) m_eggTypes.Count = nestedValue + 1;
 
-                    m_eggTypes[nestedValue]=new EggType()
+                    m_eggTypes[nestedValue] = new EggType()
                     {
                         EggTypeIndex = nestedValue,
                         ShowEgg = item.GetNestedValue<bool>("ShowEgg"),

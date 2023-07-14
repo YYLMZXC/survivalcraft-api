@@ -23,18 +23,18 @@ namespace Game
         {
             if (m_buyButton != null && m_buyButton.IsClicked)
             {
-                
+
                 MarketplaceManager.ShowMarketplace();
                 ScreensManager.SwitchScreen("MainMenu");
             }
             if ((m_quitButton != null && m_quitButton.IsClicked) || Input.Back)
             {
-                
+
                 ScreensManager.SwitchScreen("MainMenu");
             }
             if (m_newWorldButton != null && m_newWorldButton.IsClicked)
             {
-                
+
                 ScreensManager.SwitchScreen("NewWorld");
             }
         }

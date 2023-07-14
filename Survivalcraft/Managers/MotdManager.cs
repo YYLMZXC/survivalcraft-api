@@ -93,12 +93,14 @@ namespace Game
             }
         }
 
-        public static void UpdateVersion() 
+        public static void UpdateVersion()
         {
             string url = string.Format(SettingsManager.MotdUpdateCheckUrl, VersionsManager.SerializationVersion, VersionsManager.Platform, ModsManager.APIVersion, LanguageControl.LName());
-            WebManager.Get(url, null, null, new CancellableProgress(), data => {
+            WebManager.Get(url, null, null, new CancellableProgress(), data =>
+            {
                 UpdateResult = SimpleJson.SimpleJson.DeserializeObject<SimpleJson.JsonObject>(System.Text.Encoding.UTF8.GetString(data));
-            }, ex => {
+            }, ex =>
+            {
                 Log.Error("Failed processing Update check. Reason: " + ex.Message);
             });
         }
@@ -130,14 +132,14 @@ namespace Game
         {
             //if (Time.PeriodicEvent(1.0, 0.0) && ModsManager.ConfigLoaded)
             //{
-                //var t = TimeSpan.FromHours(SettingsManager.MotdUpdatePeriodHours);
-                //DateTime now = DateTime.Now;
-                //if (now >= SettingsManager.MotdLastUpdateTime + t)
-                //{
-                //    SettingsManager.MotdLastUpdateTime = now;
-                //    DownloadMotd();
-                //    UpdateVersion();
-                //}
+            //var t = TimeSpan.FromHours(SettingsManager.MotdUpdatePeriodHours);
+            //DateTime now = DateTime.Now;
+            //if (now >= SettingsManager.MotdLastUpdateTime + t)
+            //{
+            //    SettingsManager.MotdLastUpdateTime = now;
+            //    DownloadMotd();
+            //    UpdateVersion();
+            //}
             //}
             if (CanDownloadMotd)
             {
@@ -145,7 +147,8 @@ namespace Game
                 CommunityContentManager.IsAdmin(new CancellableProgress(), delegate (bool isAdmin)
                 {
                     m_isAdmin = isAdmin;
-                }, delegate (Exception e) {
+                }, delegate (Exception e)
+                {
                 });
                 CanDownloadMotd = false;
             }
@@ -310,10 +313,11 @@ namespace Game
                 BulletinDialog bulletinDialog = new BulletinDialog(title, content, time, delegate
                 {
                     SettingsManager.BulletinTime = m_bulletin.Time;
-                }, delegate(LabelWidget titleLabel, LabelWidget contentLabel) {
+                }, delegate (LabelWidget titleLabel, LabelWidget contentLabel)
+                {
                     DialogsManager.ShowDialog(null, new TextBoxDialog("请输入标题", titleLabel.Text, 1024, delegate (string inputTitle)
                     {
-                        DialogsManager.ShowDialog(null, new TextBoxDialog("请输入内容", contentLabel.Text.Replace("\n","[n]"), 8192, delegate (string inputContent)
+                        DialogsManager.ShowDialog(null, new TextBoxDialog("请输入内容", contentLabel.Text.Replace("\n", "[n]"), 8192, delegate (string inputContent)
                         {
                             if (!string.IsNullOrEmpty(inputTitle) && !string.IsNullOrEmpty(inputContent))
                             {
@@ -337,7 +341,8 @@ namespace Game
                             textBox.Text = textBox.Text.Replace("\n", "[n]");
                         }));
                     }));
-                }, delegate (LabelWidget titleLabel, LabelWidget contentLabel) {
+                }, delegate (LabelWidget titleLabel, LabelWidget contentLabel)
+                {
                     int num = SettingsManager.MotdLastDownloadedData.IndexOf("<Motd2");
                     int num2 = SettingsManager.MotdLastDownloadedData.IndexOf("</Motd2>") + 8;
                     XElement xElement = XmlUtils.LoadXmlFromString(SettingsManager.MotdLastDownloadedData.Substring(num, num2 - num), throwOnError: true);
@@ -346,7 +351,7 @@ namespace Game
                     {
                         if (item.Name.LocalName == "Bulletin")
                         {
-                            if(IsCNLanguageType())
+                            if (IsCNLanguageType())
                             {
                                 item.Attribute("Title").Value = titleLabel.m_text;
                                 item.Element("Content").Value = contentLabel.m_text;
@@ -365,16 +370,18 @@ namespace Game
                     newDownloadedData += SettingsManager.MotdLastDownloadedData.Substring(num2);
                     var busyDialog = new CancellableBusyDialog("操作等待中", autoHideOnCancel: false);
                     DialogsManager.ShowDialog(null, busyDialog);
-                    SaveBulletin(newDownloadedData, busyDialog.Progress, delegate (byte[] data) {
+                    SaveBulletin(newDownloadedData, busyDialog.Progress, delegate (byte[] data)
+                    {
                         DialogsManager.HideDialog(busyDialog);
                         var result = (JsonObject)WebManager.JsonFromBytes(data);
-                        string msg = result[0].ToString() == "200" ? "公告已更新,建议重启游戏检查效果": result[1].ToString();
-                        if(result[0].ToString() == "200")
+                        string msg = result[0].ToString() == "200" ? "公告已更新,建议重启游戏检查效果" : result[1].ToString();
+                        if (result[0].ToString() == "200")
                         {
                             SettingsManager.MotdLastDownloadedData = newDownloadedData;
                         }
                         DialogsManager.ShowDialog(null, new MessageDialog("操作成功", msg, LanguageControl.Ok, null, null));
-                    }, delegate(Exception e) {
+                    }, delegate (Exception e)
+                    {
                         DialogsManager.HideDialog(busyDialog);
                         Log.Error("SaveBulletin:" + e.Message);
                     });
@@ -382,7 +389,8 @@ namespace Game
                 CommunityContentManager.IsAdmin(new CancellableProgress(), delegate (bool isAdmin)
                 {
                     m_isAdmin = isAdmin;
-                }, delegate (Exception e) {
+                }, delegate (Exception e)
+                {
                 });
                 bulletinDialog.m_editButton.IsVisible = m_isAdmin;
                 bulletinDialog.m_updateButton.IsVisible = m_isAdmin;

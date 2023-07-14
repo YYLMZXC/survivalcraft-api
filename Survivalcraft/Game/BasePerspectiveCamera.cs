@@ -75,13 +75,13 @@ namespace Game
                     ViewWidget viewWidget = GameWidget.ViewWidget;
                     if (!viewWidget.ScalingRenderTargetSize.HasValue)
                     {
-                        m_projectionMatrix *= 
+                        m_projectionMatrix *=
                             MatrixUtils.CreateScaleTranslation(
                                 0.5f * viewWidget.ActualSize.X,
-                                -0.5f * viewWidget.ActualSize.Y, 
-                                viewWidget.ActualSize.X / 2f, 
-                                viewWidget.ActualSize.Y / 2f) 
-                            * viewWidget.GlobalTransform 
+                                -0.5f * viewWidget.ActualSize.Y,
+                                viewWidget.ActualSize.X / 2f,
+                                viewWidget.ActualSize.Y / 2f)
+                            * viewWidget.GlobalTransform
                             * MatrixUtils.CreateScaleTranslation(2f / Display.Viewport.Width, -2f / Display.Viewport.Height, -1f, 1f);
                     }
                 }
@@ -98,9 +98,9 @@ namespace Game
                     Point2 size = Window.Size;
                     ViewWidget viewWidget = GameWidget.ViewWidget;
                     m_screenProjectionMatrix = CalculateBaseProjectionMatrix(GameWidget.ViewWidget.ActualSize)
-                        * MatrixUtils.CreateScaleTranslation(0.5f * viewWidget.ActualSize.X, -0.5f * viewWidget.ActualSize.Y, viewWidget.ActualSize.X / 2f, viewWidget.ActualSize.Y / 2f) 
-                        * viewWidget.GlobalTransform 
-                        * MatrixUtils.CreateScaleTranslation(2f / size.X, -2f / size.Y, -1f, 1f) ;
+                        * MatrixUtils.CreateScaleTranslation(0.5f * viewWidget.ActualSize.X, -0.5f * viewWidget.ActualSize.Y, viewWidget.ActualSize.X / 2f, viewWidget.ActualSize.Y / 2f)
+                        * viewWidget.GlobalTransform
+                        * MatrixUtils.CreateScaleTranslation(2f / size.X, -2f / size.Y, -1f, 1f);
                 }
                 return m_screenProjectionMatrix.Value;
             }
@@ -125,7 +125,7 @@ namespace Game
                 if (!m_viewProjectionMatrix.HasValue)
                 {
                     //世界坐标矩阵 * 投影矩阵得到屏幕矩阵，即将世界的坐标转换到屏幕的坐标
-                    m_viewProjectionMatrix = ViewMatrix  * ProjectionMatrix;
+                    m_viewProjectionMatrix = ViewMatrix * ProjectionMatrix;
                     /*
                     //测试，将屏幕坐标转回到世界坐标
                     //将屏幕坐标的0,0转换到世界的坐标中

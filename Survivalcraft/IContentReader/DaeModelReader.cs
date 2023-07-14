@@ -1,9 +1,8 @@
-﻿using System.IO;
-using Engine.Graphics;
+﻿using Engine.Graphics;
 
 namespace Game.IContentReader
 {
-    public class DaeModelReader:IContentReader
+    public class DaeModelReader : IContentReader
     {
         public override string Type => "Engine.Graphics.Model";
         public override string[] DefaultSuffix => new string[] { "dae" };

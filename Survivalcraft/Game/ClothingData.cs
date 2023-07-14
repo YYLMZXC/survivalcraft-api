@@ -42,7 +42,7 @@ namespace Game
         /// <summary>
         /// ×°±¸
         /// </summary>
-        public Action<int,ComponentClothing> Mount;
+        public Action<int, ComponentClothing> Mount;
         /// <summary>
         /// Ð¶ÔØ
         /// </summary>

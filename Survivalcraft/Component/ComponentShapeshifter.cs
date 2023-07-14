@@ -124,7 +124,8 @@ namespace Game
                 componentBody.Velocity = m_componentBody.Velocity;
                 entity.FindComponent<ComponentSpawn>(throwOnError: true).SpawnDuration = 0.5f;
 
-                ModsManager.HookAction("OnDespawned", modLoader => {
+                ModsManager.HookAction("OnDespawned", modLoader =>
+                {
                     modLoader.OnDespawned(entity, componentSpawn);
                     return false;
                 });

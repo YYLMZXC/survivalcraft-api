@@ -1,11 +1,8 @@
-﻿using System;
-using System.IO;
-
-namespace Game.IContentReader
+﻿namespace Game.IContentReader
 {
     public abstract class IContentReader
     {
-        public abstract string Type { get;}
+        public abstract string Type { get; }
         public abstract string[] DefaultSuffix { get; }
         /// <summary>
         /// 

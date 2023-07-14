@@ -1,9 +1,9 @@
 using Engine;
 using Engine.Graphics;
 using GameEntitySystem;
+using System;
 using System.Linq;
 using TemplatesDatabase;
-using System;
 namespace Game
 {
     public class ComponentModel : Component
@@ -159,7 +159,8 @@ namespace Game
         public virtual void SetModel(Model model)
         {
             IsSet = false;
-            ModsManager.HookAction("OnSetModel", (modLoader) => {
+            ModsManager.HookAction("OnSetModel", (modLoader) =>
+            {
                 modLoader.OnSetModel(this, model, out IsSet);
                 return IsSet;
             });

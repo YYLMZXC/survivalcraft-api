@@ -63,7 +63,7 @@ namespace Game
             {
                 Dismiss(m_textBoxWidget.Text);
             };
-            if(m_handler2 != null)
+            if (m_handler2 != null)
             {
                 m_textBoxWidget.TextChanged += delegate (TextBoxWidget textBox)
                 {

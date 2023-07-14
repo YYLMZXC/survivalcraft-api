@@ -66,7 +66,7 @@ namespace Game
                 var par = new Dictionary<string, string>();
                 par.Add("user", txa.Text);
                 par.Add("pass", txb.Text);
-                DialogsManager.ShowDialog(this,busyDialog);
+                DialogsManager.ShowDialog(this, busyDialog);
                 WebManager.Post(SPMBoxExternalContentProvider.m_redirectUri + "/com/api/login", par, null, new MemoryStream(), new CancellableProgress(), succ, fail);
             }
             if (btnb.IsClicked)

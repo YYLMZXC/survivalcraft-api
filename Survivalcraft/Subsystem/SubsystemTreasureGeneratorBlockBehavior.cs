@@ -53,8 +53,9 @@ namespace Game
                     break;
                 }
             }
-            ModsManager.HookAction("OnTreasureGenerate", (modLoader) => {
-                modLoader.OnTreasureGenerate(SubsystemTerrain,x, y, z, neighborX, neighborY, neighborZ, ref num, ref num2, out bool IsGenerate);
+            ModsManager.HookAction("OnTreasureGenerate", (modLoader) =>
+            {
+                modLoader.OnTreasureGenerate(SubsystemTerrain, x, y, z, neighborX, neighborY, neighborZ, ref num, ref num2, out bool IsGenerate);
                 return IsGenerate;
             });
             if (num != 0 && num2 > 0)

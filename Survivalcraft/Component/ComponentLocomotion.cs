@@ -485,7 +485,7 @@ namespace Game
             var vector = Vector3.Transform(m_componentCreature.ComponentBody.Matrix.Forward, Quaternion.CreateFromAxisAngle(right, LookAngles.Y));
             if (WalkSpeed > 0f && WalkOrder.HasValue)
             {
-                if (IsCreativeFlyEnabled||IsCreativeFlyEnabledSet)
+                if (IsCreativeFlyEnabled || IsCreativeFlyEnabledSet)
                 {
                     var v = new Vector3(WalkOrder.Value.X, 0f, WalkOrder.Value.Y);
                     if (FlyOrder.HasValue)

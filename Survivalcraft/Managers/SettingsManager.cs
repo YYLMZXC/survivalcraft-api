@@ -6,7 +6,6 @@ using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 using XmlUtilities;
-using System.Collections.Generic;
 namespace Game
 {
     public static class SettingsManager
@@ -294,14 +293,16 @@ namespace Game
             get;
             set;
         }
-        public static string ScpboxAccessToken { 
-            get; 
-            set; 
+        public static string ScpboxAccessToken
+        {
+            get;
+            set;
         }
 
-        public static string ScpboxUserInfo { 
-            get; 
-            set; 
+        public static string ScpboxUserInfo
+        {
+            get;
+            set;
         }
 
         public static bool MotdUseBackupUrl
@@ -555,7 +556,7 @@ namespace Game
                                     }
 
                                 }
-                                else if(item.Name.LocalName == "DisableMods")
+                                else if (item.Name.LocalName == "DisableMods")
                                 {
                                     foreach (XElement xElement1 in item.Elements())
                                     {

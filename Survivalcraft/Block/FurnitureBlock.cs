@@ -454,7 +454,7 @@ namespace Game
                 {
                     ResultValue = Terrain.MakeBlockValue(227, 0, SetDesignIndex(0, furnitureDesign2.Index, furnitureDesign2.ShadowStrengthFactor, furnitureDesign2.IsLightEmitter)),
                     ResultCount = 1,
-                    Description = LanguageControl.Get(GetType().Name,0),
+                    Description = LanguageControl.Get(GetType().Name, 0),
                     Ingredients = (string[])ingredients.Clone()
                 };
             }
@@ -563,7 +563,7 @@ namespace Game
 
         public void DisplayError()
         {
-            DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, LanguageControl.Get(GetType().Name,1), LanguageControl.Ok, null, null));
+            DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Error, LanguageControl.Get(GetType().Name, 1), LanguageControl.Ok, null, null));
         }
 
         public static int GetRotation(int data)

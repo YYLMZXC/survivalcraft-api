@@ -1,8 +1,6 @@
-﻿using System.IO;
-
-namespace Game.IContentReader
+﻿namespace Game.IContentReader
 {
-    public class ObjModelReader:IContentReader
+    public class ObjModelReader : IContentReader
     {
         public override string Type => "Game.ObjModel";
         public override string[] DefaultSuffix => new string[] { "obj" };

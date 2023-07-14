@@ -31,7 +31,7 @@ namespace Game
                         int cellContents2 = SubsystemTerrain.Terrain.GetCellContents(x2, y2, z2);
                         if (!BlocksManager.Blocks[cellContents2].IsCollidable_(cellValueFast))
                         {
-                        SubsystemTerrain.DestroyCell(0, x, y, z, 0, noDrop: false, noParticleSystem: false);
+                            SubsystemTerrain.DestroyCell(0, x, y, z, 0, noDrop: false, noParticleSystem: false);
                         }
                         break;
                     }
@@ -40,7 +40,7 @@ namespace Game
                         int cellContents = SubsystemTerrain.Terrain.GetCellContents(x, y - 1, z);
                         if (!BlocksManager.Blocks[cellContents].IsCollidable_(cellValueFast))
                         {
-                        SubsystemTerrain.DestroyCell(0, x, y, z, 0, noDrop: false, noParticleSystem: false);
+                            SubsystemTerrain.DestroyCell(0, x, y, z, 0, noDrop: false, noParticleSystem: false);
                         }
                         break;
                     }

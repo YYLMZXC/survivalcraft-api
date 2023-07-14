@@ -9,11 +9,12 @@ namespace Game
 {
     public class ComponentCreativeInventory : Component, IInventory
     {
-        internal class Order {
+        internal class Order
+        {
             public Block block;
             public int order;
             public int value;
-            public Order(Block b,int o,int v) { block = b;order = o;value = v; }
+            public Order(Block b, int o, int v) { block = b; order = o; value = v; }
         }
         public List<int> m_slots = new List<int>();
 

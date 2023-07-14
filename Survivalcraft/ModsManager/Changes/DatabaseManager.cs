@@ -36,7 +36,8 @@ namespace Game
             DatabaseNode = null;
             m_valueDictionaries.Clear();
         }
-        public static void LoadDataBaseFromXml(XElement node) {
+        public static void LoadDataBaseFromXml(XElement node)
+        {
             m_gameDatabase = new GameDatabase(XmlDatabaseSerializer.LoadDatabase(node));
             foreach (DatabaseObject explicitNestingChild in GameDatabase.Database.Root.GetExplicitNestingChildren(GameDatabase.EntityTemplateType, directChildrenOnly: false))
             {

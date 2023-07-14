@@ -110,7 +110,7 @@ namespace Game
                     m_longTermAverageFrameTime = (float)(m_totalFrameTime / m_frameCount);
                     float num = (int)MathUtils.Round(MathUtils.Round(m_totalFrameTime / m_frameCount / 0.004999999888241291) * 0.004999999888241291 * 1000.0);
                     float num2 = (int)MathUtils.Round(MathUtils.Round(m_totalCpuFrameTime / m_frameCount / 0.004999999888241291) * 0.004999999888241291 * 1000.0);
-                    
+
                     Log.Information($"PerformanceManager Measurement: frames={m_frameCount.ToString()}, avgFrameTime={num.ToString()}ms, avgFrameCpuTime={num2.ToString()}ms");
                 }
             }, delegate
@@ -150,7 +150,7 @@ namespace Game
 #endif
                 }
                 FontBatch2D fontBatch2D = m_primitivesRenderer.FontBatch(BitmapFont.DebugFont, 0, null, null, null, SamplerState.PointClamp);
-                fontBatch2D.QueueText(m_statsString, Vector2.Transform(Vector2.Zero,ScreensManager.RootWidget.GlobalTransform), 0f, Color.White, TextAnchor.Default, scale, Vector2.Zero);
+                fontBatch2D.QueueText(m_statsString, Vector2.Transform(Vector2.Zero, ScreensManager.RootWidget.GlobalTransform), 0f, Color.White, TextAnchor.Default, scale, Vector2.Zero);
             }
             if (SettingsManager.DisplayFpsRibbon)
             {

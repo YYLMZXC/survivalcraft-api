@@ -1,10 +1,9 @@
 using Engine;
-using System;
-using System.IO;
-using System.Collections.Generic;
-using Engine.Media;
 using Engine.Graphics;
-using System.Xml.Linq;
+using Engine.Media;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Game
 {
@@ -120,7 +119,8 @@ namespace Game
                 {
                     Resources.Add(contentInfo.AbsolutePath, contentInfo);
                 }
-                else {
+                else
+                {
                     Resources[contentInfo.AbsolutePath] = contentInfo;
                 }
             }

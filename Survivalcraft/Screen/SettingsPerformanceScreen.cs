@@ -13,11 +13,11 @@ namespace Game
             0
         };
 
-		private int[] FPSString = new int[2]
-		{
-			60,
-			30
-		};
+        private int[] FPSString = new int[2]
+        {
+            60,
+            30
+        };
 
         public static List<int> m_visibilityRanges = new List<int>
         {
@@ -184,12 +184,12 @@ namespace Game
                 if (SettingsManager.VisibilityRange > m_enterVisibilityRange && flag)
                 {
                     DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Get(fName, 10), LanguageControl.Get(fName, 11), LanguageControl.Ok, LanguageControl.Back, delegate (MessageDialogButton button)
-                      {
-                          if (button == MessageDialogButton.Button1)
-                          {
-                              ScreensManager.SwitchScreen(ScreensManager.PreviousScreen);
-                          }
-                      }));
+                    {
+                        if (button == MessageDialogButton.Button1)
+                        {
+                            ScreensManager.SwitchScreen(ScreensManager.PreviousScreen);
+                        }
+                    }));
                 }
                 else
                 {

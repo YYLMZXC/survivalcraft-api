@@ -1,9 +1,8 @@
-﻿using Engine.Graphics;
+﻿using Engine;
+using Engine.Graphics;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Engine;
-using Engine.Media;
-using System;
 
 namespace Game
 {
@@ -38,7 +37,8 @@ namespace Game
             }
 
         }
-        public struct ObjVertex {
+        public struct ObjVertex
+        {
             public ObjPosition position;
             public ObjNormal objNormal;
             public ObjTexCood texCood;
@@ -46,7 +46,8 @@ namespace Game
         public struct ObjNormal
         {
             public float x, y, z;
-            public ObjNormal(string x_, string y_, string z_) {
+            public ObjNormal(string x_, string y_, string z_)
+            {
                 x = float.Parse(x_);
                 y = float.Parse(y_);
                 z = float.Parse(z_);
@@ -58,9 +59,11 @@ namespace Game
                 z = (z_);
             }
         }
-        public struct ObjTexCood {
+        public struct ObjTexCood
+        {
             public float tx, ty;
-            public ObjTexCood(string tx_, string ty_) {
+            public ObjTexCood(string tx_, string ty_)
+            {
                 tx = float.Parse(tx_);
                 ty = float.Parse(ty_);
             }
@@ -70,20 +73,23 @@ namespace Game
                 ty = (ty_);
             }
         }
-        public class ObjMesh {
+        public class ObjMesh
+        {
             public int ElementIndex;
             public DynamicArray<ObjVertex> Vertices = new DynamicArray<ObjVertex>();
             public DynamicArray<int> Indices = new DynamicArray<int>();
             public string TexturePath = "Textures/NoneTexture";//默认位置
             public string MeshName;
             public Matrix? MeshMatrix;
-            public ObjMesh(string meshname) {
+            public ObjMesh(string meshname)
+            {
                 MeshName = meshname;
             }
             public BoundingBox CalculateBoundingBox()
             {
                 List<Vector3> vectors = new List<Vector3>();
-                for (int i=0;i<Vertices.Count;i++) {
+                for (int i = 0; i < Vertices.Count; i++)
+                {
                     vectors.Add(new Vector3(Vertices[i].position.x, Vertices[i].position.y, Vertices[i].position.z));
                 }
                 return new BoundingBox(vectors);
@@ -179,7 +185,7 @@ namespace Game
                                             ObjNormal objNormal = objNormals[pc - 1];
                                             int face = CellFace.Vector3ToFace(new Vector3(objNormal.x, objNormal.y, objNormal.z));
                                             objMesh.Indices.Add(startCount + FaceMap[face][i - 1]);
-                                            objMesh.Vertices.Add(new ObjVertex() { position = objPosition,objNormal= objNormal, texCood = texCood });
+                                            objMesh.Vertices.Add(new ObjVertex() { position = objPosition, objNormal = objNormal, texCood = texCood });
                                         }
                                     }
                                 }
@@ -192,7 +198,7 @@ namespace Game
             return ObjMeshesToModel<ObjModel>(Meshes);
         }
 
-        public static void AppendMesh(Model model,ModelBone rootBone, string texturepath, ObjMesh objMesh)
+        public static void AppendMesh(Model model, ModelBone rootBone, string texturepath, ObjMesh objMesh)
         {
             ModelBone modelBone = model.NewBone(objMesh.MeshName, objMesh.MeshMatrix.HasValue ? objMesh.MeshMatrix.Value : Matrix.Identity, rootBone);
             if (objMesh.Vertices.Count > 0)
@@ -241,7 +247,8 @@ namespace Game
             }
         }
 
-        public static T ObjMeshesToModel<T>(Dictionary<string,ObjMesh> Meshes) where T:class {
+        public static T ObjMeshesToModel<T>(Dictionary<string, ObjMesh> Meshes) where T : class
+        {
             Type ctype = typeof(T);
             if (!ctype.IsSubclassOf(typeof(Model))) throw new Exception("不能将" + ctype.Name + "转换为Model类型");
             object iobj = Activator.CreateInstance(ctype);

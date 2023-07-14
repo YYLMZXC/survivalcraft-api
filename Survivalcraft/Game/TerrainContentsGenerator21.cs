@@ -2092,7 +2092,6 @@ namespace Game
                         }
                     }
                     break;
-                    continue;
                 end_IL_019b:
                     break;
                 }

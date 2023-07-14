@@ -54,7 +54,7 @@ namespace Game
                 m_versionStringTrial = MarketplaceManager.IsTrialMode;
             }
             Children.Find("Buy").IsVisible = MarketplaceManager.IsTrialMode;
-            Children.Find<LabelWidget>("Version").Text = m_versionString + "  API" + ModsManager.APIVersion;
+            Children.Find<LabelWidget>("Version").Text = m_versionString + "  API" + ModsManager.APIVersion + "  EVO-" + ModsManager.EVOVersion;
             RectangleWidget rectangleWidget = Children.Find<RectangleWidget>("Logo");
             float num = 1f + 0.02f * MathUtils.Sin(1.5f * (float)MathUtils.Remainder(Time.FrameStartTime, 10000.0));
             rectangleWidget.RenderTransform = Matrix.CreateTranslation((0f - rectangleWidget.ActualSize.X) / 2f, (0f - rectangleWidget.ActualSize.Y) / 2f, 0f) * Matrix.CreateScale(num, num, 1f) * Matrix.CreateTranslation(rectangleWidget.ActualSize.X / 2f, rectangleWidget.ActualSize.Y / 2f, 0f);
@@ -80,7 +80,7 @@ namespace Game
             }
             if (m_showBulletinButton.IsClicked)
             {
-                if(MotdManager.m_bulletin != null && MotdManager.m_bulletin.Title.ToLower() != "null")
+                if (MotdManager.m_bulletin != null && MotdManager.m_bulletin.Title.ToLower() != "null")
                 {
                     MotdManager.ShowBulletin();
                 }

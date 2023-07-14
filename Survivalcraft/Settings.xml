@@ -1,0 +1,66 @@
+<Settings>
+  <Setting Name="UsePrimaryMemoryBank" Value="False" />
+  <Setting Name="AllowInitialIntro" Value="True" />
+  <Setting Name="SoundsVolume" Value="1" />
+  <Setting Name="MusicVolume" Value="0" />
+  <Setting Name="VisibilityRange" Value="128" />
+  <Setting Name="UseVr" Value="False" />
+  <Setting Name="UIScale" Value="0.8" />
+  <Setting Name="ResolutionMode" Value="High" />
+  <Setting Name="ViewAngleMode" Value="Normal" />
+  <Setting Name="SkyRenderingMode" Value="Full" />
+  <Setting Name="TerrainMipmapsEnabled" Value="False" />
+  <Setting Name="ObjectsShadowsEnabled" Value="True" />
+  <Setting Name="Brightness" Value="1" />
+  <Setting Name="PresentationInterval" Value="6" />
+  <Setting Name="ShowGuiInScreenshots" Value="False" />
+  <Setting Name="ShowLogoInScreenshots" Value="True" />
+  <Setting Name="ScreenshotSize" Value="FullHD" />
+  <Setting Name="WindowMode" Value="Resizable" />
+  <Setting Name="GuiSize" Value="Smallest" />
+  <Setting Name="HideMoveLookPads" Value="False" />
+  <Setting Name="BlocksTextureFileName" Value="" />
+  <Setting Name="MoveControlMode" Value="Pad" />
+  <Setting Name="LookControlMode" Value="EntireScreen" />
+  <Setting Name="LeftHandedLayout" Value="False" />
+  <Setting Name="FlipVerticalAxis" Value="False" />
+  <Setting Name="MoveSensitivity" Value="0.5" />
+  <Setting Name="LookSensitivity" Value="0.5" />
+  <Setting Name="GamepadDeadZone" Value="0.16" />
+  <Setting Name="GamepadCursorSpeed" Value="1" />
+  <Setting Name="CreativeDigTime" Value="0.1" />
+  <Setting Name="CreativeReach" Value="7.5" />
+  <Setting Name="MinimumHoldDuration" Value="0.4" />
+  <Setting Name="MinimumDragDistance" Value="10" />
+  <Setting Name="AutoJump" Value="False" />
+  <Setting Name="HorizontalCreativeFlight" Value="True" />
+  <Setting Name="DropboxAccessToken" Value="" />
+  <Setting Name="MotdUpdateUrl" Value="https://m.schub.top/com/motd?v={0}&amp;l={1}" />
+  <Setting Name="MotdUpdateCheckUrl" Value="https://m.schub.top/com/motd?v={0}&amp;cmd=version_check&amp;platform={1}&amp;apiv={2}&amp;l={3}" />
+  <Setting Name="ScpboxAccessToken" Value="c8eb878621647458c5150690d07bf7f1" />
+  <Setting Name="ScpboxUserInfo" Value="昵称：烫烫烫的锟斤拷&#xA;账号：txs1234&#xA;登录时间：2023-06-13 20:56:05" />
+  <Setting Name="MotdUseBackupUrl" Value="False" />
+  <Setting Name="MotdUpdatePeriodHours" Value="12" />
+  <Setting Name="MotdLastUpdateTime" Value="0" />
+  <Setting Name="MotdLastDownloadedData" Value="&lt;!--滚动公告--&gt;&#xA;&lt;Motd UpdatePeriodHours=&quot;12&quot;&gt;&#xA;&lt;Line Time=&quot;10&quot;&gt;&#xA;&lt;StackPanelWidget xmlns=&quot;runtime-namespace:Game&quot; HorizontalAlignment=&quot;Center&quot; Direction=&quot;Vertical&quot; VerticalAlignment=&quot;Center&quot;&gt;&#xA;&lt;StackPanelWidget HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot;&gt;&#xA;&lt;LabelWidget Text=&quot;中文社区网址&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#xA;&lt;LinkWidget Text=&quot;https://m.schub.top/com&quot; Color=&quot;64, 192, 64&quot; VerticalAlignment=&quot;Center&quot; Url=&quot;https://m.schub.top/com&quot; /&gt;&#xA;&lt;LabelWidget Text=&quot; 可以在这里下载Mod或者注册账号&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#xA;&lt;/StackPanelWidget&gt;&#xA;&lt;LabelWidget Text=&quot;&quot; HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#xA;&lt;StackPanelWidget HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot;&gt;&#xA;&lt;LabelWidget Text=&quot;【联机】&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#xA;&lt;LinkWidget Text=&quot;点击这里&quot; Color=&quot;64, 192, 64&quot; VerticalAlignment=&quot;Center&quot; Url=&quot;https://m.schub.top/com/bbs/2373&quot; /&gt;&#xA;&lt;LabelWidget Text=&quot; 下载联机版&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#xA;&lt;/StackPanelWidget&gt;&#xA;&lt;/StackPanelWidget&gt;&#xA;&lt;/Line&gt;&#xA;&#xA;&lt;Line Time=&quot;8&quot;&gt;&#xA;&lt;StackPanelWidget xmlns=&quot;runtime-namespace:Game&quot; Direction=&quot;Vertical&quot; HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot;&gt;&#xA;&lt;LabelWidget Text=&quot;请优先使用本地备份，社区已有的资源请勿重复上传&quot; HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#xA;&lt;LabelWidget Text=&quot;&quot; HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#xA;&lt;LabelWidget Text=&quot;存档在重命名后再上传到社区，若使用mod务必在存档名中注明&quot; HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#xA;&lt;/StackPanelWidget&gt;&#xA;&lt;/Line&gt;&#xA;&#xA;&lt;Line Time=&quot;1&quot;&gt;&#xA;&lt;CanvasWidget xmlns=&quot;runtime-namespace:Game&quot; /&gt;&#xA;&lt;/Line&gt;&#xA; &#xA;&lt;/Motd&gt;&#xA;&#xA;&lt;!--弹窗公告--&gt;&#xA;&lt;Motd2&gt;&#xA;&#xA;&#xA;&lt;Bulletin Title=&quot;单区块建筑小活动-社区账号赠送&quot; EnTitle=&quot;null&quot; Time=&quot;06/17/2023 03:30:06&quot;&gt;&#xA;&lt;Content&gt;给无条件获取社区账号的玩家提供免费获取途径。&#xA;主题是单区块建筑，如果建筑入选就可以获得社区账号。&#xA;名额有限，先到先得。&#xA;&#xA;有需要的请加群了解539374304。&#xA;有账号的就不用来了！&lt;/Content&gt;&#xA;&#xA;&#xA;&#xA;&lt;EnContent&gt;&#xA;&#xA;&lt;/EnContent&gt;&#xA;&#xA;&#xA;&#xA; &lt;/Bulletin&gt;&#xA;&lt;/Motd2&gt;&#xA;&#xA;&lt;!--过滤模组--&gt;&#xA;&lt;Motd3&gt;&#xA;&lt;FilterMod Name=&quot;RYSH 有点真实の生存&quot; PackageName=&quot;rysh&quot; Version=&quot;all&quot; FilterAPIVersion=&quot;1.50&quot; &gt;&#xA;不太兼容当前插件版本(1.50)，游玩过程可能出现问题:无法吃东西或穿衣服。&#xA;解决方案：可以先使用插件版1.44游玩此mod。&#xA;&lt;/FilterMod&gt;&#xA;&lt;/Motd3&gt;&#xA;&lt;Motd4&gt;&#xA;&lt;Guns&gt;&#xA;&#xA;&lt;/Guns&gt;&#xA;&lt;/Motd4&gt;&#xA;" />
+  <Setting Name="UserId" Value="" />
+  <Setting Name="LastLaunchedVersion" Value="2.3.0.0" />
+  <Setting Name="CommunityContentMode" Value="Normal" />
+  <Setting Name="MultithreadedTerrainUpdate" Value="True" />
+  <Setting Name="EnableAndroidAudioTrackCaching" Value="False" />
+  <Setting Name="UseReducedZRange" Value="False" />
+  <Setting Name="IsolatedStorageMigrationCounter" Value="3" />
+  <Setting Name="DisplayFpsCounter" Value="True" />
+  <Setting Name="DisplayFpsRibbon" Value="False" />
+  <Setting Name="NewYearCelebrationLastYear" Value="2015" />
+  <Setting Name="ScreenLayout1" Value="Single" />
+  <Setting Name="ScreenLayout2" Value="DoubleVertical" />
+  <Setting Name="ScreenLayout3" Value="TripleVertical" />
+  <Setting Name="ScreenLayout4" Value="Quadruple" />
+  <Setting Name="UpsideDownLayout" Value="False" />
+  <Setting Name="FullScreenMode" Value="False" />
+  <Setting Name="DisplayLog" Value="False" />
+  <Setting Name="BulletinTime" Value="zh-CN$06/17/2023 03:30:06" />
+  <DisableMods />
+  <Configs Language="zh-CN" />
+</Settings>

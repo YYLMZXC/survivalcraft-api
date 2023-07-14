@@ -14,6 +14,10 @@ namespace Game
                       PackageName;
         public List<string> Dependencies = new List<string>();
         public override int GetHashCode() => (PackageName + ApiVersion + Version).GetHashCode();
-        public override bool Equals(object obj) => obj is ModInfo && obj.GetHashCode() == GetHashCode();
+        public override bool Equals(object obj) =>
+            obj is ModInfo info &&
+                obj.PackageName == PackageName &&
+                obj.ApiVersion == ApiVersion &&
+                obj.Version == Version;
     }
 }

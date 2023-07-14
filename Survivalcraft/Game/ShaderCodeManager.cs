@@ -11,7 +11,7 @@ namespace Game
         {
             string shaderText = string.Empty;
             string[] parameters = fname.Split('.');
-            if(parameters.Length > 1)
+            if (parameters.Length > 1)
                 shaderText = ModsManager.GetInPakOrStorageFile<string>(parameters[0], "." + parameters[1]);
             return shaderText;
         }
@@ -71,7 +71,7 @@ namespace Game
                         }
                     }
                     string[] arline = lines[l].Replace("//", "$").Split(new char[1] { '$' });
-                    if(arline.Length > 0)
+                    if (arline.Length > 0)
                     {
                         lines[l] = arline[0];
                     }
@@ -85,7 +85,9 @@ namespace Game
                     {
                         if (!ModsManager.IsAndroid)
                         {
-                            includeText += lines[l].Replace("highp", "").Replace("lowp","").Replace("mediump","") + "\n";
+#pragma warning disable CS0162 // 检测到无法访问的代码
+                            includeText += lines[l].Replace("highp", "").Replace("lowp", "").Replace("mediump", "") + "\n";
+#pragma warning restore CS0162 // 检测到无法访问的代码
                         }
                         else
                         {

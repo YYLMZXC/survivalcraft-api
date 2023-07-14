@@ -25,7 +25,8 @@ namespace Game
             memoryBankData = memoryBankData != null ? (MemoryBankData)memoryBankData.Copy() : new MemoryBankData();
             if (SettingsManager.UsePrimaryMemoryBank)
             {
-                DialogsManager.ShowDialog(componentPlayer.GuiWidget, new EditMemoryBankDialog(memoryBankData, () => {
+                DialogsManager.ShowDialog(componentPlayer.GuiWidget, new EditMemoryBankDialog(memoryBankData, () =>
+                {
                     int data = StoreItemDataAtUniqueId(memoryBankData);
                     int value2 = Terrain.ReplaceData(value, data);
                     inventory.RemoveSlotItems(slotIndex, count);
@@ -50,7 +51,8 @@ namespace Game
             MemoryBankData memoryBankData = GetBlockData(new Point3(x, y, z)) ?? new MemoryBankData();
             if (SettingsManager.UsePrimaryMemoryBank)
             {
-                DialogsManager.ShowDialog(componentPlayer.GuiWidget, new EditMemoryBankDialog(memoryBankData, () => {
+                DialogsManager.ShowDialog(componentPlayer.GuiWidget, new EditMemoryBankDialog(memoryBankData, () =>
+                {
                     SetBlockData(new Point3(x, y, z), memoryBankData);
                     int face = ((MemoryBankBlock)BlocksManager.Blocks[186]).GetFace(value);
                     SubsystemElectricity subsystemElectricity = SubsystemTerrain.Project.FindSubsystem<SubsystemElectricity>(throwOnError: true);

@@ -4,29 +4,29 @@ using System;
 
 namespace Game
 {
-	public class TerrainChunkGeometry
-	{
-		public TerrainChunk TerrainChunk;
+    public class TerrainChunkGeometry
+    {
+        public TerrainChunk TerrainChunk;
 
-		public class Buffer : IDisposable
-		{
-			public VertexBuffer VertexBuffer;
+        public class Buffer : IDisposable
+        {
+            public VertexBuffer VertexBuffer;
 
-			public IndexBuffer IndexBuffer;
+            public IndexBuffer IndexBuffer;
 
-			public Texture2D Texture;
+            public Texture2D Texture;
 
-			public int[] SubsetIndexBufferStarts = new int[7];
+            public int[] SubsetIndexBufferStarts = new int[7];
 
-			public int[] SubsetIndexBufferEnds = new int[7];
+            public int[] SubsetIndexBufferEnds = new int[7];
 
-			public int[] SubsetVertexBufferStarts = new int[7];
+            public int[] SubsetVertexBufferStarts = new int[7];
 
-			public void Dispose()
-			{
-				Utilities.Dispose(ref VertexBuffer);
-				Utilities.Dispose(ref IndexBuffer);
-			}
-		}
-	}
+            public void Dispose()
+            {
+                Utilities.Dispose(ref VertexBuffer);
+                Utilities.Dispose(ref IndexBuffer);
+            }
+        }
+    }
 }

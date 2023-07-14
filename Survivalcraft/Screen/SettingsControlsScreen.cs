@@ -47,7 +47,7 @@ namespace Game
             m_lookControlModeButton = Children.Find<ButtonWidget>("LookControlMode");
             m_leftHandedLayoutButton = Children.Find<ButtonWidget>("LeftHandedLayout");
             m_flipVerticalAxisButton = Children.Find<ButtonWidget>("FlipVerticalAxis");
-            m_AllowInitialIntro = Children.Find<ButtonWidget>("AllowInitialIntro");            
+            m_AllowInitialIntro = Children.Find<ButtonWidget>("AllowInitialIntro");
             m_autoJumpButton = Children.Find<ButtonWidget>("AutoJump");
             m_horizontalCreativeFlightButton = Children.Find<ButtonWidget>("HorizontalCreativeFlight");
             m_horizontalCreativeFlightPanel = Children.Find<ContainerWidget>("HorizontalCreativeFlightPanel");
@@ -121,7 +121,8 @@ namespace Game
             {
                 SettingsManager.MinimumDragDistance = m_dragDistanceSlider.Value;
             }
-            if (m_MemoryBankStyle.IsClicked) {
+            if (m_MemoryBankStyle.IsClicked)
+            {
                 SettingsManager.UsePrimaryMemoryBank = !SettingsManager.UsePrimaryMemoryBank;
             }
             if (m_AllowInitialIntro.IsClicked) SettingsManager.AllowInitialIntro = !SettingsManager.AllowInitialIntro;

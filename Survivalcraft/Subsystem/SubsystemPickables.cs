@@ -1,10 +1,10 @@
 using Engine;
 using Engine.Graphics;
 using GameEntitySystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TemplatesDatabase;
-using System;
 namespace Game
 {
     public class SubsystemPickables : Subsystem, IDrawable, IUpdateable
@@ -359,7 +359,7 @@ namespace Game
             {
                 m_pickables.Remove(item);
                 PickableRemoved?.Invoke(item);
-           }
+            }
             m_pickablesToRemove.Clear();
         }
 

@@ -4,7 +4,7 @@ using System;
 
 namespace Engine.Input
 {
-	public static class Keyboard
+    public static class Keyboard
 	{
 		private const double m_keyFirstRepeatTime = 0.2;
 
@@ -32,7 +32,9 @@ namespace Engine.Input
 			private set;
 		}
 
-		public static bool BackButtonQuitsApp
+        public static bool EnglishMode = false;//英文模式防止输入法违规出现
+
+        public static bool BackButtonQuitsApp
 		{
 			get;
 			set;
@@ -67,7 +69,7 @@ namespace Engine.Input
 			}
 			return true;
 		}
-
+		
 		public static void ShowKeyboard(string title, string description, string defaultText, bool passwordMode, Action<string> enter, Action cancel)
 		{
 			if (title == null)
@@ -82,9 +84,9 @@ namespace Engine.Input
 			{
 				throw new ArgumentNullException("defaultText");
 			}
-			if (!IsKeyboardVisible)
+			if (!IsKeyboardVisible)//不处于输入模式
 			{
-				Clear();
+                Clear();
 				Touch.Clear();
 				Mouse.Clear();
 				IsKeyboardVisible = true;

@@ -231,9 +231,9 @@ namespace Game
                 }
             }
             var list2 = new List<InventorySlotWidget>((from w in m_inventoryGrid.Children
-                                                                             select w as InventorySlotWidget into w
-                                                                             where w != null
-                                                                             select w).Cast<InventorySlotWidget>());
+                                                       select w as InventorySlotWidget into w
+                                                       where w != null
+                                                       select w).Cast<InventorySlotWidget>());
             int num = ComponentFurnitureInventory.PageIndex * list2.Count;
             for (int j = 0; j < list2.Count; j++)
             {

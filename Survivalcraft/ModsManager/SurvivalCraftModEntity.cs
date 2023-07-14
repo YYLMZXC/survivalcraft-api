@@ -1,18 +1,19 @@
-﻿using Engine;
+using Engine;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Xml.Linq;
+using Tiny7z.Archive;
+
 namespace Game
 {
     public class SurvivalCraftModEntity : ModEntity
     {
-
         public SurvivalCraftModEntity()
         {
-            List<IContentReader.IContentReader> readers = new List<IContentReader.IContentReader>();
+            var readers = new List<IContentReader.IContentReader>();
             readers.Add(new IContentReader.BitmapFontReader());
             readers.Add(new IContentReader.DaeModelReader());
             readers.Add(new IContentReader.ImageReader());
@@ -33,12 +34,12 @@ namespace Game
                 ContentManager.ReaderList.Add(readers[i].Type, readers[i]);
             }
 
-            Stream stream = Storage.OpenFile("app:Content.zip",OpenFileMode.Read);
+            Stream stream = Storage.OpenFile("app:Content.7z", OpenFileMode.Read);
             MemoryStream memoryStream = new MemoryStream();
             stream.CopyTo(memoryStream);
             stream.Close();
             memoryStream.Position = 0L;
-            ModArchive = ZipArchive.Open(memoryStream, true);
+            ModArchive = new SevenZipArchive(memoryStream, FileAccess.Read);
             InitResources();
             LabelWidget.BitmapFont = ContentManager.Get<Engine.Media.BitmapFont>("Fonts/Pericles");
             LoadingScreen.Info("加载资源:" + modInfo?.Name);
@@ -69,7 +70,8 @@ namespace Game
                     BlockTypes.Add(type);
                 }
             }
-            for (int i=0;i<BlockTypes.Count;i++) {
+            for (int i = 0; i < BlockTypes.Count; i++)
+            {
                 Type type = BlockTypes[i];
                 FieldInfo fieldInfo = type.GetRuntimeFields().FirstOrDefault(p => p.Name == "Index" && p.IsPublic && p.IsStatic);
                 if (fieldInfo == null || fieldInfo.FieldType != typeof(int))
@@ -94,7 +96,7 @@ namespace Game
         }
         public override void LoadCr(ref XElement xElement)
         {
-            LoadingScreen.Info("加载合成谱:" + modInfo?.Name);            
+            LoadingScreen.Info("加载合成谱:" + modInfo?.Name);
             xElement = ContentManager.Get<XElement>("CraftingRecipes");
             ContentManager.Dispose("CraftingRecipes");
         }
@@ -130,6 +132,6 @@ namespace Game
             BlocksManager.AddCategory("Painted");
             BlocksManager.AddCategory("Dyed");
             BlocksManager.AddCategory("Fireworks");
-        }      
+        }
     }
 }

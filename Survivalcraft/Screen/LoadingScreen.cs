@@ -1,9 +1,8 @@
 using Engine;
+using Engine.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using Engine.Graphics;
-using System.Security.Principal;
 
 namespace Game
 {
@@ -25,11 +24,12 @@ namespace Game
         private List<Action> LoadingActoins = new List<Action>();
         private List<Action> ModLoadingActoins = new List<Action>();
         private CanvasWidget Canvas = new CanvasWidget();
-        private RectangleWidget Background = new RectangleWidget() { FillColor = (SettingsManager.DisplayLog? Color.Black : Color.White), OutlineThickness = 0f, DepthWriteEnabled = true };
+        private RectangleWidget Background = new RectangleWidget() { FillColor = (SettingsManager.DisplayLog ? Color.Black : Color.White), OutlineThickness = 0f, DepthWriteEnabled = true };
         private static ListPanelWidget LogList = new ListPanelWidget() { Direction = LayoutDirection.Vertical, PlayClickSound = false };
         static LoadingScreen()
         {
-            LogList.ItemWidgetFactory = (obj) => {
+            LogList.ItemWidgetFactory = (obj) =>
+            {
                 LogItem logItem = obj as LogItem;
                 CanvasWidget canvasWidget = new CanvasWidget() { Size = new Vector2(Display.Viewport.Width, 40), Margin = new Vector2(0, 2), HorizontalAlignment = WidgetAlignment.Near };
                 FontTextWidget fontTextWidget = new FontTextWidget() { FontScale = 0.6f, Text = logItem.Message, Color = GetColor(logItem.LogType), VerticalAlignment = WidgetAlignment.Center, HorizontalAlignment = WidgetAlignment.Near };
@@ -94,7 +94,8 @@ namespace Game
         }
         public static void Add(LogType type, string mesg)
         {
-            Dispatcher.Dispatch(delegate {
+            Dispatcher.Dispatch(delegate
+            {
                 LogItem item = new LogItem(type, mesg);
                 LogList.AddItem(item);
                 switch (type)
@@ -110,13 +111,15 @@ namespace Game
         }
         private void InitActions()
         {
-            AddLoadAction(delegate {//将所有的有效的scmod读取为ModEntity，并自动添加SurvivalCraftModEntity
+            AddLoadAction(delegate
+            {//将所有的有效的scmod读取为ModEntity，并自动添加SurvivalCraftModEntity
                 ContentManager.Initialize();
                 ModsManager.Initialize();
             });
             AddLoadAction(ContentLoaded);
 
-            AddLoadAction(delegate {//检查所有Mod依赖项 
+            AddLoadAction(delegate
+            {//检查所有Mod依赖项 
                 //根据加载顺序排序后的结果
                 ModsManager.ModList.Clear();
                 foreach (var item in ModsManager.ModListAll)
@@ -126,7 +129,8 @@ namespace Game
                 }
                 foreach (var item in ModsManager.ModListAll) item.IsDependencyChecked = false;
             });
-            AddLoadAction(delegate { //初始化所有ModEntity的语言包
+            AddLoadAction(delegate
+            { //初始化所有ModEntity的语言包
                 //>>>初始化语言列表
                 ReadOnlyList<ContentInfo> axa = ContentManager.List("Lang");
                 LanguageControl.LanguageTypes.Clear();
@@ -138,33 +142,37 @@ namespace Game
                 //<<<结束
                 if (ModsManager.Configs.ContainsKey("Language") && LanguageControl.LanguageTypes.Contains(ModsManager.Configs["Language"]))
                 {
-                   LanguageControl.Initialize(ModsManager.Configs["Language"]);
+                    LanguageControl.Initialize(ModsManager.Configs["Language"]);
                 }
                 else
                 {
-                   if (LanguageControl.LanguageTypes.Contains(Program.SystemLanguage))
-                   {
-                       LanguageControl.Initialize(Program.SystemLanguage);
-                   }
-                   else
-                   {
-                       // 如果不支持系統語言，英語是最佳選擇
-                       LanguageControl.Initialize("en-US");
-                   }
+                    if (LanguageControl.LanguageTypes.Contains(Program.SystemLanguage))
+                    {
+                        LanguageControl.Initialize(Program.SystemLanguage);
+                    }
+                    else
+                    {
+                        // 如果不支持系統語言，英語是最佳選擇
+                        LanguageControl.Initialize("en-US");
+                    }
                 }
                 ModsManager.ModListAllDo((modEntity) => { modEntity.LoadLauguage(); });
             });
-            AddLoadAction(delegate { //读取所有的ModEntity的dll，并分离出ModLoader，保存Blocks
+            AddLoadAction(delegate
+            { //读取所有的ModEntity的dll，并分离出ModLoader，保存Blocks
                 ModsManager.ModListAllDo((modEntity) => { modEntity.LoadDll(); });
             });
-            AddLoadAction(delegate { //读取所有的ModEntity的javascript
+            AddLoadAction(delegate
+            { //读取所有的ModEntity的javascript
                 ModsManager.ModListAllDo((modEntity) => { modEntity.LoadJs(); });
                 JsInterface.RegisterEvent();
             });
-            AddLoadAction(delegate {
+            AddLoadAction(delegate
+            {
                 Info("执行初始化任务");
                 List<Action> actions = new List<Action>();
-                ModsManager.ModListAllDo((modEntity) => { 
+                ModsManager.ModListAllDo((modEntity) =>
+                {
                     modEntity.Loader?.OnLoadingStart(actions);
                 });
                 foreach (var ac in actions)
@@ -172,11 +180,13 @@ namespace Game
                     ModLoadingActoins.Add(ac);
                 }
             });
-            AddLoadAction(delegate {//初始化TextureAtlas
+            AddLoadAction(delegate
+            {//初始化TextureAtlas
                 Info("初始化纹理地图");
                 TextureAtlasManager.Initialize();
             });
-            AddLoadAction(delegate { //初始化Database
+            AddLoadAction(delegate
+            { //初始化Database
                 try
                 {
                     DatabaseManager.Initialize();
@@ -187,7 +197,8 @@ namespace Game
                     Warning(e.Message);
                 }
             });
-            AddLoadAction(delegate {
+            AddLoadAction(delegate
+            {
                 Info("读取数据库");
                 try
                 {
@@ -199,15 +210,18 @@ namespace Game
                     Warning(e.Message);
                 }
             });
-            AddLoadAction(delegate { //初始化方块管理器
+            AddLoadAction(delegate
+            { //初始化方块管理器
                 Info("初始化方块管理器");
                 BlocksManager.Initialize();
             });
-            AddLoadAction(delegate { //初始化合成谱
+            AddLoadAction(delegate
+            { //初始化合成谱
                 CraftingRecipesManager.Initialize();
             });
             InitScreens();
-            AddLoadAction(delegate {
+            AddLoadAction(delegate
+            {
                 BlocksTexturesManager.Initialize();
                 CharacterSkinsManager.Initialize();
                 CommunityContentManager.Initialize();
@@ -218,7 +232,8 @@ namespace Game
                 VersionsManager.Initialize();
                 WorldsManager.Initialize();
             });
-            AddLoadAction(delegate {
+            AddLoadAction(delegate
+            {
                 Info("初始化Mod设置参数");
                 if (Storage.FileExists(ModsManager.ModsSetPath))
                 {
@@ -236,10 +251,12 @@ namespace Game
                     }
                 }
             });
-            AddLoadAction(delegate {
+            AddLoadAction(delegate
+            {
                 ModsManager.ModListAllDo((modEntity) => { Info("等待剩下的任务完成:" + modEntity.modInfo?.PackageName); modEntity.Loader?.OnLoadingFinished(ModLoadingActoins); });
             });
-            AddLoadAction(delegate {
+            AddLoadAction(delegate
+            {
                 ScreensManager.SwitchScreen("MainMenu");
             });
         }
@@ -404,7 +421,8 @@ namespace Game
         }
         public override void Update()
         {
-            if (Input.Back || Input.Cancel) DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Warning, "Quit?", LanguageControl.Ok, LanguageControl.No, (vt) => {
+            if (Input.Back || Input.Cancel) DialogsManager.ShowDialog(null, new MessageDialog(LanguageControl.Warning, "Quit?", LanguageControl.Ok, LanguageControl.No, (vt) =>
+            {
                 if (vt == MessageDialogButton.Button1) Environment.Exit(0);
                 else DialogsManager.HideAllDialogs();
             }));

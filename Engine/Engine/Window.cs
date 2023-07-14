@@ -213,9 +213,9 @@ namespace Engine
 					ex = new Exception($"Unknown exception. Additional information: {args.ExceptionObject}");
 				}
 				UnhandledExceptionInfo unhandledExceptionInfo = new UnhandledExceptionInfo(ex);
-				if (Window.UnhandledException != null)
+				if (UnhandledException != null)
 				{
-					Window.UnhandledException(unhandledExceptionInfo);
+                    UnhandledException(unhandledExceptionInfo);
 				}
 				if (!unhandledExceptionInfo.IsHandled)
 				{
@@ -223,7 +223,9 @@ namespace Engine
 					Environment.Exit(1);
 				}
 			};
-			GraphicsMode mode = new GraphicsMode(new OpenTK.Graphics.ColorFormat(24), 16, 0, 0, OpenTK.Graphics.ColorFormat.Empty, 2);
+            //var color_init = new OpenTK.Graphics.ColorFormat(10, 10, 10, 10);
+            //修改为自适应颜色格式 把红色赋予黑海 1003705691
+            GraphicsMode mode = new GraphicsMode(default, 16, 0, 0, OpenTK.Graphics.ColorFormat.Empty, 3);
 			m_gameWindow = new GameWindow(400, 300, mode, title, GameWindowFlags.Default, DisplayDevice.Default, 2, 0, GraphicsContextFlags.Default);
 			m_gameWindow.Icon = new Icon(typeof(Window).GetTypeInfo().Assembly.GetManifestResourceStream("Engine.Resources.icon.ico"),new Size(32,32));
 			m_dpiScale = (float)m_gameWindow.ClientSize.Width / 400f;
@@ -309,17 +311,17 @@ namespace Engine
 			if (m_state == State.Active)
 			{
 				m_state = State.Inactive;
-				if (Window.Deactivated != null)
+				if (Deactivated != null)
 				{
-					Window.Deactivated();
+                    Deactivated();
 				}
 			}
 			if (m_state == State.Inactive)
 			{
 				m_state = State.Uncreated;
-				if (Window.Closed != null)
+				if (Closed != null)
 				{
-					Window.Closed();
+                    Closed();
 				}
 			}
 			UnsubscribeFromEvents();

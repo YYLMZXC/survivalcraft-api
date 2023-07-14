@@ -1,6 +1,5 @@
 using Engine;
 using GameEntitySystem;
-using System;
 using System.Globalization;
 using TemplatesDatabase;
 
@@ -597,7 +596,7 @@ namespace Game
             else if (attackPower > 0f)
             {
                 num4 = 2f;
-                x = 0.2f;               
+                x = 0.2f;
             }
             ModsManager.HookAction("AttackPowerParameter", modloader =>
             {

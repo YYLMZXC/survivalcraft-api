@@ -65,7 +65,8 @@ namespace Game
             m_componentCreature = Entity.FindComponent<ComponentCreature>(throwOnError: true);
             m_componentPathfinding = Entity.FindComponent<ComponentPathfinding>(throwOnError: true);
             m_componentHerdBehavior = Entity.FindComponent<ComponentHerdBehavior>();
-            m_componentCreature.ComponentHealth.Attacked += delegate (ComponentCreature attacker) {
+            m_componentCreature.ComponentHealth.Attacked += delegate (ComponentCreature attacker)
+            {
                 RunAwayFrom(attacker.ComponentBody);
             };
             m_stateMachine.AddState("Inactive", delegate
