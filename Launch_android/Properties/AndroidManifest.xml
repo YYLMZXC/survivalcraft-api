@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="API1.54" package="survivalcraft.EVO" android:installLocation="preferExternal" android:versionCode="18">
-	<uses-sdk android:minSdkVersion="24" android:targetSdkVersion="33" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="API1.50" package="com.candy.survivalcraftAPIEVO" android:installLocation="preferExternal" android:versionCode="18">
+	<uses-sdk android:minSdkVersion="25" android:targetSdkVersion="33" />
 	<application android:label="生存战争2.3插件版EVO" android:icon="@mipmap/icon"></application>
 </manifest>

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Runtime.InteropServices;
 
 namespace Engine.Audio
 {
@@ -38,8 +37,9 @@ namespace Engine.Audio
 		{
 			string environmentVariable = Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.Process);
 			string fullPath = Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-			string path = Environment.Is64BitProcess ? "x64" : "x86";
-			string str = Path.Combine(fullPath, "OpenAL", path);
+			//32位已经淘汰了
+			//string path = Environment.Is64BitProcess ? "x64" : "x86";
+			string str = Path.Combine(fullPath, "OpenAL", "x64");
 			Environment.SetEnvironmentVariable("PATH", str + ";" + environmentVariable, EnvironmentVariableTarget.Process);
 			new AudioContext();
 		}

@@ -1,7 +1,7 @@
 ﻿namespace Game.KYlib
 {
-    internal class NewIRQ
-    {
+	internal class NewIRQ
+	{
 
-    }
+	}
 }
