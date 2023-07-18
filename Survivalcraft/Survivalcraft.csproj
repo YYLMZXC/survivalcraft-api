@@ -1282,6 +1282,7 @@
     <None Include="Content\modinfo.json" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="按键映射.yaml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="init.js">

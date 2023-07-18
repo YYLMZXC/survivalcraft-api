@@ -164,7 +164,7 @@ public static class ModsManager
 		}
 	}
 
-#if DEBUG
+#if DEBUGEX
 	public static void StreamCompress(Stream input, MemoryStream data)
 	{
 		byte[] dat = data.ToArray();
@@ -441,7 +441,7 @@ public static class ModsManager
 		return bytes;
 	}
 
-#if DEBUG
+#if DEBUGEX
 	/// <summary>
 	/// 将 byte[] 转成 Stream
 	/// </summary>
@@ -702,7 +702,7 @@ public static class ModsManager
 		}
 	}
 
-#if DEBUG
+#if DEBUGEX
 	public enum SourceType
 	{
 		positions,
