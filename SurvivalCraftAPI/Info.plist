@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>SurvivalCraftAPI</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.scc.survivalcraftAPI</string>
+	<string>com.scc.survivalcraftAPI.y12</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -13,7 +13,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>10.0</string>
+	<string>15.6</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
