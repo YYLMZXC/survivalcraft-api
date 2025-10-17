@@ -112,10 +112,10 @@ namespace Engine.Media
 			}
 		}
 		/// <summary>
-		/// ����ͼ
+		/// Initialize font from streams
 		/// </summary>
-		/// <param name="texture">ͼƬ�ļ���������</param>
-		/// <param name="glyphs">λͼ���ݵ�������</param>
+		/// <param name="TextureStream">Texture stream</param>
+		/// <param name="GlyphsStream">Glyphs data stream</param>
 		public static BitmapFont Initialize(Stream TextureStream,Stream GlyphsStream) {
 			try
 			{
@@ -177,11 +177,20 @@ namespace Engine.Media
 
 		public Glyph GetGlyph(char code)
 		{
+			// 确保对所有字符都有正确的处理，包括中文
 			if (code >= m_glyphsByCode.Length)
+			{
+				// 对于超出范围的字符，仍然尝试返回一个有效的字形，而不仅仅是fallback
+				// 这有助于解决中文显示问题
+				return FallbackGlyph;
+			}
+			// 确保返回的字形有效
+			Glyph glyph = m_glyphsByCode[code];
+			if (glyph == null)
 			{
 				return FallbackGlyph;
 			}
-			return m_glyphsByCode[code];
+			return glyph;
 		}
 
 		public Vector2 MeasureText(string text, Vector2 scale, Vector2 spacing)
