@@ -620,13 +620,8 @@ namespace Engine.Graphics
             else
             {
 #if __IOS__
-                // 对于iOS 15.6，确保正确绑定默认帧缓冲区
-                // 首先清除之前可能的绑定状态
-                BindFramebuffer(0);
-                // 显式设置视口以确保渲染正确显示
-                int[] viewport = new int[4];
-                GL.GetInteger(GetPName.Viewport, viewport);
-                GL.Viewport(viewport[0], viewport[1], viewport[2], viewport[3]);
+                // iOS 15.6 compatibility fix
+                BindFramebuffer(1);
 #else
                 BindFramebuffer(0);
 #endif
