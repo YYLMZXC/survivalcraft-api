@@ -268,7 +268,7 @@ namespace Engine.Graphics
             return false;
         }
         /// <summary>
-        /// ¶à±ßĞÎÆ«ÒÆÍ¨³£ÓÃÓÚ½â¾öÉî¶È»º³åÇø£¨depth buffer£©ÖĞµÄZ-fightingÎÊÌâ¡£Z-fightingÊÇÖ¸µ±Á½¸ö»ò¶à¸ö¼¸ºÎÌåÔÚÏàÍ¬µÄÎ»ÖÃÉÏ½øĞĞäÖÈ¾Ê±£¬ÓÉÓÚ¾«¶ÈÏŞÖÆµ¼ÖÂÉî¶È»º³åÇøÖĞµÄÖµ²úÉú³åÍ»£¬´Ó¶ø³öÏÖ¿É¼ûĞÔÎÊÌâ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½depth bufferï¿½ï¿½ï¿½Ğµï¿½Z-fightingï¿½ï¿½ï¿½â¡£Z-fightingï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½Î»ï¿½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½È¾Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½Ö¿É¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         /// <param name="factor"></param>
         /// <param name="units"></param>
@@ -302,7 +302,7 @@ namespace Engine.Graphics
         }
 
         /// <summary>
-        /// »ìºÏ·½³ÌÓÃÓÚ¿ØÖÆÔÚ»æÖÆ¹ı³ÌÖĞ£¬Ô´ÑÕÉ«ºÍÄ¿±êÑÕÉ«ÈçºÎ½øĞĞ»ìºÏ¼ÆËã¡£ÔÚäÖÈ¾¶ÔÏóÊ±£¬ÎÒÃÇÍ¨³£Ï£Íû½«ĞÂµÄÏñËØÑÕÉ«ÓëºóÌ¨»º³åÇøµÄÑÕÉ«½øĞĞ»ìºÏ£¬ÒÔÊµÏÖÍ¸Ã÷¶ÈĞ§¹û»òÆäËûÌØ¶¨µÄ»ìºÏĞ§¹û¡£
+        /// ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½Æ¹ï¿½ï¿½ï¿½ï¿½Ğ£ï¿½Ô´ï¿½ï¿½É«ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Î½ï¿½ï¿½Ğ»ï¿½Ï¼ï¿½ï¿½ã¡£ï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½Ğ»ï¿½Ï£ï¿½ï¿½ï¿½Êµï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½Ğ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½Ä»ï¿½ï¿½Ğ§ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         /// <param name="blendEquationColor"></param>
         /// <param name="blendEquationAlpha"></param>
@@ -519,13 +519,13 @@ namespace Engine.Graphics
                 m_rasterizerState = state;
                 switch (state.CullMode)
                 {
-                    case CullMode.None://¹Ø±ÕÕıÃæ±³ÃæÌŞ³ı
+                    case CullMode.None://ï¿½Ø±ï¿½ï¿½ï¿½ï¿½æ±³ï¿½ï¿½ï¿½Ş³ï¿½
                         Disable(EnableCap.CullFace);
                         break;
                     case CullMode.CullClockwise:
                         Enable(EnableCap.CullFace);
-                        CullFace(CullFaceMode.Back);//¿ªÆô±³ÃæÌŞ³ı
-                        //Cw±íÊ¾Ë³Ê±Õë·½Ïò Cww±íÊ¾ÄæÊ±Õë·½Ïò
+                        CullFace(CullFaceMode.Back);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş³ï¿½
+                        //Cwï¿½ï¿½Ê¾Ë³Ê±ï¿½ë·½ï¿½ï¿½ Cwwï¿½ï¿½Ê¾ï¿½ï¿½Ê±ï¿½ë·½ï¿½ï¿½
                         FrontFace((Display.RenderTarget!= null) ? FrontFaceDirection.Cw : FrontFaceDirection.Ccw);
                         break;
                     case CullMode.CullCounterClockwise:
@@ -620,7 +620,13 @@ namespace Engine.Graphics
             else
             {
 #if __IOS__
-                BindFramebuffer(1);
+                // å¯¹äºiOS 15.6ï¼Œç¡®ä¿æ­£ç¡®ç»‘å®šé»˜è®¤å¸§ç¼“å†²åŒº
+                // é¦–å…ˆæ¸…é™¤ä¹‹å‰å¯èƒ½çš„ç»‘å®šçŠ¶æ€
+                BindFramebuffer(0);
+                // æ˜¾å¼è®¾ç½®è§†å£ä»¥ç¡®ä¿æ¸²æŸ“æ­£ç¡®æ˜¾ç¤º
+                int[] viewport = new int[4];
+                GL.GetInteger(GetPName.Viewport, viewport);
+                GL.Viewport(viewport[0], viewport[1], viewport[2], viewport[3]);
 #else
                 BindFramebuffer(0);
 #endif
@@ -1035,11 +1041,11 @@ namespace Engine.Graphics
         {
             switch (blendFunction)
             {
-                case BlendFunction.Add://½«Ô´ÑÕÉ«ºÍÄ¿±êÑÕÉ«Ïà¼Ó
+                case BlendFunction.Add://ï¿½ï¿½Ô´ï¿½ï¿½É«ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½
                     return BlendEquationMode.FuncAdd;
-                case BlendFunction.Subtract://´ÓÔ´ÑÕÉ«ÖĞ¼õÈ¥Ä¿±êÑÕÉ«
+                case BlendFunction.Subtract://ï¿½ï¿½Ô´ï¿½ï¿½É«ï¿½Ğ¼ï¿½È¥Ä¿ï¿½ï¿½ï¿½ï¿½É«
                     return BlendEquationMode.FuncSubtract;
-                case BlendFunction.ReverseSubtract://´ÓÄ¿±êÑÕÉ«ÖĞ¼õÈ¥Ô´ÑÕÉ«
+                case BlendFunction.ReverseSubtract://ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½É«ï¿½Ğ¼ï¿½È¥Ô´ï¿½ï¿½É«
                     return BlendEquationMode.FuncReverseSubtract;
                 default:
                     throw new InvalidOperationException("Unsupported blend function.");
@@ -1051,25 +1057,25 @@ namespace Engine.Graphics
         {
             switch (blend)
             {
-                case Blend.Zero://ÓÃÁãÀ´´úÌæÔ´ÑÕÉ«»òÄ¿±êÑÕÉ«
+                case Blend.Zero://ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½É«ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½É«
                     return BlendingFactorSrc.Zero;
-                case Blend.One://½«Ô´ÑÕÉ«»òÄ¿±êÑÕÉ«±£ÁôÔ­Ñù
+                case Blend.One://ï¿½ï¿½Ô´ï¿½ï¿½É«ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½
                     return BlendingFactorSrc.One;
-                case Blend.SourceColor://Ê¹ÓÃÔ´ÑÕÉ«×÷Îª»ìºÏÒò×Ó
+                case Blend.SourceColor://Ê¹ï¿½ï¿½Ô´ï¿½ï¿½É«ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     return BlendingFactorSrc.SrcColor;
-                case Blend.InverseSourceColor://Ê¹ÓÃ1¼õÈ¥Ô´ÑÕÉ«×÷Îª»ìºÏÒò×Ó
+                case Blend.InverseSourceColor://Ê¹ï¿½ï¿½1ï¿½ï¿½È¥Ô´ï¿½ï¿½É«ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     return BlendingFactorSrc.OneMinusSrcColor;
-                case Blend.DestinationColor://Ê¹ÓÃÄ¿±êÑÕÉ«×÷Îª»ìºÏÒò×Ó
+                case Blend.DestinationColor://Ê¹ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     return BlendingFactorSrc.DstColor;
-                case Blend.InverseDestinationColor://Ê¹ÓÃ1¼õÈ¥Ä¿±êÑÕÉ«×÷Îª»ìºÏÒò×Ó
+                case Blend.InverseDestinationColor://Ê¹ï¿½ï¿½1ï¿½ï¿½È¥Ä¿ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     return BlendingFactorSrc.OneMinusDstColor;
-                case Blend.SourceAlpha://Ê¹ÓÃÔ´AlphaÍ¨µÀÖµ×÷Îª»ìºÏÒò×Ó
+                case Blend.SourceAlpha://Ê¹ï¿½ï¿½Ô´AlphaÍ¨ï¿½ï¿½Öµï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     return BlendingFactorSrc.SrcAlpha;
-                case Blend.InverseSourceAlpha://Ê¹ÓÃ1¼õÈ¥Ô´AlphaÍ¨µÀÖµ×÷Îª»ìºÏÒò×Ó
+                case Blend.InverseSourceAlpha://Ê¹ï¿½ï¿½1ï¿½ï¿½È¥Ô´AlphaÍ¨ï¿½ï¿½Öµï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     return BlendingFactorSrc.OneMinusSrcAlpha;
-                case Blend.DestinationAlpha://Ê¹ÓÃÄ¿±êAlphaÍ¨µÀÖµ×÷Îª»ìºÏÒò×Ó
+                case Blend.DestinationAlpha://Ê¹ï¿½ï¿½Ä¿ï¿½ï¿½AlphaÍ¨ï¿½ï¿½Öµï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     return BlendingFactorSrc.DstAlpha;
-                case Blend.InverseDestinationAlpha://Ê¹ÓÃ1¼õÈ¥Ä¿±êAlphaÍ¨µÀÖµ×÷Îª»ìºÏÒò×Ó
+                case Blend.InverseDestinationAlpha://Ê¹ï¿½ï¿½1ï¿½ï¿½È¥Ä¿ï¿½ï¿½AlphaÍ¨ï¿½ï¿½Öµï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     return BlendingFactorSrc.OneMinusDstAlpha;
                 case Blend.BlendFactor:
                     return BlendingFactorSrc.ConstantColor;
